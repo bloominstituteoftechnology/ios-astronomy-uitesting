@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		13D74B34214AF24A00632739 /* AstronomyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13D74B33214AF24A00632739 /* AstronomyUITests.swift */; };
 		13D74B3C214AF47600632739 /* TestPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13D74B3B214AF47600632739 /* TestPage.swift */; };
+		13D74B3E214AF4FA00632739 /* AstronomyPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13D74B3D214AF4FA00632739 /* AstronomyPage.swift */; };
 		4647E7C92148C3F700E7FF73 /* Sol15Photos in Resources */ = {isa = PBXBuildFile; fileRef = 4647E7C62148C3F400E7FF73 /* Sol15Photos */; };
 		4647E7CA2148C3F700E7FF73 /* Sol16Photos in Resources */ = {isa = PBXBuildFile; fileRef = 4647E7C72148C3F600E7FF73 /* Sol16Photos */; };
 		4647E7CB2148C3F700E7FF73 /* Sol14Photos in Resources */ = {isa = PBXBuildFile; fileRef = 4647E7C82148C3F700E7FF73 /* Sol14Photos */; };
@@ -50,6 +51,7 @@
 		13D74B33214AF24A00632739 /* AstronomyUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AstronomyUITests.swift; sourceTree = "<group>"; };
 		13D74B35214AF24A00632739 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		13D74B3B214AF47600632739 /* TestPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestPage.swift; sourceTree = "<group>"; };
+		13D74B3D214AF4FA00632739 /* AstronomyPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AstronomyPage.swift; sourceTree = "<group>"; };
 		4647E7C62148C3F400E7FF73 /* Sol15Photos */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Sol15Photos; sourceTree = "<group>"; };
 		4647E7C72148C3F600E7FF73 /* Sol16Photos */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Sol16Photos; sourceTree = "<group>"; };
 		4647E7C82148C3F700E7FF73 /* Sol14Photos */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Sol14Photos; sourceTree = "<group>"; };
@@ -102,6 +104,7 @@
 				13D74B33214AF24A00632739 /* AstronomyUITests.swift */,
 				13D74B35214AF24A00632739 /* Info.plist */,
 				13D74B3B214AF47600632739 /* TestPage.swift */,
+				13D74B3D214AF4FA00632739 /* AstronomyPage.swift */,
 			);
 			path = AstronomyUITests;
 			sourceTree = "<group>";
@@ -328,6 +331,7 @@
 			files = (
 				13D74B3C214AF47600632739 /* TestPage.swift in Sources */,
 				13D74B34214AF24A00632739 /* AstronomyUITests.swift in Sources */,
+				13D74B3E214AF4FA00632739 /* AstronomyPage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
