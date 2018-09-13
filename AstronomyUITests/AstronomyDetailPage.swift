@@ -26,6 +26,13 @@ struct AstronomyDetailPage: TestPage {
     
     // Interactions
     // Saving to photo library
+    // Going back
+    @discardableResult func tapOnBackButton(with label: String, file: String = #file, line: UInt = #line) -> AstronomyDetailPage {
+        let button = app.buttons[label]
+        testCase.expect(exists: button, file: file, line: line)
+        button.tap()
+        return self
+    }
     
     // Verifications
     // Saved to photo library
