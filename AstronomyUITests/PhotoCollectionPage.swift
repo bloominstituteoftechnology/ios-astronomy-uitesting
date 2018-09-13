@@ -8,8 +8,14 @@
 
 import XCTest
 
-struct PhotoCollectionPage: TestPage {
+class PhotoCollectionPage: TestPage {
     var testCase: XCTestCase
+    var newTitle: String?
+    
+    init(testCase: XCTestCase, newTitle: String? = nil) {
+        self.testCase = testCase
+        self.newTitle = newTitle
+    }
     
     // MARK: - Elements
     
@@ -22,7 +28,7 @@ struct PhotoCollectionPage: TestPage {
     }
     
     var title: String {
-        return app.navigationBars.element(boundBy: 0).title
+        return app.navigationBars.element(boundBy: 0).identifier
     }
     
     func collectionCellImage(at index: Int) -> XCUIElement {
@@ -50,8 +56,16 @@ struct PhotoCollectionPage: TestPage {
         return self
     }
     
+    @discardableResult func setNewTitle(file: String = #file, line: UInt = #line) -> PhotoCollectionPage {
+        newTitle = title
+        return self
+    }
+    
     // MARK: - Verifications
     
-    
-    
+    @discardableResult func verifyTitleChange(file: String = #file, line: UInt = #line) -> PhotoCollectionPage {
+        testCase.expect(notNil: newTitle, file: file, line: line)
+        testCase.expect(newTitle, notEquals: title, file: file, line: line)
+        return self
+    }
 }

@@ -9,7 +9,7 @@
 import XCTest
 
 class AstronomyUITests: XCTestCase {
-        
+    
     override func setUp() {
         super.setUp()
         
@@ -21,17 +21,29 @@ class AstronomyUITests: XCTestCase {
     
     func testTappingPreviousSol() {
         PhotoCollectionPage(testCase: self)
-        .tapOnPreviousSol()
+            .setNewTitle()
+            .tapOnPreviousSol()
+            .verifyTitleChange()
     }
     
     func testTappingNextSol() {
         PhotoCollectionPage(testCase: self)
-        .tapOnNextSol()
+            .setNewTitle()
+            .tapOnNextSol()
+            .verifyTitleChange()
     }
     
     func testTappingCollectionCell() {
         PhotoCollectionPage(testCase: self)
-        .tapOnCollectionCell(at: 0)
+            .tapOnCollectionCell(at: 0)
+    }
+    
+    func testTappingSaveButton() {
+        PhotoCollectionPage(testCase: self)
+            .tapOnCollectionCell(at: 0)
+        PhotoDetailPage(testCase: self)
+            .tapOnSave()
+            .verifySaveWorks()
     }
     
 }
