@@ -16,7 +16,7 @@ class FilterImageOperation: Operation {
     override func main() {
         if let data = fetchOperation.imageData,
             let image = UIImage(data: data) {
-            self.image = image.filtered()
+            self.image = image//.filtered()
             NSLog("Finished filtering image")
         }
     }
