@@ -9,10 +9,12 @@
 import XCTest
 
 class AstronomyUITests: XCTestCase {
-        
+    var app: XCUIApplication!
+    
     override func setUp() {
         super.setUp()
-        let app = XCUIApplication()
+        
+        app = XCUIApplication()
         app.launchArguments = ["UITesting"]
         
         continueAfterFailure = false
@@ -23,8 +25,17 @@ class AstronomyUITests: XCTestCase {
         super.tearDown()
     }
     
-    func testExample() {
+    func testTappingCellGoesToDetailViewAndGoesBack() {
+        AstronomyListPage(testCase: self)
+        .collectionCell(at: 0)
+        .tap()
         
+        AstronomyListPage(testCase: self)
+            .navigationBar(withTitle: "Title")
+            .buttons["Sol 1"]
+            .tap()
+        
+        XCTAssertFalse(app.navigationBars["Title"].exists)
     }
     
 }

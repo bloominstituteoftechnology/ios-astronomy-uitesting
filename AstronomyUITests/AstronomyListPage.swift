@@ -12,13 +12,16 @@ struct AstronomyListPage: TestPage {
     let testCase: XCTestCase
     
     // MARK: - Elements
-    // Available images
+    func navigationBar(withTitle title: String) -> XCUIElement {
+        testCase.expect(exists: app.navigationBars[title])
+        return app.navigationBars[title]
+    }
+    
+    func collectionCell(at index: Int) -> XCUIElement {
+        return app.collectionViews.cells.element(boundBy: index)
+    }
     
     // MARK: - Interactions
-    // Clicking on a image (to go to detail view)
-    @discardableResult func tapOnImage(cell: XCUIElement, file: String = #file, line: UInt = #line) -> AstronomyListPage {
-        return self
-    }
     // Changing sol
     
     // MARK: - Verifications
