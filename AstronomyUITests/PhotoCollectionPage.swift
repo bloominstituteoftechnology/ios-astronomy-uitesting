@@ -6,4 +6,21 @@
 //  Copyright © 2018 Lambda School. All rights reserved.
 //
 
-import Foundation
+import XCTest
+
+struct PhotoCollectionPage: TestPage {
+    let testCase = XCTestCase()
+    
+    // MARK: - Elements
+    
+    
+    
+    // MARK: - Actions
+    
+    
+    
+    // MARK: - Verifications
+    
+    
+    
+}
