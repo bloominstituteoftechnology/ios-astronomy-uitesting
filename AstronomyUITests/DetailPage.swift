@@ -14,40 +14,42 @@ struct DetailPage: TestPage
     
     // MARK: - Elements
     
-    var titleLabel: XCUIElement
-    {
-        return app.staticTexts[""]
-    }
+    
     
     var imageView:XCUIElement
     {
-        return app.images[""]
+        return app.images["PhotoDetailViewController.ImageView"]
     }
     
     var detailLabel: XCUIElement
     {
-        return app.staticTexts[""]
+        return app.staticTexts["PhotoDetailViewController.DetailLabel"]
     }
     
     var saveToPhotoLibraryButton: XCUIElement
     {
-        return app.buttons["GameViewController.RestartButton"]
+        return app.buttons["PhotoDetailViewController.SaveButton"]
     }
     
     // MARK: - Actions (interactions)
     
     @discardableResult func tapOnSaveButton(file: String = #file, line: UInt = #line) -> DetailPage
     {
+        testCase.expect(exists: saveToPhotoLibraryButton, file: file, line: line)
+        saveToPhotoLibraryButton.tap()
         return self
     }
     
-    @discardableResult func tapOnNextSol(file: String = #file, line: UInt = #line) -> DetailPage
-    {
-        return self 
-    }
+    
+    
     // MARK: - Verifications
     
-    
+    @discardableResult func verifyImageExists(file: String = #file, line: UInt = #line) -> DetailPage
+    {
+        testCase.expect(exists: imageView, file: file, line: line)
+        XCTAssert(imageView.exists)
+        return self 
+    }
     
     
     
