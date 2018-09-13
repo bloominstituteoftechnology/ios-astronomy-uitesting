@@ -19,12 +19,19 @@ class AstronomyUITests: XCTestCase {
         app.launch()
     }
     
-    override func tearDown() {
-        super.tearDown()
+    func testTappingPreviousSol() {
+        PhotoCollectionPage(testCase: self)
+        
     }
     
-    func testExample() {
-        
+    func testTappingNextSol() {
+        PhotoCollectionPage(testCase: self)
+
+    }
+    
+    func testTappingCollectionCell() {
+        PhotoCollectionPage(testCase: self)
+
     }
     
 }

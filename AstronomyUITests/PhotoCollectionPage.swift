@@ -9,11 +9,25 @@
 import XCTest
 
 struct PhotoCollectionPage: TestPage {
-    let testCase = XCTestCase()
+    var testCase: XCTestCase
     
     // MARK: - Elements
     
+    var previousSolButton: XCUIElement {
+        return app.buttons["PhotosCollectionViewController.PreviousSolButton"]
+    }
     
+    var nextSolButton: XCUIElement {
+        return app.buttons["PhotosCollectionViewController.NextSolButton"]
+    }
+    
+    var title: String {
+        return app.navigationBars.element(boundBy: 0).title
+    }
+    
+    func collectionCellImage(at index: Int) -> XCUIElement {
+        return app.collectionViews.cells.element(boundBy: index)
+    }
     
     // MARK: - Actions
     
