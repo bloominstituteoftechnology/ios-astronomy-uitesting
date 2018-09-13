@@ -39,9 +39,7 @@ class AstronomyUITests: XCTestCase {
     }
     
     func testTappingNextSolChangesSolCorrectly() {
-        AstronomyListPage(testCase: self)
-            .nextSolButton
-            .tap()
+        AstronomyListPage(testCase: self).nextSol()
 
         sleep(4)
         XCTAssertFalse(app.navigationBars["Sol 1"].exists)
@@ -49,27 +47,14 @@ class AstronomyUITests: XCTestCase {
     }
     
     func testTappingPreviousSolChangesSolCorrectly() {
-        AstronomyListPage(testCase: self)
-            .nextSolButton
-            .tap()
-        
-        AstronomyListPage(testCase: self)
-            .nextSolButton
-            .tap()
-        
-        AstronomyListPage(testCase: self)
-            .nextSolButton
-            .tap()
-        
-        AstronomyListPage(testCase: self)
-            .nextSolButton
-            .tap()
+        AstronomyListPage(testCase: self).nextSol()
+        AstronomyListPage(testCase: self).nextSol()
+        AstronomyListPage(testCase: self).nextSol()
+        AstronomyListPage(testCase: self).nextSol()
         
         sleep(2)
         
-        AstronomyListPage(testCase: self)
-            .previousSolButton
-            .tap()
+        AstronomyListPage(testCase: self).previousSol()
         
         sleep(2)
         

@@ -35,7 +35,19 @@ struct AstronomyListPage: TestPage {
     
     // MARK: - Interactions
     // Changing sol
+    @discardableResult func nextSol(file: String = #file, line: UInt = #line) -> AstronomyListPage {
+        let next = nextSolButton
+        testCase.expect(exists: next, file: file, line: line)
+        next.tap()
+        return self
+    }
     
+    @discardableResult func previousSol(file: String = #file, line: UInt = #line) -> AstronomyListPage {
+        let prev = previousSolButton
+        testCase.expect(exists: prev, file: file, line: line)
+        prev.tap()
+        return self
+    }
     
     // MARK: - Verifications
     // Verify we're on the correct Sol
