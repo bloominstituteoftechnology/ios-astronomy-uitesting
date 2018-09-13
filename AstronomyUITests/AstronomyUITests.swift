@@ -62,4 +62,12 @@ class AstronomyUITests: XCTestCase {
         XCTAssertTrue(app.navigationBars["Sol 10"].exists)
     }
     
+    func testDetailViewForCellHasCorrectData() {
+        AstronomyListPage(testCase: self)
+            .collectionCell(at: 0)
+            .tap()
+        
+        
+    }
+    
 }

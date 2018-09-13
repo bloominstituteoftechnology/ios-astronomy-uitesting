@@ -9,16 +9,24 @@
 import XCTest
 
 struct AstronomyDetailPage: TestPage {
+    let testCase: XCTestCase
+    
     // Elements
     var detailLabel: XCUIElement {
-        return app.staticTexts["PhotoDetailViewController.DetailLabel"]
+        let detailLabel = app.staticTexts["PhotoDetailViewController.DetailLabel"]
+        testCase.expect(exists: detailLabel)
+        return detailLabel
     }
     
     var cameraLabel: XCUIElement {
-        return app.staticTexts["PhotoDetailViewController.CameraLabel"]
+        let cameraLabel = app.staticTexts["PhotoDetailViewController.CameraLabel"]
+        testCase.expect(exists: cameraLabel)
+        return cameraLabel
     }
     
     // Interactions
+    // Saving to photo library
     
     // Verifications
+    // Saved to photo library
 }
