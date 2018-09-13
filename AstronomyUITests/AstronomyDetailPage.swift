@@ -9,5 +9,9 @@
 import XCTest
 
 struct AstronomyDetailPage: TestPage {
+    // Elements
     
+    // Interactions
+    
+    // Verifications
 }
