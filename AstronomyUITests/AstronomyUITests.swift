@@ -59,18 +59,31 @@ class AstronomyUITests: XCTestCase {
             .collectionCell(at: 0)
             .tap()
         
-        let cameraLabelText = AstronomyDetailPage(testCase: self)
+        var cameraLabelText = AstronomyDetailPage(testCase: self)
             .cameraLabel
             .label
-        let detailLabelText = AstronomyDetailPage(testCase: self)
+        var detailLabelText = AstronomyDetailPage(testCase: self)
             .detailLabel
             .label
         
         XCTAssertEqual(cameraLabelText, "Front Hazard Avoidance Camera")
         XCTAssertEqual(detailLabelText, "Taken by 5 on 8/20/12, 6:00 PM (Sol 15)")
+    
+        AstronomyDetailPage(testCase: self).tapOnBackButton(with: "Sol 15")
+        AstronomyListPage(testCase: self).nextSol()
+        AstronomyListPage(testCase: self)
+            .collectionCell(at: 1)
+            .tap()
         
+        cameraLabelText = AstronomyDetailPage(testCase: self)
+            .cameraLabel
+            .label
+        detailLabelText = AstronomyDetailPage(testCase: self)
+            .detailLabel
+            .label
         
-//        print(AstronomyDetailPage(testCase: self).cameraLabel.title)
+        XCTAssertEqual(cameraLabelText, "Front Hazard Avoidance Camera")
+        XCTAssertEqual(detailLabelText, "Taken by 5 on 8/21/12, 6:00 PM (Sol 16)")
     }
     
 }
