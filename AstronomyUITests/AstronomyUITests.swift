@@ -18,7 +18,7 @@ class AstronomyUITests: XCTestCase {
         app.launchArguments = ["UITesting"]
         
         continueAfterFailure = false
-        XCUIApplication().launch()
+        app.launch()
     }
     
     override func tearDown() {
@@ -32,7 +32,7 @@ class AstronomyUITests: XCTestCase {
         
         AstronomyListPage(testCase: self)
             .navigationBar(withTitle: "Title")
-            .buttons["Sol 1"]
+            .buttons["Sol 15"]
             .tap()
         
         XCTAssertFalse(app.navigationBars["Title"].exists)
@@ -41,25 +41,18 @@ class AstronomyUITests: XCTestCase {
     func testTappingNextSolChangesSolCorrectly() {
         AstronomyListPage(testCase: self).nextSol()
 
-        sleep(4)
-        XCTAssertFalse(app.navigationBars["Sol 1"].exists)
-        XCTAssertTrue(app.navigationBars["Sol 2"].exists)
+        XCTAssertFalse(app.navigationBars["Sol 15"].exists)
+        XCTAssertTrue(app.navigationBars["Sol 16"].exists)
     }
     
     func testTappingPreviousSolChangesSolCorrectly() {
         AstronomyListPage(testCase: self).nextSol()
-        AstronomyListPage(testCase: self).nextSol()
-        AstronomyListPage(testCase: self).nextSol()
-        AstronomyListPage(testCase: self).nextSol()
-        
-        sleep(2)
-        
+        AstronomyListPage(testCase: self).previousSol()
         AstronomyListPage(testCase: self).previousSol()
         
-        sleep(2)
         
-        XCTAssertFalse(app.navigationBars["Sol 12"].exists)
-        XCTAssertTrue(app.navigationBars["Sol 10"].exists)
+        XCTAssertFalse(app.navigationBars["Sol 15"].exists)
+        XCTAssertTrue(app.navigationBars["Sol 14"].exists)
     }
     
     func testDetailViewForCellHasCorrectData() {
@@ -67,7 +60,7 @@ class AstronomyUITests: XCTestCase {
             .collectionCell(at: 0)
             .tap()
         
-        
+        print(AstronomyDetailPage(testCase: self).cameraLabel.title)
     }
     
 }
