@@ -21,17 +21,17 @@ class AstronomyUITests: XCTestCase {
     
     func testTappingPreviousSol() {
         PhotoCollectionPage(testCase: self)
-        
+        .tapOnPreviousSol()
     }
     
     func testTappingNextSol() {
         PhotoCollectionPage(testCase: self)
-
+        .tapOnNextSol()
     }
     
     func testTappingCollectionCell() {
         PhotoCollectionPage(testCase: self)
-
+        .tapOnCollectionCell(at: 0)
     }
     
 }
