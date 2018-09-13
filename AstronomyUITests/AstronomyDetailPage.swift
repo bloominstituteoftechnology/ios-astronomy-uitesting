@@ -10,6 +10,13 @@ import XCTest
 
 struct AstronomyDetailPage: TestPage {
     // Elements
+    var detailLabel: XCUIElement {
+        return app.staticTexts["PhotoDetailViewController.DetailLabel"]
+    }
+    
+    var cameraLabel: XCUIElement {
+        return app.staticTexts["PhotoDetailViewController.CameraLabel"]
+    }
     
     // Interactions
     
