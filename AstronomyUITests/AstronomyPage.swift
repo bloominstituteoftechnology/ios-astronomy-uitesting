@@ -23,9 +23,9 @@ struct AstronomyPage: TestPage {
         return app.collectionViews.cells
     }
     
-    func solLabel(for number: Int) -> XCUIElement {
-        return app.navigationBars.staticTexts["Sol \(number)"]
-    }
+//    func solLabel(for number: Int) -> String {
+//        return app.navigationBars.element(boundBy:0).title
+//    }
     
     var previousSolButton: XCUIElement {
         return app.buttons["PhotosCollectionViewController.PreviousSolButton"]
@@ -33,6 +33,10 @@ struct AstronomyPage: TestPage {
     
     var nextSolButton: XCUIElement {
         return app.buttons["PhotosCollectionViewController.NextSolButton"]
+    }
+    
+    var solLabel: String {
+        return app.navigationBars.element(boundBy: 0).identifier
     }
     
     // DetailView
@@ -47,6 +51,10 @@ struct AstronomyPage: TestPage {
     
     var takenByLabel: XCUIElement {
         return app.staticTexts["PhotoDetailViewController.TakenByLabel"]
+    }
+    
+    var photoSavedAlertLabel: String {
+        return app.alerts.element(boundBy: 0).label
     }
     
     // MARK: - Actions (interactions)
@@ -75,7 +83,6 @@ struct AstronomyPage: TestPage {
     // DetailView
     
     @discardableResult func tapOnSaveButton(file: String = #file, line: UInt = #line) -> AstronomyPage {
-        let button = saveButton
         saveButton.tap()
         return self
     }
@@ -83,16 +90,26 @@ struct AstronomyPage: TestPage {
     // MARK: - Verifications
     
     @discardableResult func verifyViewingNextSol(after currentSol: Int, file: String = #file, line: UInt = #line) -> AstronomyPage {
-        tapOnNextSolButton()
-        let solLabel = self.solLabel(for: (currentSol + 1))
-        testCase.expect(solLabel.label, equals: "Sol \(currentSol + 1)")
+        let solLabel = self.solLabel
+        testCase.expect(solLabel, equals: "Sol \(currentSol + 1)")
         return self
     }
     
     @discardableResult func verifyViewingPreviousSol(after currentSol: Int, file: String = #file, line: UInt = #line) -> AstronomyPage {
-        tapOnNextSolButton()
-        let solLabel = self.solLabel(for: (currentSol - 1))
-        testCase.expect(solLabel.label, equals: "Sol \(currentSol - 1)")
+        let solLabel = self.solLabel
+        testCase.expect(solLabel, equals: "Sol \(currentSol - 1)")
+        return self
+    }
+    
+    @discardableResult func verifyTapOnViewCell(at index: Int, file: String = #file, line: UInt = #line) -> AstronomyPage {
+        tapOnCollectionViewCell(at: index)
+        return self
+    }
+    
+    @discardableResult func verifySavePhoto(at index: Int, file: String = #file, line: UInt = #line) -> AstronomyPage {
+        tapOnCollectionViewCell(at: index)
+        tapOnSaveButton()
+        testCase.expect(photoSavedAlertLabel, equals: "Photo Saved!")
         return self
     }
     
