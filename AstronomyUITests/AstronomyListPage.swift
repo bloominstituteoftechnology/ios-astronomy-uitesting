@@ -34,7 +34,6 @@ struct AstronomyListPage: TestPage {
     }
     
     // MARK: - Interactions
-    // Changing sol
     @discardableResult func nextSol(file: String = #file, line: UInt = #line) -> AstronomyListPage {
         let next = nextSolButton
         testCase.expect(exists: next, file: file, line: line)
