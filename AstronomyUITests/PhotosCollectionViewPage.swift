@@ -27,6 +27,7 @@ struct PhotosCollectionViewPage: TestPage {
     // There are many cells, instead of creating a computed variable for each cell at a given index, we create a function that will return a cell at any index we're taping on.
     func collectionCell(at index: Int) -> XCUIElement {
         return app.collectionViews.cells.element(boundBy: index)
+        //app.collectionViews.children(matching: .cell).element(boundBy: index)
     }
     
 //    func solTitle(with number: Int) -> XCUIElement {
@@ -35,6 +36,7 @@ struct PhotosCollectionViewPage: TestPage {
     
     func navigationBar(withTitle title: String) -> XCUIElement {
         return app.navigationBars[title]
+        //app.navigationBars["Sol 1"]
     }
     
     // MARK: - Actions (Interactions)

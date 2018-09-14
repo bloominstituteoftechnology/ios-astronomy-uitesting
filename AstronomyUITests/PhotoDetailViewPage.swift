@@ -23,7 +23,7 @@ struct PhotoDetailViewPage: TestPage {
     }
     
     var alertController: XCUIElement {
-        return app.alerts.element(boundBy: 0)
+        return app.alerts["Photo Saved!"]
     }
     
     // MARK: - Actions (Interactions)

@@ -40,14 +40,21 @@ class AstronomyUITests: XCTestCase {
         // Use recording to get started writing UI tests.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
         
+        
+//        let app = XCUIApplication()
+//        app.navigationBars["Sol 1"]/*@START_MENU_TOKEN@*/.buttons["PhotosCollectionViewController.NextSolButton"]/*[[".buttons[\">\"]",".buttons[\"PhotosCollectionViewController.NextSolButton\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+//        app.collectionViews.children(matching: .cell).element(boundBy: 0).images["ImageCollectionViewCell.ImageView"].tap()
+//        app/*@START_MENU_TOKEN@*/.buttons["PhotoDetailViewController.SaveButton"]/*[[".buttons[\"Save to Photo Library\"]",".buttons[\"PhotoDetailViewController.SaveButton\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+//
+//
+//        let app = XCUIApplication()
+//        app.alerts["Photo Saved!"].buttons["Okay"].tap()
+    
     }
     
     func testSavePhoto() {
         
-        PhotosCollectionViewPage(testCase: self)
-            .tapOnCollectionCell(at: 0)
-            .tapOnSaveButton()
-            .verifyAlertShowsUp()
+        PhotosCollectionViewPage(testCase: self).tapOnCollectionCell(at: 0).tapOnSaveButton().verifyAlertShowsUp()
     }
     
     func testNavigateToNextSol() {
