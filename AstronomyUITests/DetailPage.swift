@@ -19,6 +19,14 @@ struct DetailPage: TestPage {
         return app.buttons["PhotoDetailViewController.SaveButton"]
     }
     
+    var savePhotoAlert: XCUIElement {
+        return app.alerts.allElementsBoundByIndex.first!
+    }
+    
+    var OKToSaveButton: XCUIElement {
+        return (app.alerts.allElementsBoundByIndex.first?.buttons.allElementsBoundByIndex.first!)!
+    }
+    
     
     // MARK:- Interactions
     
@@ -27,10 +35,18 @@ struct DetailPage: TestPage {
         return self
     }
     
+    @discardableResult func tapOnOKToSaveButton() -> DetailPage {
+        OKToSaveButton.tap(); return self
+    }
+    
     // MARK:- Verifications
     
-//    @discardableResult func verifyPhotoWasSaved() -> DetailPage {
-//        //show alert controller
-//    }
+    @discardableResult func verifyPhotoAlertAppears() -> DetailPage {
+        // assert that alert controller exists
+        
+        testCase.expect(exists: savePhotoAlert)
+        return self
+        
+    }
     
 }

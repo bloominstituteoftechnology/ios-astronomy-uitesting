@@ -39,7 +39,7 @@ class AstronomyUITests: XCTestCase {
 //        app.navigationBars["Sol 1"].buttons["PhotosCollectionViewController.NextSolButton"].tap()
 //        app.navigationBars["Sol 2"]/*@START_MENU_TOKEN@*/.buttons["PhotosCollectionViewController.PreviousSolButton"]/*[[".buttons[\"<\"]",".buttons[\"PhotosCollectionViewController.PreviousSolButton\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
 //        app.collectionViews.children(matching: .cell).element(boundBy: 0).children(matching: .other).element.tap()
-//        app/*@START_MENU_TOKEN@*/.buttons["PhotoDetailViewController.SaveButton"]/*[[".buttons[\"Save to Photo Library\"]",".buttons[\"PhotoDetailViewController.SaveButton\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+//        app.buttons["PhotoDetailViewController.SaveButton"].tap()
 //        app.alerts["“Astronomy” Would Like to Access Your Photos"].buttons["OK"].tap()
         
         
@@ -63,6 +63,17 @@ class AstronomyUITests: XCTestCase {
         
         _ = DetailPage(testCase: self)
         .tapOnSavePhotoButton()
+        
+    }
+    
+    func testPhotoSaving(){
+        _ = PhotoPage(testCase: self)
+        .tapOnVisibleCell()
+        
+        _ = DetailPage(testCase: self)
+        .tapOnSavePhotoButton()
+        .verifyPhotoAlertAppears()
+        .tapOnOKToSaveButton()
         
     }
 
