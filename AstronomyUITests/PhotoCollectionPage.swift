@@ -13,7 +13,7 @@ struct PhotoCollectionPage: TestPage {
 
     //Computed Properties
     func photoFor(_ index: Int) -> XCUIElement {
-        return app.collectionViews.cells.element(boundBy: index)
+        return app.collectionViews.children(matching: .cell).element(boundBy: index)
     }
     
     // Check Sols by title being 'Sol 1', 'Sol 2', etc.
@@ -30,9 +30,9 @@ struct PhotoCollectionPage: TestPage {
     }
 
     //Actions
-    @discardableResult func tapOnPhoto(_ index: Int) -> PhotoCollectionPage {
+    @discardableResult func tapOnPhoto(_ index: Int) -> PhotoDetailPage {
         photoFor(index).tap()
-        return self
+        return PhotoDetailPage(testCase: testCase)
     }
     
     @discardableResult func tapNextSol() -> PhotoCollectionPage {

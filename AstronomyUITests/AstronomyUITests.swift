@@ -28,6 +28,7 @@ class AstronomyUITests: XCTestCase {
     func testTapsOnPhoto() {
         PhotoCollectionPage(testCase: self)
         .tapOnPhoto(0)
+        .verifyPhoto()
     }
     
     func testSwitchingtoNextSol(){
@@ -38,8 +39,15 @@ class AstronomyUITests: XCTestCase {
     
     func testSwitchingtoPreviousSol(){
         PhotoCollectionPage(testCase: self)
-            .tapPreviousSol()
-            .verifySolNumber(0)
+        .tapPreviousSol()
+        .verifySolNumber(0)
+    }
+    
+    func testSavingPhoto() {
+        PhotoCollectionPage(testCase: self)
+        .tapOnPhoto(6)
+        .tapSaveButton()
+        .verifyPhotoSaved()
     }
 
 }
