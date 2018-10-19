@@ -9,7 +9,7 @@
 import XCTest
 
 class AstronomyUITests: XCTestCase {
-
+    
     override func setUp() {
         
         let app = XCUIApplication()
@@ -46,6 +46,12 @@ class AstronomyUITests: XCTestCase {
         // Tap on PhotoDetailVC Image
         app.otherElements.containing(.navigationBar, identifier:"Title").children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.tap()
         
+        // Tap on Detail Label
+        XCUIApplication().otherElements.containing(.navigationBar, identifier:"Title").children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.tap()
+        
+        // Tap on Camera Label
+        XCUIApplication().staticTexts["PhotoDetailViewController.CameraLabel"].tap()
+        
         // Tap on PhotoDetailVC Save to Photo Library Button
         app/*@START_MENU_TOKEN@*/.buttons["PhotoDetailViewController.SaveButton"]/*[[".buttons[\"Save to Photo Library\"]",".buttons[\"PhotoDetailViewController.SaveButton\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
         
@@ -67,6 +73,40 @@ class AstronomyUITests: XCTestCase {
         
         // Use recording to get started writing UI tests.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
+    }
+    
+    func testImageLoads() {
+        PhotosCollectionPage(testCase: self)
+        .tapOnImageView(index: 0, file: #file, line: #line)
+    }
+    
+    func testNextSol() {
+        PhotosCollectionPage(testCase: self)
+        .tapOnRightBarButton()
+        .verifySolChanged(index: 0, file: #file, line: #line)
+    }
+    
+    func testPreviousSol() {
+        PhotosCollectionPage(testCase: self)
+        .tapOnRightBarButton()
+        .tapOnLeftBarButton()
+        .verifySolChanged(index: 1, file: #file, line: #line)
+        
+    }
+    
+    func testImageTappedAndDetailOpened() {
+        PhotosCollectionPage(testCase: self)
+            .tapOnImageView(index: 0, file: #file, line: #line)
+            .verifyDetailsExist(file: #file, line: #line)
+    }
+    
+    func testPhotoSaved() {
+        PhotosCollectionPage(testCase: self)
+        .tapOnImageView(index: 0)
+        .verifyDetailsExist(file: #file, line: #line)
+        .saveButtonTapped()
+        .verifyAlertShown()
+        .tapOkayButton()
     }
 
 }
