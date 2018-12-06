@@ -20,6 +20,10 @@ struct DetailViewPage: TestPage {
         return app.buttons["PhotoDetailViewController.SaveButton"]
     }
     
+    var alertController: XCUIElement {
+        return app.alerts["Photo Saved!"]
+    }
+    
     // Interactions
     @discardableResult func tapSaveButton() -> DetailViewPage {
         XCTAssertNotNil(saveButton)
@@ -31,6 +35,11 @@ struct DetailViewPage: TestPage {
     // Verification
     @discardableResult func verifyImage() -> DetailViewPage {
         XCTAssertNotNil(imageView)
+        return self
+    }
+    
+    @discardableResult func verifySavePopupShows() -> DetailViewPage {
+        XCTAssertNotNil(alertController)
         return self
     }
     

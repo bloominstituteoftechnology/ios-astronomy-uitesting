@@ -21,6 +21,29 @@ class AstronomyUITests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
+    func testSavingPhoto() {
+        CollectionViewPage(testCase: self)
+        .tapOnCell(at: 0)
+        .tapSaveButton()
+        .verifySavePopupShows()
+    }
     
+    func testDetailImageLoads() {
+        CollectionViewPage(testCase: self)
+        .tapOnCell(at: 0)
+        .verifyImage()
+    }
+    
+    func testNextSol() {
+        CollectionViewPage(testCase: self)
+        .tapNextButton()
+        .verifyTitle(title: "Sol 16")
+    }
+    
+    func testPreviousSol() {
+        CollectionViewPage(testCase: self)
+        .tapPreviousButton()
+        .verifyTitle(title: "Sol 14")
+    }
 
 }
