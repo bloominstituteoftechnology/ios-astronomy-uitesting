@@ -112,10 +112,18 @@
 			isa = PBXGroup;
 			children = (
 				969881E921B9D27E005386B2 /* AstronomyUITests.swift */,
-				969881EB21B9D27E005386B2 /* Info.plist */,
-				969881F121B9D30E005386B2 /* TestPage.swift */,
+				969881F321B9D39A005386B2 /* Resources */,
 			);
 			path = AstronomyUITests;
+			sourceTree = "<group>";
+		};
+		969881F321B9D39A005386B2 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				969881F121B9D30E005386B2 /* TestPage.swift */,
+				969881EB21B9D27E005386B2 /* Info.plist */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		9DBD1FFC2140D1300047905E = {
@@ -381,7 +389,7 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7LHTMK9AWG;
-				INFOPLIST_FILE = AstronomyUITests/Info.plist;
+				INFOPLIST_FILE = AstronomyUITests/Resources/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -403,7 +411,7 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7LHTMK9AWG;
-				INFOPLIST_FILE = AstronomyUITests/Info.plist;
+				INFOPLIST_FILE = AstronomyUITests/Resources/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
