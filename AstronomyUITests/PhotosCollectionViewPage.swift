@@ -15,7 +15,6 @@ struct PhotosCollectionViewPage: TestPage {
     enum Identifiers {
         static let prevSolButton = "PhotosCollectionViewController.PreviousSolButton"
         static let nextSolButton = "PhotosCollectionViewController.NextSolButton"
-        static let solDayLabel = "PhotosCollectionViewController.SolDayLabel"
         static let navBar = "PhotosCollectionViewController.NavigationBar"
     }
     

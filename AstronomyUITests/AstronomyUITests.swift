@@ -19,7 +19,11 @@ class AstronomyUITests: XCTestCase {
     
     func testExample() {
         PhotosCollectionViewPage(testCase: self).tapNextSol()
+        .tapNextSol()
         .tapPreviousSol()
+        .tapOnCell(with: 0)
+        .tapOnBackButton()
+        .tapOnCell(with: 4)
     }
 
 }
