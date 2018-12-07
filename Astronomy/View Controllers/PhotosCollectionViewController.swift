@@ -23,7 +23,6 @@ class PhotosCollectionViewController: UIViewController, UICollectionViewDataSour
         }
         
         configureTitleView()
-        updateViews()
     }
     
     @IBAction func goToPreviousSol(_ sender: Any?) {
@@ -103,40 +102,17 @@ class PhotosCollectionViewController: UIViewController, UICollectionViewDataSour
     
     private func configureTitleView() {
         
-//        let font = UIFont.systemFont(ofSize: 30)
-//        let attrs = [NSAttributedStringKey.font: font]
-
-//        let prevTitle = NSAttributedString(string: "<", attributes: attrs)
-//        let prevButton = UIButton(type: .system)
-//        prevButton.accessibilityIdentifier = "PhotosCollectionViewController.PreviousSolButton"
-//        prevButton.setAttributedTitle(prevTitle, for: .normal)
-//        prevButton.addTarget(self, action: #selector(goToPreviousSol(_:)), for: .touchUpInside)
-        
         let prevItem = UIBarButtonItem(title: "<", style: .plain, target: self, action: #selector(goToPreviousSol(_:)))
         prevItem.accessibilityIdentifier = "PhotosCollectionViewController.PreviousSolButton"
-        
-//        let nextTitle = NSAttributedString(string: ">", attributes: attrs)
-//        let nextButton = UIButton(type: .system)
-//        nextButton.setAttributedTitle(nextTitle, for: .normal)
-//        nextButton.addTarget(self, action: #selector(goToNextSol(_:)), for: .touchUpInside)
-//        nextButton.accessibilityIdentifier = "PhotosCollectionViewController.NextSolButton"
         
         let nextItem = UIBarButtonItem(title: ">", style: .plain, target: self, action: #selector(goToNextSol(_:)))
         nextItem.accessibilityIdentifier = "PhotosCollectionViewController.NextSolButton"
         
-//        let stackView = UIStackView(arrangedSubviews: [prevButton, solLabel, nextButton])
-//        stackView.axis = .horizontal
-//        stackView.alignment = .fill
-//        stackView.distribution = .fill
-//        stackView.spacing = UIStackView.spacingUseSystem
-        
         navigationItem.setLeftBarButton(prevItem, animated: false)
         navigationItem.setRightBarButton(nextItem, animated: false)
-    }
-    
-    private func updateViews() {
-        guard isViewLoaded else { return }
-        title = "Sol \(solDescription?.sol ?? 0)"
+        
+        title = "Sol \(solDescription?.sol ?? 1)"
+        navigationController?.navigationBar.accessibilityIdentifier = "PhotosCollectionViewController.NavigationBar"
     }
     
     private func loadImage(forCell cell: ImageCollectionViewCell, forItemAt indexPath: IndexPath) {
@@ -227,10 +203,10 @@ class PhotosCollectionViewController: UIViewController, UICollectionViewDataSour
             if let rover = roverInfo,
                 let sol = solDescription?.sol {
                 photoReferences = []
+                title = "Sol \(solDescription?.sol ?? 1)"
                 client.fetchPhotos(from: rover, onSol: sol) { (photoRefs, error) in
                     if let e = error { NSLog("Error fetching photos for \(rover.name) on sol \(sol): \(e)"); return }
                     self.photoReferences = photoRefs ?? []
-                    DispatchQueue.main.async { self.updateViews() }
                 }
             }
         }

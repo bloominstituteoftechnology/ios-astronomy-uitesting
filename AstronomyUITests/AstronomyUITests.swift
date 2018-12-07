@@ -17,6 +17,9 @@ class AstronomyUITests: XCTestCase {
         app.launchArguments = ["UITesting"]
     }
     
-    
+    func testExample() {
+        PhotosCollectionViewPage(testCase: self).tapNextSol()
+        .tapPreviousSol()
+    }
 
 }
