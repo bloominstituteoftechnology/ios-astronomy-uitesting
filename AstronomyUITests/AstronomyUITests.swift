@@ -16,12 +16,15 @@ class AstronomyUITests: XCTestCase {
         // In UI tests it is usually best to stop immediately when a failure occurs.
         continueAfterFailure = false
 
-        // UI tests must launch the application that they test. Doing this in setup will make sure it happens for each test method.
-        XCUIApplication().launch()
+        
 
         // In UI tests it’s important to set the initial state - such as interface orientation - required for your tests before they run. The setUp method is a good place to do this.
         let app = XCUIApplication()
-        app.launchArguments.append("UITesting")
+        app.launchArguments = ["UITesting"]
+        
+        
+        // UI tests must launch the application that they test. Doing this in setup will make sure it happens for each test method.
+        app.launch()
         
     }
 
@@ -29,9 +32,43 @@ class AstronomyUITests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
-    func testExample() {
-        // Use recording to get started writing UI tests.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
 
+    func testTapOnCollectionViewCell1(){
+        
+        SolPage(testCase: self)
+        .tapOnCollectionViewCell(at: 1)
+        
+    }
+    
+    func testTapOnNextSolBarButton(){
+        
+        SolPage(testCase: self)
+        .tapOnNextSolBarButton()
+        .verifySolHasPictures()
+
+    }
+    
+    func testCameraLabel(){
+        
+        SolPage(testCase: self)
+            .tapOnCollectionViewCell(at: 0)
+            .verifyCameraLabel()
+        
+    }
+    
+//    func testTheTitleOfTheApp(){
+//
+////        SolPage(testCase: self)
+//        let app = XCUIApplication()
+//
+//        print(app.collectionViews[""])
+//        let predicate = NSPredicate(format: "%d == \"Sol 1\"")
+//
+//        let fetchedAstronomyExpectation = expectation(for: predicate, evaluatedWith: app.title, handler: nil)
+//
+//        fetchedAstronomyExpectation.expectationDescription = "The title of should be set to \"Sol 1\" to start."
+//
+//        wait(for: [fetchedAstronomyExpectation], timeout: 5)
+//
+//    }
 }
