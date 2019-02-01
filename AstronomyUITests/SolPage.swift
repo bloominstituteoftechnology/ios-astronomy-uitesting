@@ -20,10 +20,6 @@ struct SolPage: TestPage {
         
     }
     
-    var roverDateDetailLabel: XCUIElement {
-        return app.staticTexts["PhotoDetailViewController.RoverDateDetailLabel"]
-    }
-    
     var cameraLabel: XCUIElement {
         return app.staticTexts["PhotoDetailViewController.CameraLabel"]
     }
@@ -33,7 +29,7 @@ struct SolPage: TestPage {
     }
     
     var detailedPhotoImageView: XCUIElement {
-        return app.buttons["PhotoDetailViewController.ImageView"]
+        return app.images["PhotoDetailViewController.ImageView"]
     }
     
     var nextSolBarButton: XCUIElement {
@@ -53,6 +49,7 @@ struct SolPage: TestPage {
         
         testCase.expect(exists: cell, file: file, line: line)
         cell.tap()
+        
         return self
 
     }
@@ -62,11 +59,27 @@ struct SolPage: TestPage {
         testCase.expect(exists: nextSolBarButton, file: file, line: line)
         nextSolBarButton.tap()
 
-        
         return self
 
     }
     
+    @discardableResult func tapOnPreviousSolBarButton(file: String = #file, line: UInt = #line) -> SolPage {
+        
+        testCase.expect(exists: previousSolBarButton, file: file, line: line)
+        previousSolBarButton.tap()
+        
+        return self
+        
+    }
+    
+    @discardableResult func tapOnSaveButton(file: String = #file, line: UInt = #line) -> SolPage {
+        
+        testCase.expect(exists: saveButton, file: file, line: line)
+        saveButton.tap()
+        
+        return self
+        
+    }
     
     
     // MARK: - Verifications
@@ -75,6 +88,7 @@ struct SolPage: TestPage {
         
         testCase.expect(exists: cameraLabel, file: file, line: line)
         testCase.expect(cameraLabel.label, equals: "Front Hazard Avoidance Camera")
+        
         return self
         
     }
@@ -85,27 +99,20 @@ struct SolPage: TestPage {
         let predicate = NSPredicate(format: "count > 0")
         
         testCase.expectation(for: predicate, evaluatedWith: app.collectionViews.cells)
-        
         testCase.waitForExpectations(timeout: 4, handler: nil)
+        
         return self
 
     }
-//
-//    @discardableResult func verifyBoardRestart(file: String = #file, line: UInt = #line) -> SolPage {
-//
-//        for index in 0...8{
-//            let button = buttonFor(index)
-//            testCase.expect(exists: button, file: file, line: line)
-//            testCase.expect(button.label, equals: Mark.empty.stringValue, file: file, line: line)
-//        }
-//
-//        testCase.expect(statusLabel.label, equals: "Player \(Mark.x.stringValue)'s turn")
-//        return self
-//
-//    }
-//
-//
-//
+    
+    @discardableResult func verifyDetailedPhotoImageView(file: String = #file, line: UInt = #line) -> SolPage {
+        
+        testCase.expect(exists: detailedPhotoImageView, file: file, line: line)
+        
+        return self
+        
+    }
+
     struct Camera: Codable, Equatable {
         let id: Int
         let name: String

@@ -32,6 +32,12 @@ class AstronomyUITests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
+    func testPicturesLoading(){
+        
+        SolPage(testCase: self)
+            .verifySolHasPictures()
+        
+    }
 
     func testTapOnCollectionViewCell1(){
         
@@ -48,11 +54,44 @@ class AstronomyUITests: XCTestCase {
 
     }
     
+    func testTapOnPreviousSolBarButton(){
+        
+        SolPage(testCase: self)
+            .tapOnPreviousSolBarButton()
+            .verifySolHasPictures()
+    
+    }
+    
     func testCameraLabel(){
         
         SolPage(testCase: self)
             .tapOnCollectionViewCell(at: 0)
             .verifyCameraLabel()
+        
+    }
+    
+    func testDetailPhoto(){
+        
+        SolPage(testCase: self)
+            .tapOnCollectionViewCell(at: 1)
+            .verifyDetailedPhotoImageView()
+        
+    }
+    
+    
+    func testSavePicture(){
+        
+        SolPage(testCase: self)
+            .tapOnCollectionViewCell(at: 0)
+            .tapOnSaveButton()
+        
+    }
+    
+    func testGetBackToFirstSol(){
+        
+        SolPage(testCase: self)
+            .tapOnNextSolBarButton()
+            .tapOnPreviousSolBarButton()
         
     }
     
