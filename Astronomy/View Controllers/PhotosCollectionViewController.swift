@@ -137,6 +137,7 @@ class PhotosCollectionViewController: UIViewController, UICollectionViewDataSour
     private func updateViews() {
         guard isViewLoaded else { return }
         title = "Sol \(solDescription?.sol ?? 0)"
+        self.navigationItem.accessibilityLabel = "PhotosCollectionViewController.title"
     }
     
     private func loadImage(forCell cell: ImageCollectionViewCell, forItemAt indexPath: IndexPath) {

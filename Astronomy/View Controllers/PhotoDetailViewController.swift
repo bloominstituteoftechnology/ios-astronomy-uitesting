@@ -14,6 +14,9 @@ class PhotoDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         updateViews()
+        self.navigationItem.accessibilityLabel = "PhotoDetailViewController.title"
+        
+        self.navigationItem.backBarButtonItem?.accessibilityLabel = "PhotoDetailViewController.backButton"
     }
     
     @IBAction func save(_ sender: Any) {

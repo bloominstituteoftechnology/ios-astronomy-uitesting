@@ -3,6 +3,8 @@ import XCTest
 
 class AstronomyUITests: XCTestCase {
     
+    
+    
     override func setUp() {
 
         // In UI tests it is usually best to stop immediately when a failure occurs.
@@ -24,8 +26,7 @@ class AstronomyUITests: XCTestCase {
     }
 
     func testExample() {
-        // Use recording to get started writing UI tests.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+
     }
 
 }
