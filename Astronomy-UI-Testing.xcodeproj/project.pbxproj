@@ -115,8 +115,8 @@
 		84C244D9220CD80C0052B975 /* AstronomyUITests */ = {
 			isa = PBXGroup;
 			children = (
-				84C244E4220CE2710052B975 /* TestPage.swift */,
 				84C244DA220CD80C0052B975 /* AstronomyUITests.swift */,
+				84C244E4220CE2710052B975 /* TestPage.swift */,
 				84C244E6220CE6230052B975 /* PhotosCollection.swift */,
 				84C244E8220CEBF10052B975 /* PhotoDetail.swift */,
 				84C244DC220CD80C0052B975 /* Info.plist */,

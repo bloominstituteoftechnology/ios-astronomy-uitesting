@@ -22,5 +22,4 @@ struct PhotosCollection: TestPage {
         return app.images["PhotosCollectionViewController.imageView"]
     }
     
-    
 }
