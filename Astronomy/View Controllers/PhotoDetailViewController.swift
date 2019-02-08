@@ -13,7 +13,9 @@ class PhotoDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.accessibilityIdentifier = "PhotoDetailView"
         updateViews()
+        
     }
     
     @IBAction func save(_ sender: Any) {
