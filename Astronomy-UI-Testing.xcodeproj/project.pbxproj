@@ -116,12 +116,19 @@
 			isa = PBXGroup;
 			children = (
 				84C244DA220CD80C0052B975 /* AstronomyUITests.swift */,
-				84C244E4220CE2710052B975 /* TestPage.swift */,
-				84C244E6220CE6230052B975 /* PhotosCollection.swift */,
-				84C244E8220CEBF10052B975 /* PhotoDetail.swift */,
 				84C244DC220CD80C0052B975 /* Info.plist */,
 			);
 			path = AstronomyUITests;
+			sourceTree = "<group>";
+		};
+		84C244EA220D15180052B975 /* Old Files */ = {
+			isa = PBXGroup;
+			children = (
+				84C244E4220CE2710052B975 /* TestPage.swift */,
+				84C244E6220CE6230052B975 /* PhotosCollection.swift */,
+				84C244E8220CEBF10052B975 /* PhotoDetail.swift */,
+			);
+			path = "Old Files";
 			sourceTree = "<group>";
 		};
 		9DBD1FFC2140D1300047905E = {
@@ -129,6 +136,7 @@
 			children = (
 				9DBD20072140D1300047905E /* Astronomy */,
 				84C244D9220CD80C0052B975 /* AstronomyUITests */,
+				84C244EA220D15180052B975 /* Old Files */,
 				9DBD20062140D1300047905E /* Products */,
 			);
 			sourceTree = "<group>";
