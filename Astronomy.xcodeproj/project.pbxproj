@@ -32,6 +32,8 @@
 		9DBD20392140E46E0047905E /* FetchPhotoOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DBD20372140E46E0047905E /* FetchPhotoOperation.swift */; };
 		9DFE494C2145D37A0009922B /* PhotoDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DFE494B2145D37A0009922B /* PhotoDetailViewController.swift */; };
 		A532AF85220CD36B00CD690F /* AstronomyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A532AF84220CD36B00CD690F /* AstronomyUITests.swift */; };
+		A532AF8D220D003000CD690F /* PhotosCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A532AF8C220D003000CD690F /* PhotosCollectionView.swift */; };
+		A5E9BE70220D01B300B5F0E1 /* PhotoDetailViewPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E9BE6F220D01B300B5F0E1 /* PhotoDetailViewPage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,6 +76,8 @@
 		A532AF82220CD36B00CD690F /* AstronomyUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AstronomyUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A532AF84220CD36B00CD690F /* AstronomyUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AstronomyUITests.swift; sourceTree = "<group>"; };
 		A532AF86220CD36B00CD690F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A532AF8C220D003000CD690F /* PhotosCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosCollectionView.swift; sourceTree = "<group>"; };
+		A5E9BE6F220D01B300B5F0E1 /* PhotoDetailViewPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoDetailViewPage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -212,6 +216,8 @@
 			isa = PBXGroup;
 			children = (
 				A532AF84220CD36B00CD690F /* AstronomyUITests.swift */,
+				A532AF8C220D003000CD690F /* PhotosCollectionView.swift */,
+				A5E9BE6F220D01B300B5F0E1 /* PhotoDetailViewPage.swift */,
 				A532AF86220CD36B00CD690F /* Info.plist */,
 			);
 			path = AstronomyUITests;
@@ -347,6 +353,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				A532AF85220CD36B00CD690F /* AstronomyUITests.swift in Sources */,
+				A5E9BE70220D01B300B5F0E1 /* PhotoDetailViewPage.swift in Sources */,
+				A532AF8D220D003000CD690F /* PhotosCollectionView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

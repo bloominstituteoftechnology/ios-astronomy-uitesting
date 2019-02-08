@@ -21,10 +21,14 @@ class AstronomyUITests: XCTestCase {
         return app.buttons["PhotosCollectionViewController.NextSolButton"]
     }
 
-    var photoViewImage: XCUIElement {
-        
-        return app.collectionViews.children(matching: .cell).element(boundBy: 1).children(matching: .other).element
-   }
+    var saveButton: XCUIElement {
+        return app.buttons["PhotoDetailViewController.SaveButton"]
+    }
+    var navigationBarTtle: XCUIElement {
+        return app.navigationBars.allElementsBoundByIndex[1]
+    }
+    
+    
     
     override func setUp() {
         // Put setup code here. This method is called before the invocation of each test method in the class.
@@ -44,52 +48,31 @@ class AstronomyUITests: XCTestCase {
         // In UI tests it’s important to set the initial state - such as interface orientation - required for your tests before they run. The setUp method is a good place to do this.
     }
 
-   
+    var title: String {
+        return app.navigationBars.element(boundBy: 0).identifier
+    }
+    
+    
+    
+    func testNavigationBarButtonNext() {
+        nextItem.tap()
+        
+    }
+    
+    func testNavigationBarButtonPrev() {
+        
+        prevItem.tap()
+        
+    }
 
-    func testPhotosCollectionViewControllerUIButtonsAndCells() {
-       
+    func testPhotosCollectionViewControllerUIButtonsAndCellImageTap() {
+        
+        let cell: XCUIElement = app.cells["cell0"]
         nextItem.tap()
         prevItem.tap()
-        photoViewImage.tap()
-        
-        
-//        let app = XCUIApplication()
-//        app.navigationBars["Sol 1"].buttons["PhotosCollectionViewController.NextSolButton"].tap()
-//        app.navigationBars["Sol 2"]/*@START_MENU_TOKEN@*/.buttons["PhotosCollectionViewController.NextSolButton"]/*[[".buttons[\">\"]",".buttons[\"PhotosCollectionViewController.NextSolButton\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
-//
-  //   let titleNavigationBar = app.navigationBars["Title"]
-//        let sol3Button = titleNavigationBar.buttons["Sol 3"]
-//        sol3Button.tap()
-//
-//        let collectionViewsQuery = app.collectionViews
-//        collectionViewsQuery.children(matching: .cell).element(boundBy: 5).children(matching: .other).element.tap()
-//        sol3Button.tap()
-//        app.navigationBars["Sol 3"]/*@START_MENU_TOKEN@*/.buttons["PhotosCollectionViewController.NextSolButton"]/*[[".buttons[\">\"]",".buttons[\"PhotosCollectionViewController.NextSolButton\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
-//
-//        let photoscollectionviewcontrollerNextsolbuttonButton = app.navigationBars["Sol 10"]/*@START_MENU_TOKEN@*/.buttons["PhotosCollectionViewController.NextSolButton"]/*[[".buttons[\">\"]",".buttons[\"PhotosCollectionViewController.NextSolButton\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
-//        photoscollectionviewcontrollerNextsolbuttonButton.tap()
-//        photoscollectionviewcontrollerNextsolbuttonButton.tap()
-//        photoscollectionviewcontrollerNextsolbuttonButton.tap()
-//
-//        let sol14NavigationBar = app.navigationBars["Sol 14"]
-//        sol14NavigationBar.tap()
-//        sol14NavigationBar/*@START_MENU_TOKEN@*/.buttons["PhotosCollectionViewController.NextSolButton"]/*[[".buttons[\">\"]",".buttons[\"PhotosCollectionViewController.NextSolButton\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
-//        collectionViewsQuery.children(matching: .cell).element(boundBy: 1).children(matching: .other).element.tap()
-//        titleNavigationBar.buttons["Sol 15"].tap()
-//        collectionViewsQuery.children(matching: .cell).element(boundBy: 4).children(matching: .other).element.tap()
-//
-    
-       // element.tap()
-//        app.staticTexts["Taken by 5 on 8/6/12, 5:00 PM (Sol 1)"].tap()
-//        app.staticTexts["Mast Camera"].tap()
-//        app/*@START_MENU_TOKEN@*/.buttons["PhotoDetailViewController.SaveButton"]/*[[".buttons[\"Save to Photo Library\"]",".buttons[\"PhotoDetailViewController.SaveButton\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
-//        app.alerts["Photo Saved!"].buttons["Okay"].tap()
-//
-//        let titleNavigationBar = app.navigationBars["Title"]
-//        titleNavigationBar.otherElements["Title"].tap()
-//        titleNavigationBar.buttons["Sol 1"].tap()
-        
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
+       // let titleChanged = XCUIElement.didChange(navigationBarTtle)
+        cell.tap()
+        saveButton.tap()
+        }
 
 }
