@@ -54,6 +54,7 @@ class PhotoDetailViewController: UIViewController {
             let dateString = dateFormatter.string(from: photo.earthDate)
             detailLabel.text = "Taken by \(photo.camera.roverId) on \(dateString) (Sol \(photo.sol))"
             cameraLabel.text = photo.camera.fullName
+            navigationItem.title = "\(dateString)"
         } catch {
             NSLog("Error setting up views on detail view controller: \(error)")
         }
