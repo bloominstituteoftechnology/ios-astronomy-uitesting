@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		2C8C9FD5220CF78E00478A88 /* AstronomyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C8C9FD4220CF78E00478A88 /* AstronomyUITests.swift */; };
+		2C8C9FE0220D01CC00478A88 /* TestPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C8C9FDF220D01CC00478A88 /* TestPage.swift */; };
+		2C8C9FE3220D161D00478A88 /* XCUIElement+NiceThings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C8C9FE1220D09D600478A88 /* XCUIElement+NiceThings.swift */; };
 		4647E7C92148C3F700E7FF73 /* Sol15Photos in Resources */ = {isa = PBXBuildFile; fileRef = 4647E7C62148C3F400E7FF73 /* Sol15Photos */; };
 		4647E7CA2148C3F700E7FF73 /* Sol16Photos in Resources */ = {isa = PBXBuildFile; fileRef = 4647E7C72148C3F600E7FF73 /* Sol16Photos */; };
 		4647E7CB2148C3F700E7FF73 /* Sol14Photos in Resources */ = {isa = PBXBuildFile; fileRef = 4647E7C82148C3F700E7FF73 /* Sol14Photos */; };
@@ -48,6 +50,8 @@
 		2C8C9FD2220CF78D00478A88 /* AstronomyUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AstronomyUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C8C9FD4220CF78E00478A88 /* AstronomyUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AstronomyUITests.swift; sourceTree = "<group>"; };
 		2C8C9FD6220CF78E00478A88 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2C8C9FDF220D01CC00478A88 /* TestPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestPage.swift; sourceTree = "<group>"; };
+		2C8C9FE1220D09D600478A88 /* XCUIElement+NiceThings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCUIElement+NiceThings.swift"; sourceTree = "<group>"; };
 		4647E7C62148C3F400E7FF73 /* Sol15Photos */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Sol15Photos; sourceTree = "<group>"; };
 		4647E7C72148C3F600E7FF73 /* Sol16Photos */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Sol16Photos; sourceTree = "<group>"; };
 		4647E7C82148C3F700E7FF73 /* Sol14Photos */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Sol14Photos; sourceTree = "<group>"; };
@@ -97,6 +101,9 @@
 		2C8C9FD3220CF78E00478A88 /* AstronomyUITests */ = {
 			isa = PBXGroup;
 			children = (
+				2C8C9FE1220D09D600478A88 /* XCUIElement+NiceThings.swift */,
+				9DFE494D2145D3800009922B /* Resources */,
+				2C8C9FDF220D01CC00478A88 /* TestPage.swift */,
 				2C8C9FD4220CF78E00478A88 /* AstronomyUITests.swift */,
 				2C8C9FD6220CF78E00478A88 /* Info.plist */,
 			);
@@ -143,7 +150,6 @@
 				9DBD202B2140D3600047905E /* Networking */,
 				9DBD20352140E45D0047905E /* Operations */,
 				9DBD20302140DDCF0047905E /* Utilities */,
-				9DFE494D2145D3800009922B /* Resources */,
 			);
 			path = Astronomy;
 			sourceTree = "<group>";
@@ -323,7 +329,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2C8C9FE0220D01CC00478A88 /* TestPage.swift in Sources */,
 				2C8C9FD5220CF78E00478A88 /* AstronomyUITests.swift in Sources */,
+				2C8C9FE3220D161D00478A88 /* XCUIElement+NiceThings.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

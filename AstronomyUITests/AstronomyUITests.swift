@@ -32,6 +32,14 @@ class AstronomyUITests: XCTestCase {
         // calls.
         app.launchArguments = ["UITesting"]
     }
+    
+    func testCollectionView() {
+        let app = XCUIApplication()
+        let collectionView = app.collectionViews["PhotosCollectionView"]
+        let tenthCell = collectionView.cells.element(boundBy: 9)
+        let firstCell = app.cells["PhotoCollectionViewCell.cell0"]
+        firstCell.tap()
+    }
 
     override func tearDown() {
         // Put teardown code here. This method is called after the invocation of each test method in the class.

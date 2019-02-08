@@ -11,15 +11,12 @@ import Foundation
 class ConcurrentOperation: Operation {
     
     // MARK: Types
-    
     enum State: String {
         case isReady, isExecuting, isFinished
     }
     
     // MARK: Properties
-    
     private var _state = State.isReady
-    
     private let stateQueue = DispatchQueue(label: "com.LambdaSchool.Astronomy.ConcurrentOperationStateQueue")
     var state: State {
         get {
@@ -30,14 +27,11 @@ class ConcurrentOperation: Operation {
             }
             return result!
         }
-        
         set {
             let oldValue = state
             willChangeValue(forKey: newValue.rawValue)
             willChangeValue(forKey: oldValue.rawValue)
-            
             stateQueue.sync { self._state = newValue }
-            
             didChangeValue(forKey: oldValue.rawValue)
             didChangeValue(forKey: newValue.rawValue)
         }
@@ -60,5 +54,4 @@ class ConcurrentOperation: Operation {
     override var isAsynchronous: Bool {
         return true
     }
-    
 }
