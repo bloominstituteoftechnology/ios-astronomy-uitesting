@@ -22,9 +22,39 @@ class AstronomyUITests: XCTestCase {
 
     func testSavingAPhotoFromDetailViewButtonTapped() {
         
+        
         cellAt(0).tap()
         savePhotoButton.tap()
         alertButton.tap()
+        // check that image is present.
+        
+    }
+    
+    func testViewingAnotherSolAfterButtonsTapped() {
+        
+        // check sol position
+        nextSolButton.tap()
+        previousSolButton.tap()
+        previousSolButton.tap()
+        nextSolButton.tap()
+      //  check for original sol position.
+        
+    }
+    
+    func testBackButtonTappedInDetailView() {
+        
+        cellAt(0).tap()
+        backButton.tap()
+        // check that navbar title is collectionview sol title.
+        
+    }
+    
+    func testScrollToOffScreenCell() {
+        
+        collectionView.swipeUp()
+        collectionView.swipeUp()
+        cellAt(2).tap()
+        // check that cell image is not same as previous cell image.
         
     }
     
