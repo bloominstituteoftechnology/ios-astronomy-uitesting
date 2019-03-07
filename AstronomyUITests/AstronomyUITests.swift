@@ -11,6 +11,32 @@ import XCTest
 class AstronomyUITests: XCTestCase {
     
     //MARK: - Properties
+    var app: XCUIApplication!
+    
+    var savePhotoButton: XCUIElement {
+        return app.buttons["PhotoDetailViewController.SaveButton"]
+    }
+    
+    var nextSolButton: XCUIElement {
+        return app.buttons["PhotosCollectionViewController.NextSolButton"]
+    }
+    
+    var previousSolButton: XCUIElement {
+        return app.buttons["PhotosCollectionViewController.PreviousSolButton"]
+    }
+    
+    var backButton: XCUIElement {
+        return app.navigationBars.buttons.element(boundBy: 0)
+    }
+    
+    var alertButton: XCUIElement {
+        return app.alerts["Photo Saved!"].buttons["Okay"]
+    }
+    
+    var collectionView: XCUIElement {
+        return app.collectionViews.element
+    }
+    
 
     override func setUp() {
         
@@ -28,11 +54,10 @@ class AstronomyUITests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
         
     }
-
-    func testSavingPhoto() {
-        
-        
+    
+    private func cellAt(_ index: Int) -> XCUIElement {
+        let cell = app.collectionViews.children(matching: .cell).element(boundBy: index)
+        return cell
     }
     
-    func 
 }
