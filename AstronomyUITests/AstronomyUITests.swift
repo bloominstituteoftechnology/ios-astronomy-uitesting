@@ -37,22 +37,13 @@ class AstronomyUITests: XCTestCase {
         return app.collectionViews.element
     }
     
-
     override func setUp() {
-        
-        
         // In UI tests it is usually best to stop immediately when a failure occurs.
         continueAfterFailure = false
-        let app = XCUIApplication()
+        app = XCUIApplication()
         app.launchArguments = ["UITesting"]
         // UI tests must launch the application that they test. Doing this in setup will make sure it happens for each test method.
         app.launch()
-        
-    }
-
-    override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-        
     }
     
     private func cellAt(_ index: Int) -> XCUIElement {
@@ -60,4 +51,24 @@ class AstronomyUITests: XCTestCase {
         return cell
     }
     
+    func testSavingAPhotoFromDetailViewButton() {
+        // check that image is present.
+        cellAt(0).tap()
+        savePhotoButton.tap()
+        alertButton.tap()
+    }
+    
+    func testViewingAnotherSolAfterButton() {
+        // check sol position
+        nextSolButton.tap()
+        previousSolButton.tap()
+        previousSolButton.tap()
+        nextSolButton.tap()
+    }
+    
+    func testBackButtonTappedInDetailView() {
+        // check that navbar title is collectionview sol title.
+        cellAt(0).tap()
+        backButton.tap()
+    }
 }
