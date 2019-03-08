@@ -8,12 +8,6 @@
 
 import XCTest
 
-enum Sol: String {
-    case fourteen = "Sol 14"
-    case fifteen = "Sol 15"
-    case sixteen = "Sol 16"
-}
-
 enum Direction {
     case right
     case left
