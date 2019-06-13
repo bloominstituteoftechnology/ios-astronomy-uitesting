@@ -39,7 +39,7 @@ class MarsRoverClient {
             
             let jsonDecoder = MarsPhotoReference.jsonDecoder
             
-            let rover = try jsonDecoder.decode([String: MarsRover].self, from: data)["photoManifest"]
+            let rover = try jsonDecoder.decode([String: MarsRover].self, from: data)["photo_manifest"]
             
             completion(rover, nil)
             

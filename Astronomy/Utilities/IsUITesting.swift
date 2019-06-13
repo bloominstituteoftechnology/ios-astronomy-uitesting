@@ -9,5 +9,5 @@
 import UIKit
 
 var isUITesting: Bool {
-    return CommandLine.arguments.contains("UITesting")
+    return true //CommandLine.arguments.contains("UITesting")
 }
