@@ -55,32 +55,42 @@ class AstronomyUITests: XCTestCase {
 	}
 
 	func testNavigatingSols() {
-
+		// not a particular cell, just whatever cell currently resides in the first position in the collection view - this can change
 		let firstCell = app.cells["PhotosCollectionVC.Image[0, 0]"]
-
 
 		waitForExists(element: app.navigationBars["Sol 16"]) {
 			tapElement(element: nextButton)
 		}
-		XCTAssertTrue(firstCell.exists)
+		XCTAssertTrue(firstCell.isHittable)
 
 		tapElement(element: nextButton)
 		XCTAssertTrue(app.navigationBars["Sol 16"].exists)
-		XCTAssertTrue(firstCell.exists)
+		XCTAssertTrue(firstCell.isHittable)
 
 		waitForExists(element: app.navigationBars["Sol 15"]) {
 			tapElement(element: previousButton)
 		}
-		XCTAssertTrue(firstCell.exists)
+		XCTAssertTrue(firstCell.isHittable)
 
 		waitForExists(element: app.navigationBars["Sol 14"]) {
 			tapElement(element: previousButton)
 		}
-		XCTAssertTrue(firstCell.exists)
+		XCTAssertTrue(firstCell.isHittable)
 
 		tapElement(element: previousButton)
 		XCTAssertTrue(app.navigationBars["Sol 14"].exists)
-		XCTAssertTrue(firstCell.exists)
+		XCTAssertTrue(firstCell.isHittable)
+	}
+
+	func testOpeningImage() {
+		waitForExists(element: app.navigationBars["Title"]) {
+			app.cells["PhotosCollectionVC.Image[0, 0]"].tap()
+		}
+
+		XCTAssertFalse(app.staticTexts["PhotoDetailVC.PhotoInfo"].label.contains("<Rover>"))
+		XCTAssertFalse(app.staticTexts["PhotoDetailVC.CameraInfo"].label.contains("Label"))
+
+		XCTAssertTrue(app.buttons["PhotoDetailViewController.SaveButton"].isHittable)
 	}
 
 }
