@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3326831822B2E4BA00F2F13C /* AstronomyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3326831722B2E4BA00F2F13C /* AstronomyUITests.swift */; };
+		33FE1DB322B30CA200D64839 /* Springboard+Uninstall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33FE1DB222B30CA200D64839 /* Springboard+Uninstall.swift */; };
 		4647E7C92148C3F700E7FF73 /* Sol15Photos in Resources */ = {isa = PBXBuildFile; fileRef = 4647E7C62148C3F400E7FF73 /* Sol15Photos */; };
 		4647E7CA2148C3F700E7FF73 /* Sol16Photos in Resources */ = {isa = PBXBuildFile; fileRef = 4647E7C72148C3F600E7FF73 /* Sol16Photos */; };
 		4647E7CB2148C3F700E7FF73 /* Sol14Photos in Resources */ = {isa = PBXBuildFile; fileRef = 4647E7C82148C3F700E7FF73 /* Sol14Photos */; };
@@ -48,6 +49,7 @@
 		3326831522B2E4BA00F2F13C /* AstronomyUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AstronomyUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3326831722B2E4BA00F2F13C /* AstronomyUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AstronomyUITests.swift; sourceTree = "<group>"; };
 		3326831922B2E4BA00F2F13C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		33FE1DB222B30CA200D64839 /* Springboard+Uninstall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Springboard+Uninstall.swift"; sourceTree = "<group>"; };
 		4647E7C62148C3F400E7FF73 /* Sol15Photos */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Sol15Photos; sourceTree = "<group>"; };
 		4647E7C72148C3F600E7FF73 /* Sol16Photos */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Sol16Photos; sourceTree = "<group>"; };
 		4647E7C82148C3F700E7FF73 /* Sol14Photos */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Sol14Photos; sourceTree = "<group>"; };
@@ -98,6 +100,7 @@
 			isa = PBXGroup;
 			children = (
 				3326831722B2E4BA00F2F13C /* AstronomyUITests.swift */,
+				33FE1DB222B30CA200D64839 /* Springboard+Uninstall.swift */,
 				3326831922B2E4BA00F2F13C /* Info.plist */,
 			);
 			path = AstronomyUITests;
@@ -323,6 +326,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				33FE1DB322B30CA200D64839 /* Springboard+Uninstall.swift in Sources */,
 				3326831822B2E4BA00F2F13C /* AstronomyUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
