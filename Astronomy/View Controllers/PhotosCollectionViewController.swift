@@ -208,7 +208,7 @@ class PhotosCollectionViewController: UIViewController, UICollectionViewDataSour
         }
     }
     
-    // Properties
+	// MARK: - Properties
     
     private let client = MarsRoverClient()
     private let cache = Cache<Int, UIImage>()
