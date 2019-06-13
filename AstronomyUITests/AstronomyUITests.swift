@@ -35,6 +35,14 @@ class AstronomyUITests: XCTestCase {
 		XCTAssertTrue(element.exists)
 	}
 
+	func waitForHittable(element: XCUIElement, action: () -> Void = { }) {
+		let exists = NSPredicate(format: "isHittable == true")
+		expectation(for: exists, evaluatedWith: element, handler: nil)
+		action()
+		waitForExpectations(timeout: 5, handler: nil)
+		XCTAssertTrue(element.exists)
+	}
+
 	override func setUp() {
 		// Put setup code here. This method is called before the invocation of each test method in the class.
 
@@ -95,6 +103,45 @@ class AstronomyUITests: XCTestCase {
 		app.navigationBars["Title"].buttons["Sol 15"].tap()
 		XCTAssertTrue(app.navigationBars["Sol 15"].exists)
 
+	}
+
+	func testSavingImage() {
+
+		waitForExists(element: app.navigationBars["Title"]) {
+			app.cells["PhotosCollectionVC.Image[0, 0]"].tap()
+		}
+
+		let saveButton = app/*@START_MENU_TOKEN@*/.buttons["PhotoDetailViewController.SaveButton"]/*[[".buttons[\"Save to Photo Library\"]",".buttons[\"PhotoDetailViewController.SaveButton\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
+		saveButton.tap()
+
+		// wait to see if springboard permissions launch
+		sleep(5)
+		let springboard = XCUIApplication(bundleIdentifier: "com.apple.springboard")
+		let allowButton = springboard.buttons["OK"]
+
+		if allowButton.exists {
+			waitForHittable(element: saveButton) {
+				allowButton.tap()
+			}
+		} else {
+			let photoSavedAlert = app.alerts["Photo Saved!"]
+			waitForExists(element: photoSavedAlert)
+			XCTAssertTrue(photoSavedAlert.staticTexts["Photo Saved!"].exists)
+			let okayButton = photoSavedAlert.buttons["Okay"]
+			XCTAssertTrue(okayButton.exists)
+			waitForHittable(element: saveButton) {
+				okayButton.tap()
+			}
+		}
+
+		saveButton.tap()
+
+		let photoSavedAlert = app.alerts["Photo Saved!"]
+		waitForExists(element: photoSavedAlert)
+		XCTAssertTrue(photoSavedAlert.staticTexts["Photo Saved!"].exists)
+		let okayButton = photoSavedAlert.buttons["Okay"]
+		XCTAssertTrue(okayButton.exists)
+		okayButton.tap()
 	}
 
 }
