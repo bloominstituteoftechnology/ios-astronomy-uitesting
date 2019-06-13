@@ -91,6 +91,10 @@ class AstronomyUITests: XCTestCase {
 		XCTAssertFalse(app.staticTexts["PhotoDetailVC.CameraInfo"].label.contains("Label"))
 
 		XCTAssertTrue(app.buttons["PhotoDetailViewController.SaveButton"].isHittable)
+
+		app.navigationBars["Title"].buttons["Sol 15"].tap()
+		XCTAssertTrue(app.navigationBars["Sol 15"].exists)
+
 	}
 
 }
