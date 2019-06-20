@@ -9,31 +9,59 @@
 import XCTest
 
 class AstronomyUITests: XCTestCase {
-
-    var app = XCUIApplication()
-
     
     override func setUp() {
+        let app = XCUIApplication()
         app.launchArguments = ["UITesting"]
         continueAfterFailure = false
-
-        // UI tests must launch the application that they test. Doing this in setup will make sure it happens for each test method.
-        XCUIApplication().launch()
-
-        // In UI tests it’s important to set the initial state - such as interface orientation - required for your tests before they run. The setUp method is a good place to do this.
+        app.launch()
+        print(app)
     }
 
-//    override func tearDown() {
-//        // Put teardown code here. This method is called after the invocation of each test method in the class.
-//    }
+    override func tearDown() {
+    }
 
-    func testSavingPhoto() {
-        print(app)
+    
+    func testGoToNextSol() {
+        let app = XCUIApplication()
+
+        let nextSolButton = app.buttons["PhotosCollectionViewController.NextSolButton"]
+        nextSolButton.tap()
+        XCTAssert(app.navigationBars["Sol 16"].exists)
+
+    }
+    
+    func testGoToPreviousSol() {
+        let app = XCUIApplication()
+        
+        let previousSolButton = app/*@START_MENU_TOKEN@*/.buttons["PhotosCollectionViewController.PreviousSolButton"]/*[[".buttons[\"<\"]",".buttons[\"PhotosCollectionViewController.PreviousSolButton\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
+        previousSolButton.tap()
+        XCTAssert(app.navigationBars["Sol 14"].exists)
         
         
+    }
+    
+    
+    
+    func testLoadImage() {
+        let app = XCUIApplication()
+
+        app.collectionViews.children(matching: .cell).element(boundBy: 0).children(matching: .other).element.tap()
+        XCTAssert(app.buttons["PhotoDetailViewController.SaveButton"].exists)
+
+    }
+    
+    
+    func testSaveImage() {
+        let app = XCUIApplication()
         
+        app.collectionViews.children(matching: .cell).element(boundBy: 6).children(matching: .other).element.tap()
         
+        app.buttons["PhotoDetailViewController.SaveButton"].tap()
         
+        XCTAssert(app.alerts["Photo Saved!"].exists)
+        app.alerts["Photo Saved!"].buttons["Okay"].tap()
+  
     }
 
 }
