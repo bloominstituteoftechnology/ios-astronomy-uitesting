@@ -17,15 +17,7 @@ class AstronomyUITests: XCTestCase {
         app.launch()
     }
 
-    func testSavingPhoto() {
-        let app = XCUIApplication()
-        app.collectionViews.children(matching: .cell).element(boundBy: 0).children(matching: .other).element.tap()
-        let saveButton = app/*@START_MENU_TOKEN@*/.buttons["PhotoDetailViewController.SaveButton"]/*[[".buttons[\"Save to Photo Library\"]",".buttons[\"PhotoDetailViewController.SaveButton\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
-        XCTAssert(saveButton.exists)
-        saveButton.tap()
-        XCTAssertTrue(app.alerts["Photo Saved!"].exists)
 
-    }
 
     func testSolDayChangeup() {
         let app = XCUIApplication()
@@ -83,8 +75,20 @@ class AstronomyUITests: XCTestCase {
         XCTAssert(nextButton.exists)
         nextButton.tap()
         let photoLabel = app.staticTexts["PhotoInfoLabel"]
+        let cameraLabel = app.staticTexts["CameraLabel"]
         XCTAssert(photoLabel.exists)
+        XCTAssert(cameraLabel.exists)
         XCTAssertTrue(photoLabel.label == "Taken by 5 on 8/19/12, 8:00 PM (Sol 14)")
+        XCTAssertTrue(cameraLabel.label == "Front Hazard Avoidance Camera")
+    }
+
+    func testSavePhoto() {
+        let app = XCUIApplication()
+        app.collectionViews.children(matching: .cell).element(boundBy: 0).children(matching: .other).element.tap()
+        let saveButton = app/*@START_MENU_TOKEN@*/.buttons["PhotoDetailViewController.SaveButton"]/*[[".buttons[\"Save to Photo Library\"]",".buttons[\"PhotoDetailViewController.SaveButton\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
+        XCTAssert(saveButton.exists)
+        saveButton.tap()
+        XCTAssertTrue(app.alerts["Photo Saved!"].exists)
 
     }
 
