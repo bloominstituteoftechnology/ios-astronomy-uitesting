@@ -62,5 +62,17 @@ class AstronomyUITests: XCTestCase {
 		
 	}
 	
+	func testSwipeDownSelectCell22(){
+		app.swipeUp()
+		app.swipeUp()
+		XCTAssert(app.otherElements["Sol 15"].waitForExistence(timeout: 1))
+		
+		//PhotoCell id: 22
+		let cell22 = app.collectionViews["MyPhotosCollection"].cells["PhotoCell id: 22"]
+		cell22.tap()
+		XCTAssert(app.otherElements["58811"].waitForExistence(timeout: 1))
+		
+	}
+	
 	
 }
