@@ -55,12 +55,10 @@ class AstronomyUITests: XCTestCase {
 		
 	}
 	
-	func testPhotoCellId() {
-		
-//		XCUIApplication().navigationBars["Title"].buttons["Sol 1"].tap()
-//		XCUIApplication().collectionViews["MyPhotosCollection"].cells["PhotoCell id: 0"].otherElements.containing(.image, identifier:"MarsCellID").element.tap()
+	func testPhotoCellId0() {
 		let cell0 = app.collectionViews["MyPhotosCollection"].cells["PhotoCell id: 0"]
 		cell0.tap()
+		XCTAssert(app.otherElements["725"].waitForExistence(timeout: 2))
 		
 	}
 	

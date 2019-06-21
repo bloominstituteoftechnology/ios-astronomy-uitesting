@@ -44,9 +44,11 @@ class PhotoDetailViewController: UIViewController {
     
     private func updateViews() {
         guard let photo = photo, isViewLoaded else { return }
+		title = "\(photo.id)"
+		
         do {
             let data = try Data(contentsOf: photo.imageURL.usingHTTPS!)
-            imageView.image = UIImage(data: data)?.filtered()
+            imageView.image = UIImage(data: data) //?.filtered()
             let dateString = dateFormatter.string(from: photo.earthDate)
             detailLabel.text = "Taken by \(photo.camera.roverId) on \(dateString) (Sol \(photo.sol))"
             cameraLabel.text = photo.camera.fullName
