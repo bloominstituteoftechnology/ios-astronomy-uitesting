@@ -15,6 +15,7 @@ class AstronomyUITests: XCTestCase {
 		XCUIApplication().launch()
 		let app = XCUIApplication()
 		app.launchArguments = ["UITesting"]
+		app.launch()
     }
 
 	var app: XCUIApplication {
@@ -27,30 +28,41 @@ class AstronomyUITests: XCTestCase {
 	func testNextSol() {
 		let nextButton = app.navigationBars.buttons["PhotosCollectionViewController.NextSolButton"]
 	
-		let solLabel = app.otherElements["Sol 1"]
+		let solLabel = app.otherElements["Sol 15"]
 		
 		XCTAssert(solLabel.waitForExistence(timeout: 2))
 		nextButton.tap()
 		
-		let newSolLabel = app.otherElements["Sol 2"]
+		let newSolLabel = app.otherElements["Sol 16"]
 		XCTAssert(newSolLabel.waitForExistence(timeout: 2))
+	
+	
 	}
 	
 	func testPreviouseSol() {
 		let nextButton = app.navigationBars.buttons["PhotosCollectionViewController.NextSolButton"]
-		let solLabel = app.otherElements["Sol 1"]
+		let solLabel = app.otherElements["Sol 15"]
 		
 		XCTAssert(solLabel.waitForExistence(timeout: 2))
 		nextButton.tap()
 		
-		let newSolLabel = app.otherElements["Sol 2"]
+		let newSolLabel = app.otherElements["Sol 16"]
 		XCTAssert(newSolLabel.waitForExistence(timeout: 2))
 		
 		let previousButton = app.navigationBars.buttons["PhotosCollectionViewController.PreviousSolButton"]
 		previousButton.tap()
-		XCTAssert(app.otherElements["Sol 1"].waitForExistence(timeout: 5))
+		XCTAssert(solLabel.waitForExistence(timeout: 5))
 		
 	}
 	
-
+	func testPhotoCellId() {
+		
+//		XCUIApplication().navigationBars["Title"].buttons["Sol 1"].tap()
+//		XCUIApplication().collectionViews["MyPhotosCollection"].cells["PhotoCell id: 0"].otherElements.containing(.image, identifier:"MarsCellID").element.tap()
+		let cell0 = app.collectionViews["MyPhotosCollection"].cells["PhotoCell id: 0"]
+		cell0.tap()
+		
+	}
+	
+	
 }
