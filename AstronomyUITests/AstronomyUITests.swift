@@ -47,6 +47,22 @@ class AstronomyUITests: XCTestCase {
 		XCTAssert(title["58811"].waitForExistence(timeout: 1))
 	}
 	
+	func testSavingPhoto() {
+		XCTAssert(title["Sol 15"].waitForExistence(timeout: 1))
+		app.swipeUp()
+		cell18.tap()
+
+		XCTAssert(title["12695"].waitForExistence(timeout: 1))
+		//identifier: 'PhotoDetailViewController.SaveButton', label: 'Save t
+		
+		XCTAssertTrue(saveButton.exists)
+		saveButton.tap()
+		
+		XCTAssertTrue(saveOkLabel.exists)
+		saveOkLabel.tap()
+		XCTAssert(title["12695"].waitForExistence(timeout: 1))
+	}
+	
 	var app: XCUIApplication {
 		return XCUIApplication()
 	}
@@ -59,7 +75,6 @@ class AstronomyUITests: XCTestCase {
 		return app.navigationBars.buttons["PhotosCollectionViewController.PreviousSolButton"]
 	}
 	
-	
 	var title: XCUIElementQuery {
 		return app.otherElements
 	}
@@ -70,5 +85,17 @@ class AstronomyUITests: XCTestCase {
 	
 	var cell0: XCUIElement {
 		return app.collectionViews["MyPhotosCollection"].cells["PhotoCell id: 0"]
+	}
+	
+	var cell18: XCUIElement {
+		return app.collectionViews["MyPhotosCollection"].cells["PhotoCell id: 18"]
+	}
+	
+	var saveOkLabel: XCUIElement {
+		return app.buttons["SaveOkay Label"]
+	}
+	
+	var saveButton: XCUIElement {
+		return app.buttons["PhotoDetailViewController.SaveButton"]
 	}
 }

@@ -33,8 +33,9 @@ class PhotoDetailViewController: UIViewController {
     
     func presentSuccessfulSaveAlert() {
         let alert = UIAlertController(title: "Photo Saved!", message: "The photo has been saved to your Photo Library!", preferredStyle: .alert)
-        let okayAction = UIAlertAction(title: "Okay", style: .default, handler: nil)
-        
+		
+		let okayAction = UIAlertAction(title: "Okay", style: .default, handler: nil)
+        okayAction.accessibilityLabel = "SaveOkay Label"
         alert.addAction(okayAction)
         
         present(alert, animated: true, completion: nil)
