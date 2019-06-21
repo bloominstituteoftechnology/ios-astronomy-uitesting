@@ -47,6 +47,25 @@ class AstronomyUITests: XCTestCase {
 		XCTAssert(title["58811"].waitForExistence(timeout: 1))
 	}
 	
+	func testSelectCell0WithBackButton() {
+		testPhotoCellId0()
+		
+		XCTAssertTrue(photoImageView.exists)
+
+		XCTAssertTrue(sol5BackButton.exists)
+		sol5BackButton.tap()
+		XCTAssert(title["Sol 15"].waitForExistence(timeout: 1))
+	}
+	
+	var sol5BackButton: XCUIElement {
+		return app.navigationBars.buttons["Sol 15"]
+	}
+	
+	var photoImageView: XCUIElement {
+		return app.images["PhotoDetailViewController.ImageView"]
+	}
+	
+	
 	func testSavingPhoto() {
 		XCTAssert(title["Sol 15"].waitForExistence(timeout: 1))
 		app.swipeUp()
@@ -62,6 +81,9 @@ class AstronomyUITests: XCTestCase {
 		saveOkLabel.tap()
 		XCTAssert(title["12695"].waitForExistence(timeout: 1))
 	}
+	
+	
+	
 	
 	var app: XCUIApplication {
 		return XCUIApplication()
