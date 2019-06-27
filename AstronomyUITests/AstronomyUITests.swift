@@ -9,7 +9,7 @@
 import XCTest
 
 class AstronomyUITests: XCTestCase {
-
+    
     override func setUp() {
         let app = XCUIApplication()
         app.launchArguments = ["UITesting"]
@@ -18,6 +18,7 @@ class AstronomyUITests: XCTestCase {
         continueAfterFailure = false
         
     }
+    
 
     override func tearDown() {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
@@ -26,7 +27,8 @@ class AstronomyUITests: XCTestCase {
     func testSavingPhoto() {
         
         let app = XCUIApplication()
-        app.collectionViews.children(matching: .cell).element(boundBy: 0).children(matching: .other).element.tap()
+        let cell0 = cellFor(index: 0)
+        cell0.tap()
         let detailImage = app.images["PhotoDetailViewController.ImageView"]
         let detailLabel = app.staticTexts["PhotoDetailViewController.DetailLabel"]
         let detailCamera = app.staticTexts["PhotoDetailViewController.CameraLabel"]
@@ -66,7 +68,8 @@ class AstronomyUITests: XCTestCase {
     
     func testToDetailAndBack() {
         let app = XCUIApplication()
-        app.collectionViews.cells.element(boundBy: 0).tap()
+        let cell1 = cellFor(index: 1)
+        cell1.tap()
         let detailImage = app.images["PhotoDetailViewController.ImageView"]
         let detailLabel = app.staticTexts["PhotoDetailViewController.DetailLabel"]
         let detailCamera = app.staticTexts["PhotoDetailViewController.CameraLabel"]
@@ -83,4 +86,13 @@ class AstronomyUITests: XCTestCase {
         XCTAssert(app.collectionViews.cells.count > 0)
         
     }
+    var app: XCUIApplication {
+        return XCUIApplication()
+    }
+    
+    func cellFor(index: Int) -> XCUIElement {
+        return app.collectionViews.cells.element(boundBy: index)
+    }
 }
+
+
