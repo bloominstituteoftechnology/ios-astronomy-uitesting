@@ -47,7 +47,40 @@ class AstronomyUITests: XCTestCase {
         let cells = app.cells["PhotoCollectionViewController.PhotoCell"]
         app.navigationBars/*@START_MENU_TOKEN@*/.buttons["PhotosCollectionViewController.NextSolButton"]/*[[".buttons[\">\"]",".buttons[\"PhotosCollectionViewController.NextSolButton\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
         XCTAssertNotNil(cells)
+        XCTAssert(app.collectionViews.cells.count > 0)
         app.navigationBars/*@START_MENU_TOKEN@*/.buttons["PhotosCollectionViewController.NextSolButton"]/*[[".buttons[\">\"]",".buttons[\"PhotosCollectionViewController.NextSolButton\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
         XCTAssertNotNil(cells)
+        XCTAssert(app.collectionViews.cells.count > 0)
+
+    }
+    
+    func testScrolling() {
+        
+        let app = XCUIApplication()
+        
+        app.otherElements.containing(.navigationBar, identifier:"Sol 1").children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .collectionView).element.swipeUp()
+      
+        //how to test scrolling?  If the images are different on screen?
+        //If indexes of cells are different?
+    }
+    
+    func testToDetailAndBack() {
+        let app = XCUIApplication()
+        app.collectionViews.cells.element(boundBy: 0).tap()
+        let detailImage = app.images["PhotoDetailViewController.ImageView"]
+        let detailLabel = app.staticTexts["PhotoDetailViewController.DetailLabel"]
+        let detailCamera = app.staticTexts["PhotoDetailViewController.CameraLabel"]
+        XCTAssertNotNil(detailImage)
+        XCTAssertNotNil(detailLabel)
+        XCTAssertNotNil(detailCamera)
+        
+        app.navigationBars.buttons.element(boundBy: 0).tap()
+        let cells = app.cells["PhotoCollectionViewController.PhotoCell"]
+        XCTAssertNotNil(cells)
+        XCTAssert(app.collectionViews.cells.count > 0)
+        app.navigationBars/*@START_MENU_TOKEN@*/.buttons["PhotosCollectionViewController.NextSolButton"]/*[[".buttons[\">\"]",".buttons[\"PhotosCollectionViewController.NextSolButton\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        XCTAssertNotNil(cells)
+        XCTAssert(app.collectionViews.cells.count > 0)
+        
     }
 }
