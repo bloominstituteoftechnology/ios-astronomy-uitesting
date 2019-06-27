@@ -27,7 +27,6 @@ class AstronomyUITests: XCTestCase {
         
         let app = XCUIApplication()
         app.collectionViews.children(matching: .cell).element(boundBy: 0).children(matching: .other).element.tap()
-        let cell = app.collectionViews.cells.images["PhotosCollectionViewController.PhotoCell"]
         let detailImage = app.images["PhotoDetailViewController.ImageView"]
         let detailLabel = app.staticTexts["PhotoDetailViewController.DetailLabel"]
         let detailCamera = app.staticTexts["PhotoDetailViewController.CameraLabel"]
@@ -38,6 +37,17 @@ class AstronomyUITests: XCTestCase {
         app.alerts["Photo Saved!"].tap()
         app.alerts.buttons["Okay"].tap()
         
+    }
+    
+    //Test Viewing Another Sol
+    
+    func testViewingAnotherSol()  {
         
+        let app = XCUIApplication()
+        let cells = app.cells["PhotoCollectionViewController.PhotoCell"]
+        app.navigationBars/*@START_MENU_TOKEN@*/.buttons["PhotosCollectionViewController.NextSolButton"]/*[[".buttons[\">\"]",".buttons[\"PhotosCollectionViewController.NextSolButton\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        XCTAssertNotNil(cells)
+        app.navigationBars/*@START_MENU_TOKEN@*/.buttons["PhotosCollectionViewController.NextSolButton"]/*[[".buttons[\">\"]",".buttons[\"PhotosCollectionViewController.NextSolButton\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        XCTAssertNotNil(cells)
     }
 }
