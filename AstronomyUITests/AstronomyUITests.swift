@@ -10,6 +10,10 @@ import XCTest
 
 class AstronomyUITests: XCTestCase {
     
+    var app: XCUIApplication {
+        return XCUIApplication()
+    }
+    
     override func setUp() {
         let app = XCUIApplication()
         app.launchArguments = ["UITesting"]
@@ -53,19 +57,18 @@ class AstronomyUITests: XCTestCase {
         app.navigationBars/*@START_MENU_TOKEN@*/.buttons["PhotosCollectionViewController.NextSolButton"]/*[[".buttons[\">\"]",".buttons[\"PhotosCollectionViewController.NextSolButton\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
         XCTAssertNotNil(cells)
         XCTAssert(app.collectionViews.cells.count > 0)
-
     }
     
-    func testScrolling() {
-        
-        let app = XCUIApplication()
-        
-        app.otherElements.containing(.navigationBar, identifier:"Sol 1").children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .collectionView).element.swipeUp()
-      
-        //how to test scrolling?  If the images are different on screen?
-        //If indexes of cells are different?
-    }
-    
+//    func testScrolling() {
+//
+//        let app = XCUIApplication()
+//
+//        app.otherElements.containing(.navigationBar, identifier:"Sol 1").children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .collectionView).element.swipeUp()
+//
+//        //how to test scrolling?  If the images are different on screen?
+//        //If indexes of cells are different?
+//    }
+//
     func testToDetailAndBack() {
         let app = XCUIApplication()
         let cell1 = cellFor(index: 1)
@@ -86,12 +89,15 @@ class AstronomyUITests: XCTestCase {
         XCTAssert(app.collectionViews.cells.count > 0)
         
     }
-    var app: XCUIApplication {
-        return XCUIApplication()
-    }
     
     func cellFor(index: Int) -> XCUIElement {
         return app.collectionViews.cells.element(boundBy: index)
+    }
+    
+    func testImagesLoading() {
+       let cell1 = cellFor(index: 1)
+        XCTAssertNotNil(cell1)
+        XCTAssert(cell1.exists)
     }
 }
 
