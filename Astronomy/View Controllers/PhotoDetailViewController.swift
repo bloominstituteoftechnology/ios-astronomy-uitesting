@@ -33,8 +33,9 @@ class PhotoDetailViewController: UIViewController {
     
     func presentSuccessfulSaveAlert() {
         let alert = UIAlertController(title: "Photo Saved!", message: "The photo has been saved to your Photo Library!", preferredStyle: .alert)
-        let okayAction = UIAlertAction(title: "Okay", style: .default, handler: nil)
-        
+		
+		let okayAction = UIAlertAction(title: "Okay", style: .default, handler: nil)
+        okayAction.accessibilityLabel = "SaveOkay Label"
         alert.addAction(okayAction)
         
         present(alert, animated: true, completion: nil)
@@ -44,9 +45,11 @@ class PhotoDetailViewController: UIViewController {
     
     private func updateViews() {
         guard let photo = photo, isViewLoaded else { return }
+		title = "\(photo.id)"
+		
         do {
             let data = try Data(contentsOf: photo.imageURL.usingHTTPS!)
-            imageView.image = UIImage(data: data)?.filtered()
+            imageView.image = UIImage(data: data) //?.filtered()
             let dateString = dateFormatter.string(from: photo.earthDate)
             detailLabel.text = "Taken by \(photo.camera.roverId) on \(dateString) (Sol \(photo.sol))"
             cameraLabel.text = photo.camera.fullName

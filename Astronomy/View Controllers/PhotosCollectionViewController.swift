@@ -24,6 +24,9 @@ class PhotosCollectionViewController: UIViewController, UICollectionViewDataSour
         
         configureTitleView()
         updateViews()
+		
+		collectionView.accessibilityIdentifier = "MyPhotosCollection"
+		
     }
     
     @IBAction func goToPreviousSol(_ sender: Any?) {
@@ -55,7 +58,9 @@ class PhotosCollectionViewController: UIViewController, UICollectionViewDataSour
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ImageCell", for: indexPath) as? ImageCollectionViewCell ?? ImageCollectionViewCell()
-        
+		
+		
+		cell.accessibilityIdentifier = "PhotoCell id: \(indexPath.row)"
         loadImage(forCell: cell, forItemAt: indexPath)
         
         return cell
