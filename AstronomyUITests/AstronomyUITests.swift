@@ -23,6 +23,7 @@ class AstronomyUITests: XCTestCase {
         app.launch()
         app.launchArguments = ["UITesting"]
 
+        print(app)
         // In UI tests it’s important to set the initial state - such as interface orientation - required for your tests before they run. The setUp method is a good place to do this.
     }
 
@@ -54,17 +55,24 @@ class AstronomyUITests: XCTestCase {
     }
     
     func testSavePhoto() {
+        let cell = app.cells["PhotosCollectionVC.Sol 15.PhotoCell.Index[0, 0]"]
+        XCTAssertTrue(cell.exists)
+        cell.tap()
         savePhotoButton.tap()
         
+//        let alert = app.alerts["PhotoDetailViewController.PhotoSavedAlert"]
+//        XCTAssertTrue(alert.exists)
     }
     
     func testViewNextAndPreviousSol() {
         nextSolButton.tap()
-    }
-    
-    func testViewPreviousSol() {
-        nextSolButton.tap()
+        
+        let nextCell = app.cells["PhotosCollectionVC.Sol 16.PhotoCell.Index[0, 0]"]
+        XCTAssertTrue(nextCell.exists)
+        
         previousSolButton.tap()
+        let previousCell = app.cells["PhotosCollectionVC.Sol 15.PhotoCell.Index[0, 0]"]
+        XCTAssertTrue(previousCell.exists)
     }
     
 

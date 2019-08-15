@@ -55,6 +55,9 @@ class PhotosCollectionViewController: UIViewController, UICollectionViewDataSour
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ImageCell", for: indexPath) as? ImageCollectionViewCell ?? ImageCollectionViewCell()
+        if let title = title {
+            cell.accessibilityLabel = "PhotosCollectionVC.\(title).PhotoCell.Index\(indexPath)"
+        }
         
         loadImage(forCell: cell, forItemAt: indexPath)
         
@@ -203,6 +206,7 @@ class PhotosCollectionViewController: UIViewController, UICollectionViewDataSour
             let image = UIImage(data: imageData)
             
             cell.imageView.image = image
+            
         } catch {
             NSLog("Unable to initialize data with URL: \(url), error: \(error)")
         }
