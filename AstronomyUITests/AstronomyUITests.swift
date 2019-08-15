@@ -23,7 +23,6 @@ class AstronomyUITests: XCTestCase {
         app.launch()
         app.launchArguments = ["UITesting"]
 
-        print(app)
         // In UI tests it’s important to set the initial state - such as interface orientation - required for your tests before they run. The setUp method is a good place to do this.
     }
 
@@ -31,11 +30,11 @@ class AstronomyUITests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
-    func testExample() {
-        // Use recording to get started writing UI tests.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-    
+//    func testExample() {
+//        // Use recording to get started writing UI tests.
+//        // Use XCTAssert and related functions to verify your tests produce the correct results.
+//    }
+//    
     var savePhotoButton: XCUIElement {
         let button = app.buttons["PhotoDetailViewController.SaveButton"]
         XCTAssertTrue(button.exists)
@@ -73,6 +72,24 @@ class AstronomyUITests: XCTestCase {
         previousSolButton.tap()
         let previousCell = app.cells["PhotosCollectionVC.Sol 15.PhotoCell.Index[0, 0]"]
         XCTAssertTrue(previousCell.exists)
+    }
+    
+    func testCameraLabelHasCameraInfo() {
+        let cell = app.cells["PhotosCollectionVC.Sol 15.PhotoCell.Index[0, 0]"]
+        XCTAssertTrue(cell.exists)
+        cell.tap()
+        
+        let cameraLabel = app.staticTexts["PhotoDetailVC.CameraLabel"]
+        XCTAssertNotEqual(cameraLabel.label, "Label")
+    }
+    
+    func testRoverLabelHasRoverInfo() {
+        let cell = app.cells["PhotosCollectionVC.Sol 15.PhotoCell.Index[0, 0]"]
+        XCTAssertTrue(cell.exists)
+        cell.tap()
+        
+        let roverLabel = app.staticTexts["PhotoDetailVC.RoverLabel"]
+        XCTAssertNotEqual(roverLabel.label, "Taken by <Rover> on <date> (Sol <sol>)")
     }
     
 
