@@ -42,6 +42,8 @@ class PhotosCollectionViewController: UIViewController, UICollectionViewDataSour
         self.solDescription = solDescriptions[index+1]
     }
     
+    
+    
     // UICollectionViewDataSource/Delegate
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -102,33 +104,11 @@ class PhotosCollectionViewController: UIViewController, UICollectionViewDataSour
     // MARK: - Private
     
     private func configureTitleView() {
-        
-//        let font = UIFont.systemFont(ofSize: 30)
-//        let attrs = [NSAttributedStringKey.font: font]
-
-//        let prevTitle = NSAttributedString(string: "<", attributes: attrs)
-//        let prevButton = UIButton(type: .system)
-//        prevButton.accessibilityIdentifier = "PhotosCollectionViewController.PreviousSolButton"
-//        prevButton.setAttributedTitle(prevTitle, for: .normal)
-//        prevButton.addTarget(self, action: #selector(goToPreviousSol(_:)), for: .touchUpInside)
-        
         let prevItem = UIBarButtonItem(title: "<", style: .plain, target: self, action: #selector(goToPreviousSol(_:)))
-        prevItem.accessibilityIdentifier = "PhotosCollectionViewController.PreviousSolButton"
-        
-//        let nextTitle = NSAttributedString(string: ">", attributes: attrs)
-//        let nextButton = UIButton(type: .system)
-//        nextButton.setAttributedTitle(nextTitle, for: .normal)
-//        nextButton.addTarget(self, action: #selector(goToNextSol(_:)), for: .touchUpInside)
-//        nextButton.accessibilityIdentifier = "PhotosCollectionViewController.NextSolButton"
-        
+        prevItem.accessibilityIdentifier = "PhotosCollectionView.previousSolButton"
+  
         let nextItem = UIBarButtonItem(title: ">", style: .plain, target: self, action: #selector(goToNextSol(_:)))
-        nextItem.accessibilityIdentifier = "PhotosCollectionViewController.NextSolButton"
-        
-//        let stackView = UIStackView(arrangedSubviews: [prevButton, solLabel, nextButton])
-//        stackView.axis = .horizontal
-//        stackView.alignment = .fill
-//        stackView.distribution = .fill
-//        stackView.spacing = UIStackView.spacingUseSystem
+        nextItem.accessibilityIdentifier = "PhotosCollectionView.nextSolButton"
         
         navigationItem.setLeftBarButton(prevItem, animated: false)
         navigationItem.setRightBarButton(nextItem, animated: false)
