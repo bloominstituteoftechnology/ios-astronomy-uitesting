@@ -14,6 +14,7 @@ class PhotoDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         updateViews()
+        navigationController?.navigationBar.accessibilityIdentifier = "PhotoDetailViewController.NavigationBar"
     }
     
     @IBAction func save(_ sender: Any) {
@@ -57,11 +58,7 @@ class PhotoDetailViewController: UIViewController {
     
     // MARK: - Properties
     
-    var photo: MarsPhotoReference? {
-        didSet {
-            updateViews()
-        }
-    }
+    var photo: MarsPhotoReference? { didSet { updateViews() }}
     
     lazy var dateFormatter: DateFormatter = {
         let df = DateFormatter()
