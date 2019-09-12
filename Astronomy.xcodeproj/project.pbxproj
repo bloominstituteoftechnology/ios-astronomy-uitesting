@@ -31,7 +31,8 @@
 		9DBD20382140E46E0047905E /* ConcurrentOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DBD20362140E46E0047905E /* ConcurrentOperation.swift */; };
 		9DBD20392140E46E0047905E /* FetchPhotoOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DBD20372140E46E0047905E /* FetchPhotoOperation.swift */; };
 		9DFE494C2145D37A0009922B /* PhotoDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DFE494B2145D37A0009922B /* PhotoDetailViewController.swift */; };
-		B53F0570232AE18800DA5E72 /* AstronomyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53F056F232AE18800DA5E72 /* AstronomyUITests.swift */; };
+		B53F0570232AE18800DA5E72 /* PhotoCollectionVCTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53F056F232AE18800DA5E72 /* PhotoCollectionVCTests.swift */; };
+		B53F0578232AF0A300DA5E72 /* PhotoDetailsVCTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53F0577232AF0A300DA5E72 /* PhotoDetailsVCTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,8 +73,9 @@
 		9DBD20372140E46E0047905E /* FetchPhotoOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchPhotoOperation.swift; sourceTree = "<group>"; };
 		9DFE494B2145D37A0009922B /* PhotoDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoDetailViewController.swift; sourceTree = "<group>"; };
 		B53F056D232AE18800DA5E72 /* AstronomyUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AstronomyUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		B53F056F232AE18800DA5E72 /* AstronomyUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AstronomyUITests.swift; sourceTree = "<group>"; };
+		B53F056F232AE18800DA5E72 /* PhotoCollectionVCTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCollectionVCTests.swift; sourceTree = "<group>"; };
 		B53F0571232AE18800DA5E72 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B53F0577232AF0A300DA5E72 /* PhotoDetailsVCTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoDetailsVCTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -211,7 +213,8 @@
 		B53F056E232AE18800DA5E72 /* AstronomyUITests */ = {
 			isa = PBXGroup;
 			children = (
-				B53F056F232AE18800DA5E72 /* AstronomyUITests.swift */,
+				B53F056F232AE18800DA5E72 /* PhotoCollectionVCTests.swift */,
+				B53F0577232AF0A300DA5E72 /* PhotoDetailsVCTests.swift */,
 				B53F0571232AE18800DA5E72 /* Info.plist */,
 			);
 			path = AstronomyUITests;
@@ -346,7 +349,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B53F0570232AE18800DA5E72 /* AstronomyUITests.swift in Sources */,
+				B53F0578232AF0A300DA5E72 /* PhotoDetailsVCTests.swift in Sources */,
+				B53F0570232AE18800DA5E72 /* PhotoCollectionVCTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
