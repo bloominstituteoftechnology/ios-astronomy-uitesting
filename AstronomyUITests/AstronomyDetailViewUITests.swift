@@ -57,6 +57,12 @@ class AstronomyDetailViewUITests: XCTestCase {
         return label
     }
     
+    var permissionAlert: XCUIElement {
+        let alert = app.alerts.element
+        XCTAssert(alert.exists)
+        return alert
+    }
+    
 
     
     func testCell1GoToNextVC() {
@@ -82,7 +88,14 @@ class AstronomyDetailViewUITests: XCTestCase {
     }
 
     func testSavingPhoto() {
-        //savePhotoButton.tap()
+        let cell1 = photoCollectionView.children(matching: .cell).firstMatch
+        
+        cell1.tap()
+        
+        savePhotoButton.tap()
+        
+        XCTAssertTrue(permissionAlert.isHittable) 
+        
     }
 
 }
