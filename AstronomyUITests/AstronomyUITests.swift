@@ -37,6 +37,11 @@ class AstronomyUITests: XCTestCase {
 		return nextButton
 	}
 
+	var savePhotoToLibraryButton: XCUIElement {
+		let saveButton = app.buttons["Save to Photo Library"]
+		return saveButton
+	}
+
 	func testSolNavigationControllerTitleStartsWithSol15() {
 		XCTAssertTrue(solNavTitleWith(solNumber: 15).exists)
 	}
@@ -52,5 +57,17 @@ class AstronomyUITests: XCTestCase {
 		XCTAssertTrue(solNavTitleWith(solNumber: 14).exists)
 	}
 
+	func testTappingCellSeguesToSavePhotoButton() {
+		let collectionView = app.collectionViews.element
+		let cell = collectionView.cells.firstMatch
+		cell.tap()
+		XCTAssertTrue(savePhotoToLibraryButton.exists)
+	}
+
+	func testTappingSaveToPhotoLibraryButton() {
+		let collectionView = app.collectionViews.element
+		let cell = collectionView.cells.firstMatch
+		cell.tap()
+	}
 
 }
