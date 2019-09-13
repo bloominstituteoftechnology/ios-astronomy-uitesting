@@ -22,8 +22,9 @@ class MarsRoverClient {
         let url = self.url(forInfoForRover: name)
         fetch(from: url, using: session) { (dictionary: [String : MarsRover]?, error: Error?) in
 
-            guard let rover = dictionary?["photoManifest"] else {
+            guard let rover = dictionary?["photo_manifest"] else {
                 completion(nil, error)
+                print("bad code")
                 return
             }
             completion(rover, nil)
@@ -39,7 +40,7 @@ class MarsRoverClient {
             
             let jsonDecoder = MarsPhotoReference.jsonDecoder
             
-            let rover = try jsonDecoder.decode([String: MarsRover].self, from: data)["photoManifest"]
+            let rover = try jsonDecoder.decode([String: MarsRover].self, from: data)["photo_manifest"]
             
             completion(rover, nil)
             
