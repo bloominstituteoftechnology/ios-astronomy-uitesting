@@ -33,17 +33,25 @@ class PhotoDetailsVCTests: XCTestCase {
 		let collectionView = app.collectionViews.firstMatch
 		collectionView.cells.firstMatch.tap()
 		
-		addUIInterruptionMonitor(withDescription: "Photo library access alert") { alert in
-			alert.buttons["OK"].tap()
-			return true
-		}
-		
-		addUIInterruptionMonitor(withDescription: "Photo Saved!") { alert in
-			alert.buttons["OK"].tap()
-			return true
-		}
-		
 		savePhotoBtn.tap()
+		
+//		addUIInterruptionMonitor(withDescription: "Photo library access alert") { alert in
+//			alert.buttons["OK"].tap()
+//			self.savePhotoBtn.tap()
+//			return true
+//		}
+//		
+//		if app.alerts["\"Astronomy\" Would Like to Access Your Photos"].exists {
+//			XCTAssertTrue(app.alerts["\"Astronomy\" Would Like to Access Your Photos"].exists)
+//			app.alerts["\"Astronomy\" Would Like to Access Your Photos"].buttons["OK"].tap()
+//
+//			savePhotoBtn.tap()
+//		}
+		
+		if app.alerts["Photo Saved!"].exists {
+			XCTAssertTrue(app.alerts["Photo Saved!"].exists)
+			app.alerts["Photo Saved!"].buttons["Okay"].tap()
+		}
 	}
 
 }
