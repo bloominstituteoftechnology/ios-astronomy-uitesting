@@ -42,6 +42,7 @@ class AstronomyUITests: XCTestCase {
 		return saveButton
 	}
 
+
 	func testSolNavigationControllerTitleStartsWithSol15() {
 		XCTAssertTrue(solNavTitleWith(solNumber: 15).exists)
 	}
@@ -68,6 +69,36 @@ class AstronomyUITests: XCTestCase {
 		let collectionView = app.collectionViews.element
 		let cell = collectionView.cells.firstMatch
 		cell.tap()
+		savePhotoToLibraryButton.tap()
+		let alert = app.alerts.element
+		let okayButton = alert.buttons["Okay"]
+		XCTAssertTrue(alert.exists)
+		XCTAssertTrue(okayButton.isHittable)
+		okayButton.tap()
 	}
+
+	func testTappingOkayInAlertWorks() {
+		let collectionView = app.collectionViews.element
+		let cell = collectionView.cells.firstMatch
+		cell.tap()
+		savePhotoToLibraryButton.tap()
+		let alert = app.alerts.element
+		let okayButton = alert.buttons["Okay"]
+		XCTAssertTrue(alert.exists)
+		XCTAssertTrue(okayButton.isHittable)
+		okayButton.tap()
+	}
+
+	func testSizeofCellInCollectionView() {
+		let collectionView = app.collectionViews.element
+		let cell = collectionView.cells.firstMatch
+		XCTAssertEqual(cell.frame, CGRect(x: 10, y: 88, width: 192, height: 192))
+	}
+
+//	func testCellIdentifier() {
+//		let collectionView = app.collectionViews.element
+//		let cell = collectionView.cells.firstMatch
+//		XCTAssertTrue(cell.identifier == "ImageCell")
+//	}
 
 }
