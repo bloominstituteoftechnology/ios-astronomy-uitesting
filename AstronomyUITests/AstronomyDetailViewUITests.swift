@@ -57,7 +57,7 @@ class AstronomyDetailViewUITests: XCTestCase {
         return label
     }
     
-    var permissionAlert: XCUIElement {
+    var savedAlert: XCUIElement {
         let alert = app.alerts.element
         XCTAssert(alert.exists)
         return alert
@@ -65,6 +65,12 @@ class AstronomyDetailViewUITests: XCTestCase {
     
     var previousSolButton: XCUIElement {
         let button = app.buttons["PhotosCollectionViewController.PreviousSolButton"]
+        XCTAssertTrue(button.exists)
+        return button
+    }
+    
+    var nextSolButton: XCUIElement {
+        let button = app.buttons["PhotosCollectionViewController.NextSolButton"]
         XCTAssertTrue(button.exists)
         return button
     }
@@ -100,7 +106,7 @@ class AstronomyDetailViewUITests: XCTestCase {
         
         savePhotoButton.tap()
         
-        XCTAssertTrue(permissionAlert.isHittable)
+        XCTAssertTrue(savedAlert.isHittable)
     }
     
     func testGoingToPreviousSol() {
@@ -111,7 +117,10 @@ class AstronomyDetailViewUITests: XCTestCase {
     }
     
     func testGoingToNextSol() {
+        nextSolButton.tap()
         
+        XCTAssertTrue(app.navigationBars["Sol 16"].exists)
+        XCTAssertTrue(app.navigationBars["Sol 16"].isHittable)
     }
 
 }
