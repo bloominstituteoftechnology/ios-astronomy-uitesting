@@ -63,6 +63,12 @@ class AstronomyDetailViewUITests: XCTestCase {
         return alert
     }
     
+    var previousSolButton: XCUIElement {
+        let button = app.buttons["PhotosCollectionViewController.PreviousSolButton"]
+        XCTAssertTrue(button.exists)
+        return button
+    }
+    
 
     
     func testCell1GoToNextVC() {
@@ -94,7 +100,17 @@ class AstronomyDetailViewUITests: XCTestCase {
         
         savePhotoButton.tap()
         
-        XCTAssertTrue(permissionAlert.isHittable) 
+        XCTAssertTrue(permissionAlert.isHittable)
+    }
+    
+    func testGoingToPreviousSol() {
+        previousSolButton.tap()
+        
+        XCTAssertTrue(app.navigationBars["Sol 14"].exists)
+        XCTAssertTrue(app.navigationBars["Sol 14"].isHittable)
+    }
+    
+    func testGoingToNextSol() {
         
     }
 
