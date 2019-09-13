@@ -122,7 +122,7 @@
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9gd-7b-dyz">
                                                 <rect key="frame" x="72.5" y="0.0" width="270.5" height="20.5"/>
-                                                <accessibility key="accessibilityConfiguration" identifier="PhotoDetailViewController.cameraNumberLabel"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="PhotoDetailViewController.cameraTypeLabel"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>

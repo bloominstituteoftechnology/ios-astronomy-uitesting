@@ -76,7 +76,7 @@ class AstronomyDetailViewUITests: XCTestCase {
         XCTAssertEqual("Taken by 5 on 8/20/12, 5:00 PM (Sol 15)", photoDetailLabel.label)
         
         XCTAssertEqual("Camera:", cameraLabel.label)
-        XCTAssertEqual("Mast Camera", cameraTypeLabel.label)
+        XCTAssertEqual("Front Hazard Avoidance Camera", cameraTypeLabel.label)
         
         
     }
