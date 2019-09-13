@@ -48,9 +48,6 @@ class AstronomyUITests: XCTestCase {
         XCTAssertTrue(solNavBarTitle(solNumber: 14).exists)
     }
     
-    
-    
-    
     func testUIAlertWhenSavingphoto() {
         app.collectionViews.children(matching: .cell).element(boundBy: 0).children(matching: .other).element.tap()
         app.buttons["Save to Photo Library"].tap()
