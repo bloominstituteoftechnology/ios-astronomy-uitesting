@@ -7,26 +7,59 @@
 //
 
 import XCTest
+@testable import Astronomy
 
 class AstronomyUITests: XCTestCase {
+    
+    // MARK: - Helper Properties
+    
+    var app: XCUIApplication!
+    
+//    private var app: XCUIApplication {
+//        return XCUIApplication()
+//    }
+    
+    private var saveToPhotoLibraryButton: XCUIElement {
+        return app.buttons["PhotoDetailViewController.SaveButton"]
+    }
+    
+    private var alert: XCUIElement {
+        return app.alerts.element
+    }
 
     override func setUp() {
-        let app = XCUIApplication()
+        app = XCUIApplication()
         continueAfterFailure = false
         app.launchArguments = ["UITesting"]
-    }
-
-    override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
-
-    func testExample() {
-        // UI tests must launch the application that they test.
-        let app = XCUIApplication()
         app.launch()
-
-        // Use recording to get started writing UI tests.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    }
+    
+    func testClickingCell() {
+        let collectionView = app.collectionViews.firstMatch
+        let firstCell = collectionView.cells.firstMatch
+        firstCell.tap()
+        XCTAssertEqual(app.staticTexts["PhotoDetailViewController.detailLabel"].label, "Taken by 5 on 8/20/12, 8:00 PM (Sol 15)")
+        XCTAssertEqual(app.staticTexts["PhotoDetailViewController.cameraLabel"].label, "Front Hazard Avoidance Camera")
+    }
+    
+    func testSavingPhoto() {
+        let collectionView = app.collectionViews.firstMatch
+        let firstCell = collectionView.cells.firstMatch
+        firstCell.tap()
+        saveToPhotoLibraryButton.tap()
+        XCTAssertTrue(alert.exists)
+    }
+    
+    func testViewingNextSol() {
+        XCTAssertEqual(app.navigationBars.firstMatch.identifier, "Sol 15")
+        app.buttons["PhotosCollectionViewController.NextSolButton"].tap()
+        XCTAssertEqual(app.navigationBars.firstMatch.identifier, "Sol 16")
+    }
+    
+    func testViewingPreviousSol() {
+        XCTAssertEqual(app.navigationBars.firstMatch.identifier, "Sol 15")
+        app.buttons["PhotosCollectionViewController.PreviousSolButton"].tap()
+        XCTAssertEqual(app.navigationBars.firstMatch.identifier, "Sol 14")
     }
 
     func testLaunchPerformance() {
