@@ -7,6 +7,7 @@
 //
 
 import XCTest
+@testable import Astronomy
 
 class AstronomyUITests: XCTestCase {
 
@@ -17,6 +18,31 @@ class AstronomyUITests: XCTestCase {
         app.launch()
     }
     
+    func testPreviousSol() {
+        let app = XCUIApplication()
+        
+        _ = app.buttons["\(previousSolButton)"]
+        previousSolButton.tap()
+        XCTAssert(app.navigationBars["Sol 14"].exists)
+    }
     
     
+    
+    private var app = XCUIApplication()
+    
+    private var saveToPhotoLibraryButton: XCUIElement {
+        return app.buttons["PhotoDetailViewController.SaveButton"]
+    }
+    
+    private var alert: XCUIElement {
+        return app.alerts.element
+    }
+    
+    private var nextSolButton: XCUIElement {
+        return app.buttons["PhotosCollectionViewController.NextSolButton"]
+    }
+    
+    private var previousSolButton: XCUIElement {
+        return app.buttons["PhotosCollectionViewController.PreviousSolButton"]
+    }
 }
