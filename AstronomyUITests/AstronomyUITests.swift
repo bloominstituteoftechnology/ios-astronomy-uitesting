@@ -34,12 +34,17 @@ class AstronomyUITests: XCTestCase {
         sleep(3)
         app.collectionViews.children(matching: .cell).element(boundBy: 0).children(matching: .other).element.tap()
         
-        let photo0 = app.images["PhotoDetailViewController.ImageView"]
+        let title0 = app.staticTexts["PhotoDetailViewController.CameraLabel"].label
         
         app.navigationBars["Title"].buttons["Sol 1"].tap()
-        app.collectionViews.children(matching: .cell).element(boundBy: 1).children(matching: .other).element.tap()
+        app.collectionViews.children(matching: .cell).element(boundBy: 4).children(matching: .other).element.tap()
         
-        XCTAssertNotEqual(photo0, app.images["PhotoDetailViewController.ImageView"])
+        XCTAssertNotEqual(title0, app.staticTexts["PhotoDetailViewController.CameraLabel"].label)
+        
+        app.navigationBars["Title"].buttons["Sol 1"].tap()
+        app.collectionViews.children(matching: .cell).element(boundBy: 0).children(matching: .other).element.tap()
+        
+        XCTAssertEqual(title0, app.staticTexts["PhotoDetailViewController.CameraLabel"].label)
     }
     
     func testChangingSol() {
@@ -60,6 +65,8 @@ class AstronomyUITests: XCTestCase {
         
         XCTAssertNotEqual(sol1Photo, app.images["PhotoDetailViewController.ImageView"])
     }
+    
+    
     
     private var app: XCUIApplication = XCUIApplication()
 }
