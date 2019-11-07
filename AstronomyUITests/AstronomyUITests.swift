@@ -44,20 +44,21 @@ class AstronomyUITests: XCTestCase {
     
     func testChangingSol() {
         let nextSolButton = app.buttons["PhotosCollectionViewController.NextSolButton"]
-        sleep(4)
+        sleep(3)
         
         app.collectionViews.children(matching: .cell).element(boundBy: 0).children(matching: .other).element.tap()
+        
+        let sol1Photo = app.images["PhotoDetailViewController.ImageView"]
+        
         app.navigationBars["Title"].buttons["Sol 1"].tap()
         
         
         nextSolButton.tap()
-//
-//        sleep(4)
-//
-//        app.buttons["PhotosCollectionViewController.PreviousSolButton"].tap()
-//
-//        sleep(4)
-
+        sleep(3)
+        
+        app.collectionViews.children(matching: .cell).element(boundBy: 0).children(matching: .other).element.tap()
+        
+        XCTAssertNotEqual(sol1Photo, app.images["PhotoDetailViewController.ImageView"])
     }
     
     private var app: XCUIApplication = XCUIApplication()
