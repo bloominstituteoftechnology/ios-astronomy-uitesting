@@ -31,6 +31,22 @@ class AstronomyUITests: XCTestCase {
         //app.alerts["“Astronomy” Would Like to Access Your Photos"].scrollViews.otherElements.buttons["OK"].tap()
     }
     
+    func testChangingSolTitle() {
+        sleep(3)
+        
+        let firstSolTitle = app.staticTexts.firstMatch.label
+        
+        nextSolButton.tap()
+        sleep(3)
+        
+        XCTAssertNotEqual(firstSolTitle, app.staticTexts.firstMatch.label)
+        
+        previousSolButton.tap()
+        sleep(1)
+        
+        XCTAssertEqual(firstSolTitle, app.staticTexts.firstMatch.label)
+    }
+    
     func testViewDifferentPhotos() {
         sleep(3)
         app.collectionViews.children(matching: .cell).element(boundBy: 0).children(matching: .other).element.tap()
@@ -48,9 +64,7 @@ class AstronomyUITests: XCTestCase {
         XCTAssertEqual(title0, app.staticTexts["PhotoDetailViewController.CameraLabel"].label)
     }
     
-    func testChangingSol() {
-        let nextSolButton = app.buttons["PhotosCollectionViewController.NextSolButton"]
-        let previousSolButton = app.buttons["PhotosCollectionViewController.PreviousSolButton"]
+    func testChangingSolPhotoLoading() {
         sleep(3)
         
         app.collectionViews.children(matching: .cell).element(boundBy: 0).children(matching: .other).element.tap()
@@ -71,7 +85,12 @@ class AstronomyUITests: XCTestCase {
         XCTAssertEqual(sol1Label, app.staticTexts["PhotoDetailViewController.DetailLabel"].label)
     }
     
-    
-    
     private var app: XCUIApplication = XCUIApplication()
+    
+    var nextSolButton: XCUIElement {
+        app.buttons["PhotosCollectionViewController.NextSolButton"]
+    }
+    var previousSolButton: XCUIElement {
+        app.buttons["PhotosCollectionViewController.PreviousSolButton"]
+    }
 }
