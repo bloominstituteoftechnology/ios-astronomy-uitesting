@@ -19,6 +19,7 @@ class AstronomyUITests: XCTestCase {
         // In UI tests it’s important to set the initial state - such as interface orientation - required for your tests before they run. The setUp method is a good place to do this.
         
         //app.launchArguments = ["UITesting"]
+        // Setting the launch arguments caused it to not load any images, so I instead added sleep statements to the tests to allow time for the network calls to happen
         app.launch()
     }
 
@@ -64,6 +65,7 @@ class AstronomyUITests: XCTestCase {
         
         app.navigationBars["Title"].buttons["Sol 2"].tap()
         previousSolButton.tap()
+        sleep(1)
         
         app.collectionViews.children(matching: .cell).element(boundBy: 0).children(matching: .other).element.tap()
         XCTAssertEqual(sol1Label, app.staticTexts["PhotoDetailViewController.DetailLabel"].label)
