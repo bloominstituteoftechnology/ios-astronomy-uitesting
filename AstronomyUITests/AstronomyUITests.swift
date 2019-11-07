@@ -30,23 +30,34 @@ class AstronomyUITests: XCTestCase {
         //app.alerts["“Astronomy” Would Like to Access Your Photos"].scrollViews.otherElements.buttons["OK"].tap()
     }
     
+    func testViewDifferentPhotos() {
+        sleep(3)
+        app.collectionViews.children(matching: .cell).element(boundBy: 0).children(matching: .other).element.tap()
+        
+        let photo0 = app.images["PhotoDetailViewController.ImageView"]
+        
+        app.navigationBars["Title"].buttons["Sol 1"].tap()
+        app.collectionViews.children(matching: .cell).element(boundBy: 1).children(matching: .other).element.tap()
+        
+        XCTAssertNotEqual(photo0, app.images["PhotoDetailViewController.ImageView"])
+    }
+    
     func testChangingSol() {
         let nextSolButton = app.buttons["PhotosCollectionViewController.NextSolButton"]
+        sleep(4)
+        
+        app.collectionViews.children(matching: .cell).element(boundBy: 0).children(matching: .other).element.tap()
+        app.navigationBars["Title"].buttons["Sol 1"].tap()
+        
+        
         nextSolButton.tap()
-        
-        sleep(4)
-        
-//        XCUIApplication().navigationBars["Sol 1"].staticTexts["Sol 1"].tap()
-        nextSolButton.tap()
-        
-        sleep(4)
-        
-        XCTAssertNotEqual(sol2firstImage, app.collectionViews.children(matching: .cell).element(boundBy: 0).images)
-        app.buttons["PhotosCollectionViewController.PreviousSolButton"].tap()
-        
-        sleep(4)
-        
-        XCTAssertEqual(sol2firstImage, app.collectionViews.children(matching: .cell).element(boundBy: 0).images)
+//
+//        sleep(4)
+//
+//        app.buttons["PhotosCollectionViewController.PreviousSolButton"].tap()
+//
+//        sleep(4)
+
     }
     
     private var app: XCUIApplication = XCUIApplication()
