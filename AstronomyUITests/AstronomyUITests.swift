@@ -26,6 +26,31 @@ class AstronomyUITests: XCTestCase {
         XCTAssert(app.navigationBars["Sol 14"].exists)
     }
     
+    func testNextSol() {
+        let app = XCUIApplication()
+        
+        _ = app.buttons["\(nextSolButton)"]
+        nextSolButton.tap()
+        XCTAssert(app.navigationBars["Sol 14"].exists)
+    }
+    
+      func testSaveImage() {
+          let app = XCUIApplication()
+          
+          app.collectionViews.children(matching: .cell).element(boundBy: 6).children(matching: .other).element.tap()
+          
+          app.buttons["PhotoDetailViewController.SaveButton"].tap()
+          
+          XCTAssert(app.alerts["Photo Saved!"].exists)
+          app.alerts["Photo Saved!"].buttons["Okay"].tap()
+    
+      }
+    
+    func testImageLoad() {
+        app = XCUIApplication()
+        app.collectionViews.children(matching: .cell).element(boundBy: 0).children(matching: .other).element.tap()
+        XCTAssert(app.buttons["PhotoDetailView.saveButton"].exists)
+    }
     
     
     private var app = XCUIApplication()
