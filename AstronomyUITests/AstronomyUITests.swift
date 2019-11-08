@@ -20,26 +20,57 @@ class AstronomyUITests: XCTestCase {
         let app = XCUIApplication()
         app.launchArguments = ["UITesting"]
         app.launch()
+        
+
     }
 
     func testSavePhoto() {
-        
         let cell0 = cell(forIndex: 0)
         cell0.tap()
         
-//        let saveToPhotoLibraryStaticText = app/*@START_MENU_TOKEN@*/.staticTexts["Save to Photo Library"]/*[[".buttons[\"Save to Photo Library\"].staticTexts[\"Save to Photo Library\"]",".buttons[\"PhotoDetailViewController.SaveButton\"].staticTexts[\"Save to Photo Library\"]",".staticTexts[\"Save to Photo Library\"]"],[[[-1,2],[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
-//        saveToPhotoLibraryStaticText.tap()
-//        app.alerts["“Astronomy” Would Like to Access Your Photos"].scrollViews.otherElements.buttons["OK"].tap()
-//
-//        let titleNavigationBar = app.navigationBars["Title"]
-//        titleNavigationBar.buttons["Sol 1"].tap()
-//        app.navigationBars["Sol 1"]/*@START_MENU_TOKEN@*/.buttons["PhotosCollectionViewController.NextSolButton"]/*[[".buttons[\">\"]",".buttons[\"PhotosCollectionViewController.NextSolButton\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
-//        collectionViewsQuery.children(matching: .cell).element(boundBy: 4).otherElements.containing(.image, identifier:"CollectionViewCell").element.tap()
-//        saveToPhotoLibraryStaticText.tap()
-//        app.alerts["Photo Saved!"].scrollViews.otherElements.buttons["Okay"].tap()
-//        titleNavigationBar.buttons["Sol 2"].tap()
+        let saveButton = app.buttons["PhotoDetailViewController.SaveButton"]
+        XCTAssertTrue(saveButton.exists)
+        saveButton.tap()
         
+        let alert = app.alerts["Photo Saved!"]
+        XCTAssertTrue(alert.exists)
+        alert.scrollViews.otherElements.buttons["Okay"].tap()
     }
+    
+    func testDetailInfo() {
+        cell(forIndex: 5).tap()
+        
+        let photoDetailLabel = app.staticTexts["PhotoDetailLabel"]
+        let cameraLabel = app.staticTexts["CameraLabel"]
+        
+        XCTAssertEqual(photoDetailLabel.label, "Taken by 5 on 8/19/12, 5:00 PM (Sol 14)")
+        XCTAssertEqual(cameraLabel.label, "Mast Camera")
+    }
+    
+    func testGoBackFromDetailView() {
+        let cell1 = cell(forIndex: 1)
+        cell1.tap()
+        XCTAssertTrue(detailTitleNavigationBar.exists)
+        
+        detailTitleNavigationBar.buttons["Sol 14"].tap()
+        XCTAssertTrue(solTitleBar(forSol: 14).exists)
+    }
+    
+    func testCycleSols() {
+        
+        solTitleBar(forSol: 14)/*@START_MENU_TOKEN@*/.buttons["PhotosCollectionViewController.NextSolButton"]/*[[".buttons[\">\"]",".buttons[\"PhotosCollectionViewController.NextSolButton\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        XCTAssertTrue(solTitleBar(forSol: 15).exists)
+        
+        solTitleBar(forSol: 15)/*@START_MENU_TOKEN@*/.buttons["PhotosCollectionViewController.NextSolButton"]/*[[".buttons[\">\"]",".buttons[\"PhotosCollectionViewController.NextSolButton\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        XCTAssertTrue(solTitleBar(forSol: 16).exists)
+        
+        solTitleBar(forSol: 16)/*@START_MENU_TOKEN@*/.buttons["PhotosCollectionViewController.PreviousSolButton"]/*[[".buttons[\"<\"]",".buttons[\"PhotosCollectionViewController.PreviousSolButton\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        XCTAssertTrue(solTitleBar(forSol: 15).exists)
+        
+        solTitleBar(forSol: 15)/*@START_MENU_TOKEN@*/.buttons["PhotosCollectionViewController.PreviousSolButton"]/*[[".buttons[\"<\"]",".buttons[\"PhotosCollectionViewController.PreviousSolButton\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        XCTAssertTrue(solTitleBar(forSol: 14).exists)
+    }
+
     
     private var app: XCUIApplication {
         return XCUIApplication()
@@ -47,6 +78,14 @@ class AstronomyUITests: XCTestCase {
     
     private var collectionViewsQuery: XCUIElementQuery {
         return app.collectionViews
+    }
+    
+    private var detailTitleNavigationBar: XCUIElement {
+        return app.navigationBars["Title"]
+    }
+    
+    private func solTitleBar(forSol index: Int) -> XCUIElement {
+        return app.navigationBars["Sol \(index)"]
     }
     
     private func cell(forIndex index: Int) -> XCUIElement {
