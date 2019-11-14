@@ -11,7 +11,7 @@
         <!--Photos Collection View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="PhotosCollectionViewController" customModule="Astronomy" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController restorationIdentifier="CollectionViewController" id="BYZ-38-t0r" customClass="PhotosCollectionViewController" customModule="Astronomy" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -81,7 +81,7 @@
         <!--Title-->
         <scene sceneID="8hb-Lt-fj0">
             <objects>
-                <viewController id="kgd-gk-9pr" customClass="PhotoDetailViewController" customModule="Astronomy" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController restorationIdentifier="DetailViewController" id="kgd-gk-9pr" customClass="PhotoDetailViewController" customModule="Astronomy" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jW9-Pv-wBy"/>
                         <viewControllerLayoutGuide type="bottom" id="Ojm-q3-djU"/>
@@ -159,7 +159,7 @@
         <!--Navigation Controller-->
         <scene sceneID="IDO-pg-60M">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="G7U-tQ-xSN" sceneMemberID="viewController">
+                <navigationController restorationIdentifier="NavigationController" automaticallyAdjustsScrollViewInsets="NO" id="G7U-tQ-xSN" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="b6M-fJ-5bP">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
