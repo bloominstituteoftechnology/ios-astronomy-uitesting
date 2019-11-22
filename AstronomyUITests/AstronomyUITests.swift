@@ -2,7 +2,7 @@
 //  AstronomyUITests.swift
 //  AstronomyUITests
 //
-//  Created by Bobby Keffury on 11/21/19.
+//  Created by Bobby Keffury on 11/22/19.
 //  Copyright © 2019 Lambda School. All rights reserved.
 //
 
@@ -12,7 +12,9 @@ class AstronomyUITests: XCTestCase {
 
     override func setUp() {
         // Put setup code here. This method is called before the invocation of each test method in the class.
-        let app = XCUIApplication.self
+
+        let app = XCUIApplication()
+        app.launchArguments = ["UITesting"]
         
         // In UI tests it is usually best to stop immediately when a failure occurs.
         continueAfterFailure = false
@@ -33,12 +35,4 @@ class AstronomyUITests: XCTestCase {
         // Use XCTAssert and related functions to verify your tests produce the correct results.
     }
 
-    func testLaunchPerformance() {
-        if #available(macOS 10.15, iOS 13.0, tvOS 13.0, *) {
-            // This measures how long it takes to launch your application.
-            measure(metrics: [XCTOSSignpostMetric.applicationLaunch]) {
-                XCUIApplication().launch()
-            }
-        }
-    }
 }
