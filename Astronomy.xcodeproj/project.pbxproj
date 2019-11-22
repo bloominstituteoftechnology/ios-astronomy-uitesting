@@ -103,7 +103,7 @@
 			path = AstronomyUITests;
 			sourceTree = "<group>";
 		};
-		4647E7CF2148CEDF00E7FF73 /* UITesting */ = {
+		4647E7CF2148CEDF00E7FF73 /* UI Testing */ = {
 			isa = PBXGroup;
 			children = (
 				4647E7C82148C3F700E7FF73 /* Sol14Photos */,
@@ -112,7 +112,7 @@
 				4647E7D02148CF2500E7FF73 /* PhotoReferences.json */,
 				468A4C2D2148802200E7FF73 /* MarsRover.json */,
 			);
-			path = UITesting;
+			path = "UI Testing";
 			sourceTree = "<group>";
 		};
 		9DBD1FFC2140D1300047905E = {
@@ -208,7 +208,7 @@
 		9DFE494D2145D3800009922B /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				4647E7CF2148CEDF00E7FF73 /* UITesting */,
+				4647E7CF2148CEDF00E7FF73 /* UI Testing */,
 				9DBD200F2140D1300047905E /* Assets.xcassets */,
 				9DBD201E2140D1AE0047905E /* Main.storyboard */,
 				9DBD20112140D1300047905E /* LaunchScreen.storyboard */,
@@ -271,6 +271,7 @@
 					};
 					9DBD20042140D1300047905E = {
 						CreatedOnToolsVersion = 9.4.1;
+						LastSwiftMigration = 1120;
 					};
 				};
 			};
@@ -540,7 +541,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.lambdaschool.Astronomy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -558,7 +559,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.lambdaschool.Astronomy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
