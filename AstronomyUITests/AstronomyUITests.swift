@@ -14,6 +14,7 @@ class AstronomyUITests: XCTestCase {
         // Put setup code here. This method is called before the invocation of each test method in the class.
         
         let app = XCUIApplication()
+        app.launchArguments = ["UITesting"]
         app.launch()
 
         // In UI tests it is usually best to stop immediately when a failure occurs.
@@ -26,13 +27,18 @@ class AstronomyUITests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
-    func testExample() {
+    func testSavingAPhoto() {
         // UI tests must launch the application that they test.
         let app = XCUIApplication()
         app.launch()
 
         // Use recording to get started writing UI tests.
+        app.collectionViews.children(matching: .cell).element(boundBy: 0).children(matching: .other).element.tap()
+        app/*@START_MENU_TOKEN@*/.buttons["PhotoDetailViewController.SaveButton"]/*[[".buttons[\"Save to Photo Library\"]",".buttons[\"PhotoDetailViewController.SaveButton\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        let alert = app.alerts["Photo Saved!"]
+
         // Use XCTAssert and related functions to verify your tests produce the correct results.
+        XCTAssertTrue(alert.exists)
     }
 
     func testLaunchPerformance() {
