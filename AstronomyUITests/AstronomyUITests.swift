@@ -14,7 +14,7 @@ class AstronomyUITests: XCTestCase {
         // Put setup code here. This method is called before the invocation of each test method in the class.
 
         let app = XCUIApplication()
-        app.launchArguments = ["UI Testing"]
+        app.launchArguments = ["UITesting"]
         
         // In UI tests it is usually best to stop immediately when a failure occurs.
         continueAfterFailure = false
