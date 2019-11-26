@@ -49,15 +49,21 @@ class AstronomyUITests: XCTestCase {
         let app = XCUIApplication()
         let nextButton = app.navigationBars.buttons["PhotosCollectionViewController.NextSolButton"]
         let previousButton = app.navigationBars.buttons["PhotosCollectionViewController.PreviousSolButton"]
-        
+        var sol: Int = 15
         
         nextButton.tap()
+        sol += 1
         previousButton.tap()
+        sol -= 1
         previousButton.tap()
+        sol -= 1
         
+        XCTAssertEqual(sol, 14)
         
         // Need to make sure that the app is on the 14th sol
         
     }
 
 }
+
+
