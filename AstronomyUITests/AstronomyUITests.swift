@@ -31,8 +31,14 @@ class AstronomyUITests: XCTestCase {
     func testSavingPhoto() {
         // UI tests must launch the application that they test.
         let app = XCUIApplication()
-
         
+        let cell = app.collectionViews.children(matching: .cell).element(boundBy: 0).otherElements.containing(.image, identifier:"photoCell").element
+        cell.tap()
+        let saveButton = app.buttons["PhotoDetailViewController.SaveButton"]
+        saveButton.tap()
+        let alert = app.alerts["Photo Saved!"].scrollViews.otherElements.buttons["Okay"]
+        alert.tap()
+        // Make sure the photo was saved
         
         // Use recording to get started writing UI tests.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
@@ -41,10 +47,16 @@ class AstronomyUITests: XCTestCase {
     func testViewSol() {
         
         let app = XCUIApplication()
+        let nextButton = app.navigationBars.buttons["PhotosCollectionViewController.NextSolButton"]
+        let previousButton = app.navigationBars.buttons["PhotosCollectionViewController.PreviousSolButton"]
         
-        app.navigationBars["Sol 14"]/*@START_MENU_TOKEN@*/.buttons["PhotosCollectionViewController.NextSolButton"]/*[[".buttons[\">\"]",".buttons[\"PhotosCollectionViewController.NextSolButton\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
-        app.navigationBars["Sol 15"]/*@START_MENU_TOKEN@*/.buttons["PhotosCollectionViewController.NextSolButton"]/*[[".buttons[\">\"]",".buttons[\"PhotosCollectionViewController.NextSolButton\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
-        app.navigationBars["Sol 16"]/*@START_MENU_TOKEN@*/.buttons["PhotosCollectionViewController.PreviousSolButton"]/*[[".buttons[\"<\"]",".buttons[\"PhotosCollectionViewController.PreviousSolButton\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        
+        nextButton.tap()
+        previousButton.tap()
+        previousButton.tap()
+        
+        
+        // Need to make sure that the app is on the 14th sol
         
     }
 
