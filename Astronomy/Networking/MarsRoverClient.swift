@@ -33,13 +33,13 @@ class MarsRoverClient {
     func localMarsRover(completion: @escaping (MarsRover?, Error?) -> Void) {
         
         guard let roverURL = Bundle.main.url(forResource: "MarsRover", withExtension: "json", subdirectory: nil) else { fatalError("URL to local Rover JSON is nil") }
-        
+ 
         do {
             let data = try Data(contentsOf: roverURL)
             
             let jsonDecoder = MarsPhotoReference.jsonDecoder
             
-            let rover = try jsonDecoder.decode([String: MarsRover].self, from: data)["photoManifest"]
+            let rover = try jsonDecoder.decode([String: MarsRover].self, from: data)["photo_manifest"]
             
             completion(rover, nil)
             

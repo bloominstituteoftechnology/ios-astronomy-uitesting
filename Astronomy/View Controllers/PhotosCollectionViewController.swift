@@ -12,16 +12,16 @@ class PhotosCollectionViewController: UIViewController, UICollectionViewDataSour
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         client.fetchMarsRover(named: "curiosity") { (rover, error) in
             if let error = error {
                 NSLog("Error fetching info for curiosity: \(error)")
                 return
             }
-            
+
             self.roverInfo = rover
         }
-        
+
         configureTitleView()
         updateViews()
     }
@@ -29,7 +29,7 @@ class PhotosCollectionViewController: UIViewController, UICollectionViewDataSour
     @IBAction func goToPreviousSol(_ sender: Any?) {
         guard let solDescription = solDescription else { return }
         guard let solDescriptions = roverInfo?.solDescriptions else { return }
-        guard let index = solDescriptions.index(of: solDescription) else { return }
+        guard let index = solDescriptions.firstIndex(of: solDescription) else { return }
         guard index > 0 else { return }
         self.solDescription = solDescriptions[index-1]
     }
@@ -218,7 +218,7 @@ class PhotosCollectionViewController: UIViewController, UICollectionViewDataSour
     
     private var roverInfo: MarsRover? {
         didSet {
-            solDescription = roverInfo?.solDescriptions[1]
+            solDescription = roverInfo?.solDescriptions.first
         }
     }
     
