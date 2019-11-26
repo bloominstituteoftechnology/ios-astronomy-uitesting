@@ -7,6 +7,7 @@
 //
 
 import XCTest
+@testable import Astronomy
 
 class AstronomyUITests: XCTestCase {
     
@@ -40,28 +41,45 @@ class AstronomyUITests: XCTestCase {
         button.tap()
         
         let alert = app.alerts["Photo Saved!"]
-        XCTAssertTrue(alert.exists)
+        XCTAssert(alert.exists)
     }
     
-//    func testNextSol() {
-//        let app = XCUIApplication()
-//        app.launch()
-//        
-//        
-//        let sol19NavigationBar = XCUIApplication().navigationBars["Sol 19"]
-//        sol19NavigationBar.buttons[">"].tap()
-//        sol19NavigationBar/*@START_MENU_TOKEN@*/.buttons["PhotosCollectionViewController.NextSolButton"]/*[[".buttons[\">\"]",".buttons[\"PhotosCollectionViewController.NextSolButton\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
-//        
+    func testNextSol() {
+        app.navigationBarTitle(for: 14).buttons[">"].tap()
+        XCTAssert(app.navigationBarTitle(for: 15).exists)
+    }
+    
+    func testPreviousSol() {
+        app.navigationBarTitle(for: 14).buttons[">"].tap()
+        app.navigationBarTitle(for: 15).buttons[">"].tap()
+        app.navigationBarTitle(for: 16).buttons["<"].tap()
+        app.navigationBarTitle(for: 15).buttons["<"].tap()
 
-//        
-//    }
-//
-//    func testLaunchPerformance() {
-//        if #available(macOS 10.15, iOS 13.0, tvOS 13.0, *) {
-//            // This measures how long it takes to launch your application.
-//            measure(metrics: [XCTOSSignpostMetric.applicationLaunch]) {
-//                XCUIApplication().launch()
-//            }
-//        }
-//    }
+        XCTAssert(app.navigationBarTitle(for: 14).exists)
+    }
+    
+    func testBackButton() {
+        app.collectionViews.children(matching: .cell).element(boundBy: 1).otherElements.containing(.image, identifier:"imageCell").element.tap()
+        let backButton = app.navigationBars["Title"].buttons["Sol 14"]
+        backButton.tap()
+        
+        XCTAssert(app.navigationBarTitle(for: 14).exists)
+        
+    }
+
+    func testLaunchPerformance() {
+        if #available(macOS 10.15, iOS 13.0, tvOS 13.0, *) {
+            // This measures how long it takes to launch your application.
+            measure(metrics: [XCTOSSignpostMetric.applicationLaunch]) {
+                XCUIApplication().launch()
+            }
+        }
+    }
+}
+
+extension XCUIApplication {
+
+    func navigationBarTitle(for sol: Int) -> XCUIElement {
+        return XCUIApplication().navigationBars["Sol \(sol)"]
+    }
 }
