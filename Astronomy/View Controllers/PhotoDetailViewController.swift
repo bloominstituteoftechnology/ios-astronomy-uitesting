@@ -10,11 +10,47 @@ import UIKit
 import Photos
 
 class PhotoDetailViewController: UIViewController {
+    // MARK: - Properties
+    
+    @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var detailLabel: UILabel!
+    @IBOutlet weak var cameraLabel: UILabel!
+    
+    var photo: MarsPhotoReference? {
+        didSet {
+            updateViews()
+        }
+    }
+    
+    lazy var dateFormatter: DateFormatter = {
+        let df = DateFormatter()
+        df.dateStyle = .short
+        df.timeStyle = .short
+        return df
+    }()
+    
+    // MARK: - View Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         updateViews()
     }
+    
+    private func updateViews() {
+        guard let photo = photo, isViewLoaded else { return }
+        do {
+            let data = try Data(contentsOf: photo.imageURL.usingHTTPS!)
+            imageView.image = UIImage(data: data)?.filtered()
+            let dateString = dateFormatter.string(from: photo.earthDate)
+            detailLabel.text = "Taken by \(photo.camera.roverId) on \(dateString) (Sol \(photo.sol))"
+            cameraLabel.text = photo.camera.fullName
+        } catch {
+            NSLog("Error setting up views on detail view controller: \(error)")
+        }
+        title = "Sol \(photo.sol) - Photo \(photo.id)"
+    }
+    
+    // MARK: - Methods
     
     @IBAction func save(_ sender: Any) {
         guard let image = imageView.image else { return }
@@ -39,39 +75,4 @@ class PhotoDetailViewController: UIViewController {
         
         present(alert, animated: true, completion: nil)
     }
-    
-    // MARK: - Private
-    
-    private func updateViews() {
-        guard let photo = photo, isViewLoaded else { return }
-        do {
-            let data = try Data(contentsOf: photo.imageURL.usingHTTPS!)
-            imageView.image = UIImage(data: data)?.filtered()
-            let dateString = dateFormatter.string(from: photo.earthDate)
-            detailLabel.text = "Taken by \(photo.camera.roverId) on \(dateString) (Sol \(photo.sol))"
-            cameraLabel.text = photo.camera.fullName
-        } catch {
-            NSLog("Error setting up views on detail view controller: \(error)")
-        }
-    }
-    
-    // MARK: - Properties
-    
-    var photo: MarsPhotoReference? {
-        didSet {
-            updateViews()
-        }
-    }
-    
-    lazy var dateFormatter: DateFormatter = {
-        let df = DateFormatter()
-        df.dateStyle = .short
-        df.timeStyle = .short
-        return df
-    }()
-    
-    @IBOutlet weak var imageView: UIImageView!
-    @IBOutlet weak var detailLabel: UILabel!
-    @IBOutlet weak var cameraLabel: UILabel!
-    
 }
