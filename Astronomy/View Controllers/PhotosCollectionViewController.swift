@@ -69,12 +69,20 @@ class PhotosCollectionViewController: UIViewController,
     }
     
     private func configureTitleView() {
+        let keyStrings = PropertyKeys.uiTesting.collectionVC.button
+        let prevItem = UIBarButtonItem(
+            title: "<",
+            style: .plain,
+            target: self,
+            action: #selector(goToPreviousSol(_:)))
+        prevItem.accessibilityIdentifier = keyStrings.prevSol.id
         
-        let prevItem = UIBarButtonItem(title: "<", style: .plain, target: self, action: #selector(goToPreviousSol(_:)))
-        prevItem.accessibilityIdentifier = "PhotosCollectionViewController.PreviousSolButton"
-        
-        let nextItem = UIBarButtonItem(title: ">", style: .plain, target: self, action: #selector(goToNextSol(_:)))
-        nextItem.accessibilityIdentifier = "PhotosCollectionViewController.NextSolButton"
+        let nextItem = UIBarButtonItem(
+            title: ">",
+            style: .plain,
+            target: self,
+            action: #selector(goToNextSol(_:)))
+        nextItem.accessibilityIdentifier = keyStrings.prevSol.id
         
         navigationItem.setLeftBarButton(prevItem, animated: false)
         navigationItem.setRightBarButton(nextItem, animated: false)
@@ -85,7 +93,10 @@ class PhotosCollectionViewController: UIViewController,
         title = "Sol \(solDescription?.sol ?? 0)"
     }
     
-    private func loadImage(forCell cell: ImageCollectionViewCell, forItemAt indexPath: IndexPath) {
+    private func loadImage(
+        forCell cell: ImageCollectionViewCell,
+        forItemAt indexPath: IndexPath)
+    {
         let photoReference = photoReferences[indexPath.item]
         // Check for image in cache
         if let cachedImage = cache.value(for: photoReference.id) {
@@ -140,7 +151,8 @@ class PhotosCollectionViewController: UIViewController,
     @IBAction func goToPreviousSol(_ sender: Any?) {
         guard let solDescription = solDescription else { return }
         guard let solDescriptions = roverInfo?.solDescriptions else { return }
-        guard let index = solDescriptions.firstIndex(of: solDescription) else { return }
+        guard let index = solDescriptions.firstIndex(of: solDescription)
+            else { return }
         guard index > 0 else { return }
         self.solDescription = solDescriptions[index-1]
     }
@@ -148,7 +160,8 @@ class PhotosCollectionViewController: UIViewController,
     @IBAction func goToNextSol(_ sender: Any?) {
         guard let solDescription = solDescription else { return }
         guard let solDescriptions = roverInfo?.solDescriptions else { return }
-        guard let index = solDescriptions.firstIndex(of: solDescription) else { return }
+        guard let index = solDescriptions.firstIndex(of: solDescription)
+            else { return }
         guard index < solDescriptions.count - 1 else { return }
         self.solDescription = solDescriptions[index+1]
     }
@@ -159,12 +172,18 @@ class PhotosCollectionViewController: UIViewController,
         return 1
     }
     
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(
+        _ collectionView: UICollectionView,
+        numberOfItemsInSection section: Int
+    ) -> Int {
         NSLog("num photos: \(photoReferences.count)")
         return photoReferences.count
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    func collectionView(
+        _ collectionView: UICollectionView,
+        cellForItemAt indexPath: IndexPath
+    ) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ImageCell", for: indexPath) as? ImageCollectionViewCell ?? ImageCollectionViewCell()
         
         loadImage(forCell: cell, forItemAt: indexPath)
@@ -172,7 +191,11 @@ class PhotosCollectionViewController: UIViewController,
         return cell
     }
     
-    func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+    func collectionView(
+        _ collectionView: UICollectionView,
+        didEndDisplaying cell: UICollectionViewCell,
+        forItemAt indexPath: IndexPath)
+    {
         if photoReferences.count > 0 {
             let photoRef = photoReferences[indexPath.item]
             operations[photoRef.id]?.cancel()
@@ -183,7 +206,11 @@ class PhotosCollectionViewController: UIViewController,
         }
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+    func collectionView(
+        _ collectionView: UICollectionView,
+        layout collectionViewLayout: UICollectionViewLayout,
+        sizeForItemAt indexPath: IndexPath
+    ) -> CGSize {
         let flowLayout = collectionViewLayout as! UICollectionViewFlowLayout
         var totalUsableWidth = collectionView.frame.width
         let inset = self.collectionView(collectionView, layout: collectionViewLayout, insetForSectionAt: indexPath.section)
@@ -196,7 +223,11 @@ class PhotosCollectionViewController: UIViewController,
         return CGSize(width: width, height: width)
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+    func collectionView(
+        _ collectionView: UICollectionView,
+        layout collectionViewLayout: UICollectionViewLayout,
+        insetForSectionAt section: Int
+    ) -> UIEdgeInsets {
         return UIEdgeInsets(top: 0, left: 10.0, bottom: 0, right: 10.0)
     }
     
@@ -212,8 +243,10 @@ class PhotosCollectionViewController: UIViewController,
     
     // MARK: - UI Testing Methods
     
-    func loadLocalImage(for cell: ImageCollectionViewCell, for indexPath: IndexPath) {
-        
+    func loadLocalImage(
+        for cell: ImageCollectionViewCell,
+        for indexPath: IndexPath)
+    {
         let photoRef = photoReferences[indexPath.row]
         
         guard let url = Bundle.main.url(forResource: "\(photoRef.id)", withExtension: "jpg", subdirectory: "Sol\(photoRef.sol)Photos") else { return }
