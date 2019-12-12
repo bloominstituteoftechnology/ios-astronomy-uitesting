@@ -22,5 +22,25 @@ class AstronomyUITests: XCTestCase {
 
     // MARK: - Tests
     
+    func testSavingPhoto() {
+        
+    }
+    
+    func testViewingOtherSols() {
+        
+    }
+    
+    func testScrollingDownAndUp() {
+        
+    }
+    
+    func testSolListStart() {
+        
+    }
+    
+    func testSolListEnd() {
+        
+    }
+    
     // MARK: - Helper Methods
 }
