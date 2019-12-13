@@ -63,6 +63,11 @@ class AstronomyUITests: XCTestCase {
 
     // MARK: - Tests
     
+    func testPhotoCellsExist() {
+        XCTAssertFalse(cells.isEmpty)
+        XCTAssertTrue(app.collectionViews.cells.images.firstMatch.exists)
+    }
+    
     func testSavingPhoto() {
         
     }
