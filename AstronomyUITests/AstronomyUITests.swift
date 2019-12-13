@@ -69,7 +69,17 @@ class AstronomyUITests: XCTestCase {
     }
     
     func testSavingPhoto() {
+        cells.first?.tap()
         
+        XCTAssertTrue(savePhotoButton.exists)
+        XCTAssertEqual(savePhotoButton.label, savePhotoButtonText)
+        savePhotoButton.tap()
+        
+        XCTAssertTrue(photoSavedAlert.exists)
+        let saveOKButton = photoSavedAlert.scrollViews.otherElements.buttons["OK"]
+        XCTAssertTrue(saveOKButton.exists)
+        saveOKButton.tap()
+        XCTAssertFalse(photoSavedAlert.exists)
     }
     
     func testViewingOtherSols() {
