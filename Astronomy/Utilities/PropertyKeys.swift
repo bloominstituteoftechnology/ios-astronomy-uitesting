@@ -8,45 +8,22 @@
 
 import Foundation
 
-struct PropertyKeys {
-    static let uiTesting = (
-        collectionVC: (
-            photoCell: "PhotoCell",
-            button: (
-                prevSol: (
-                    label: "prevSol",
-                    id: "<"
-                ),
-                nextSol: (
-                    label: "nextSol",
-                    id: ">"
-                )
-            )
-        ),
-        detailVC: (
-            saveToPhotoLibraryButton: (
-                text: "Save to Photo Library",
-                id: "saveToPhotoLibrary"
-            ),
-            titleID: "",
-            descriptionID: "",
-            cameraLabelID: ""
-        ),
-        sol14: (
-            title: "Sol 14",
-            photo: (
-                first: (
-                    title: "Sol 14 - Photo 726",
-                    description: "Taken by 5 on 8/19/12, 5:00 PM (Sol 14)",
-                    camera: "Camera: Front Hazard Avoidance Camera"
-                ),
-                last: (
-                    title: "Sol 14 - Photo 49158",
-                    description: "Taken by 5 on 8/19/12, 5:00 PM (Sol 14)",
-                    camera: "Camera: Navigation Camera"
-                )
-            )
-        )
-    )
+struct PropKeys {
+    struct UITests {
+        static let photoCell = "PhotoCell"
+        
+        static let prevSolButtonID = "PrevSolButton"
+        static let nextSolButtonID = "NextSolButton"
+        
+        static let prevSolButtonText = "<"
+        static let nextSolButtonText = ">"
+        
+        static let savePhotoButtonText = "Save to Photo Library"
+        static let savePhotoButtonID = "SaveToPhotoButton"
+        
+        static let detailVCTitleID = "DetailVCTitle"
+        static let detailVCDescriptionID = "DetailVCDescription"
+        static let detailVCCameraLabelID = "DetailVCCameraLabel"
+    }
 }
 

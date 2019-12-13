@@ -48,6 +48,7 @@ class PhotosCollectionViewController: UIViewController,
     }
     
     @IBOutlet var collectionView: UICollectionView!
+    
     let solLabel = UILabel()
     
     // MARK: - View Setup
@@ -69,20 +70,19 @@ class PhotosCollectionViewController: UIViewController,
     }
     
     private func configureTitleView() {
-        let keyStrings = PropertyKeys.uiTesting.collectionVC.button
         let prevItem = UIBarButtonItem(
             title: "<",
             style: .plain,
             target: self,
             action: #selector(goToPreviousSol(_:)))
-        prevItem.accessibilityIdentifier = keyStrings.prevSol.id
+        prevItem.accessibilityIdentifier = PropKeys.UITests.prevSolButtonID
         
         let nextItem = UIBarButtonItem(
             title: ">",
             style: .plain,
             target: self,
             action: #selector(goToNextSol(_:)))
-        nextItem.accessibilityIdentifier = keyStrings.prevSol.id
+        nextItem.accessibilityIdentifier = PropKeys.UITests.nextSolButtonID
         
         navigationItem.setLeftBarButton(prevItem, animated: false)
         navigationItem.setRightBarButton(nextItem, animated: false)

@@ -9,9 +9,9 @@
 import UIKit
 
 class ImageCollectionViewCell: UICollectionViewCell {
-    
     override func prepareForReuse() {
         super.prepareForReuse()
+        self.accessibilityLabel = PropKeys.UITests.photoCell
         imageView.image = #imageLiteral(resourceName: "MarsPlaceholder")
     }
     

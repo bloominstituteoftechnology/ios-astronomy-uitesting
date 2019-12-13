@@ -33,6 +33,10 @@ class PhotoDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        detailLabel.accessibilityIdentifier = PropKeys.UITests.detailVCDescriptionID
+        cameraLabel.accessibilityIdentifier = PropKeys.UITests.detailVCCameraLabelID
+        
         updateViews()
     }
     
@@ -68,8 +72,14 @@ class PhotoDetailViewController: UIViewController {
     }
     
     func presentSuccessfulSaveAlert() {
-        let alert = UIAlertController(title: "Photo Saved!", message: "The photo has been saved to your Photo Library!", preferredStyle: .alert)
-        let okayAction = UIAlertAction(title: "Okay", style: .default, handler: nil)
+        let alert = UIAlertController(
+            title: "Photo Saved!",
+            message: "The photo has been saved to your Photo Library!",
+            preferredStyle: .alert)
+        let okayAction = UIAlertAction(
+            title: "OK",
+            style: .default,
+            handler: nil)
         
         alert.addAction(okayAction)
         
