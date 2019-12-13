@@ -127,7 +127,41 @@ class AstronomyUITests: XCTestCase {
         XCTAssertFalse(cells.isEmpty)
     }
     
-    func testSolListEnd() {
+    func testScrollAndDetails() {
+        for _ in 1...10 {
+            app.swipeUp()
+        }
         
+        cells.last?.tap()
+        
+        let lastDetailVCNavBar = app.navigationBars["Sol 15 - Photo 32353"]
+        let lastDetailVCBackButton = lastDetailVCNavBar.buttons["Sol 15"]
+        
+        XCTAssertTrue(lastDetailVCNavBar.exists)
+        XCTAssertEqual(app.staticTexts[detailVCDescriptionID].label, "Taken by 5 on 8/20/12, 5:00 PM (Sol 15)")
+        XCTAssertEqual(app.staticTexts[detailVCCameraLabelID].label, "Navigation Camera")
+        XCTAssertEqual(lastDetailVCBackButton.label, sol15)
+        
+        lastDetailVCBackButton.tap()
+        
+        XCTAssertTrue(app.navigationBars[sol15].exists)
+        
+        for _ in 1...10 {
+            app.swipeDown()
+        }
+        
+        cells.first?.tap()
+        
+        let firstDetailVCNavBar = app.navigationBars["Sol 15 - Photo 725"]
+        let firstDetailVCBackButton = firstDetailVCNavBar.buttons["Sol 15"]
+        
+        XCTAssertTrue(firstDetailVCNavBar.exists)
+        XCTAssertEqual(app.staticTexts[detailVCDescriptionID].label, "Taken by 5 on 8/20/12, 5:00 PM (Sol 15)")
+        XCTAssertEqual(app.staticTexts[detailVCCameraLabelID].label, "Front Hazard Avoidance Camera")
+        XCTAssertEqual(firstDetailVCBackButton.label, sol15)
+        
+        firstDetailVCBackButton.tap()
+        
+        XCTAssertTrue(app.navigationBars[sol15].exists)
     }
 }
