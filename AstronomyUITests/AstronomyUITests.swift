@@ -9,35 +9,42 @@
 import XCTest
 
 class AstronomyUITests: XCTestCase {
+    
+    var app: XCUIApplication!
 
     override func setUp() {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-
-        // In UI tests it is usually best to stop immediately when a failure occurs.
+        app = XCUIApplication()
+        app.launchArguments = ["UITesting"]
         continueAfterFailure = false
-
-        // In UI tests it’s important to set the initial state - such as interface orientation - required for your tests before they run. The setUp method is a good place to do this.
-    }
-
-    override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
-
-    func testExample() {
-        // UI tests must launch the application that they test.
-        let app = XCUIApplication()
         app.launch()
-
-        // Use recording to get started writing UI tests.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    }
+    
+    func testGoToPreviousSol() {
+        app = XCUIApplication()
+        let previousSolButton = app.buttons["PhotosCollectionView.previousSolButton"]
+        previousSolButton.tap()
+        XCTAssert(app.navigationBars["Sol 14"].exists)
+    }
+    
+    func testGoToNextSol() {
+        app = XCUIApplication()
+        let nextSolButton = app.buttons["PhotosCollectionView.nextSolButton"]
+        nextSolButton.tap()
+        XCTAssert(app.navigationBars["Sol 16"].exists)
+    }
+    
+    func testImageLoad() {
+        app = XCUIApplication()
+        app.collectionViews.children(matching: .cell).element(boundBy: 0).children(matching: .other).element.tap()
+        XCTAssert(app.buttons["PhotoDetailView.saveButton"].exists)
+    }
+    
+    func testImageSave() {
+        app = XCUIApplication()
+        app.collectionViews.children(matching: .cell).element(boundBy: 6).children(matching: .other).element.tap()
+        app.buttons["PhotoDetailView.saveButton"].tap()
+        XCTAssert(app.alerts["Photo Saved!"].exists)
+        app.alerts["Photo Saved!"].buttons["Okay"].tap()
     }
 
-    func testLaunchPerformance() {
-        if #available(macOS 10.15, iOS 13.0, tvOS 13.0, *) {
-            // This measures how long it takes to launch your application.
-            measure(metrics: [XCTOSSignpostMetric.applicationLaunch]) {
-                XCUIApplication().launch()
-            }
-        }
-    }
 }
