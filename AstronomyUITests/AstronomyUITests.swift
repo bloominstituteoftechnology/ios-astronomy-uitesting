@@ -83,15 +83,48 @@ class AstronomyUITests: XCTestCase {
     }
     
     func testViewingOtherSols() {
+        // sol 15
+        XCTAssertFalse(app.navigationBars[sol14].exists)
+        XCTAssertTrue(app.navigationBars[sol15].exists)
+        XCTAssertFalse(app.navigationBars[sol16].exists)
         
-    }
-    
-    func testScrollingDownAndUp() {
+        XCTAssertFalse(cells.isEmpty)
         
-    }
-    
-    func testSolListStart() {
+        XCTAssertTrue(prevSolButton.exists)
+        XCTAssertEqual(prevSolButton.label, prevSolButtonText)
+        XCTAssertTrue(nextSolButton.exists)
+        XCTAssertEqual(nextSolButton.label, nextSolButtonText)
         
+        prevSolButton.tap()
+        
+        // sol 14
+        XCTAssertTrue(app.navigationBars[sol14].exists)
+        XCTAssertFalse(app.navigationBars[sol15].exists)
+        XCTAssertFalse(app.navigationBars[sol16].exists)
+        XCTAssertFalse(cells.isEmpty)
+        
+        prevSolButton.tap()
+        
+        // still sol 14
+        XCTAssertTrue(app.navigationBars[sol14].exists)
+        XCTAssertFalse(app.navigationBars[sol15].exists)
+        XCTAssertFalse(app.navigationBars[sol16].exists)
+        XCTAssertFalse(cells.isEmpty)
+        
+        nextSolButton.tap()
+        
+        // sol 15
+        XCTAssertFalse(app.navigationBars[sol14].exists)
+        XCTAssertTrue(app.navigationBars[sol15].exists)
+        XCTAssertFalse(app.navigationBars[sol16].exists)
+        
+        nextSolButton.tap()
+        
+        // sol 16
+        XCTAssertFalse(app.navigationBars[sol14].exists)
+        XCTAssertFalse(app.navigationBars[sol15].exists)
+        XCTAssertTrue(app.navigationBars[sol16].exists)
+        XCTAssertFalse(cells.isEmpty)
     }
     
     func testSolListEnd() {
