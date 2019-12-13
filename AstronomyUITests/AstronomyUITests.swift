@@ -62,7 +62,7 @@ class AstronomyUITests: XCTestCase {
     }
     
     func testSavePhoto() {
-        let cell1 = cell(forIndex: 0)
+        let cell1 = cell(forIndex: 1)
         cell1.tap()
         app/*@START_MENU_TOKEN@*/.buttons["PhotoDetailViewController.SaveButton"]/*[[".buttons[\"Save to Photo Library\"]",".buttons[\"PhotoDetailViewController.SaveButton\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
         XCTAssert(app.alerts["Photo Saved!"].scrollViews.otherElements.buttons["Okay"].exists)
