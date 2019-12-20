@@ -145,4 +145,13 @@ class AstronomyUITests: XCTestCase {
 		okayButton.tap()
 	}
 
+	func testSwipingCollection() {
+
+		let app = XCUIApplication()
+		app.cells["PhotosCollectionVC.Image[0, 0]"].swipeUp()
+		app.cells.element(boundBy: 0).swipeUp()
+		app.cells.element(boundBy: 0).swipeUp()
+		app.cells.element(boundBy: 0).swipeUp()
+		app.cells.element(boundBy: 0).swipeUp()
+	}
 }
