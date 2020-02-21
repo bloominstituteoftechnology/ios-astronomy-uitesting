@@ -27,9 +27,25 @@ class AstronomyUITests: XCTestCase {
         let app = XCUIApplication()
         app.launch()
     }
+    
+    func testCellExists() {
+        let app = XCUIApplication()
+        let predicate = NSPredicate(format: "exists == false")
+        expectation(for: predicate, evaluatedWith: app.collectionViews["CollectionViewCell"], handler: nil)
+        waitForExpectations(timeout: 3, handler: nil)
+    }
 
-    func test() {
+    func testSavingPhoto() {
+        
+        let app = XCUIApplication()
+        
+        let predicate = NSPredicate(format: "exists == false")
+        expectation(for: predicate, evaluatedWith: app.collectionViews["CollectionViewCell"], handler: nil)
+        waitForExpectations(timeout: 3, handler: nil)
+        
+        app.collectionViews["CollectionViewCell"].tap()
+        app/*@START_MENU_TOKEN@*/.buttons["PhotoDetailViewController.SaveButton"]/*[[".buttons[\"Save to Photo Library\"]",".buttons[\"PhotoDetailViewController.SaveButton\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        app.alerts["Photo Saved!"].scrollViews.otherElements.buttons["Okay"].tap()
         
     }
-    
 }
