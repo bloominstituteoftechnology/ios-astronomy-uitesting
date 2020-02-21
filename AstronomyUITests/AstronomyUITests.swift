@@ -28,8 +28,12 @@ class AstronomyUITests: XCTestCase {
         app.launch()
     }
     
+    private var app: XCUIApplication {
+        return XCUIApplication()
+    }
+    
     func testCellExists() {
-        let app = XCUIApplication()
+        
         let predicate = NSPredicate(format: "exists == false")
         expectation(for: predicate, evaluatedWith: app.collectionViews["CollectionViewCell"], handler: nil)
         waitForExpectations(timeout: 3, handler: nil)
@@ -37,7 +41,6 @@ class AstronomyUITests: XCTestCase {
 
     func testSavingPhoto() {
         
-        let app = XCUIApplication()
         
         let predicate = NSPredicate(format: "exists == false")
         expectation(for: predicate, evaluatedWith: app.collectionViews["CollectionViewCell"], handler: nil)
