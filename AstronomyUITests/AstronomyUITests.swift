@@ -55,6 +55,11 @@ class AstronomyUITests: XCTestCase {
         XCTAssertEqual(app.alerts.element.label, "Photo Saved!")
     }
     
+    func testFirstLaunch() {
+        XCTAssertTrue(app.navigationBars.staticTexts.count != 0)
+        XCTAssertTrue(rightBarButtonItem.isEnabled)
+        XCTAssertTrue(leftBarButtonItem.isEnabled)
+    }
     
     
     
