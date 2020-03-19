@@ -44,6 +44,10 @@ class AstronomyUITests: XCTestCase {
         return app.images["PhotoDetailViewController.ImageView"]
     }
     
+    private var backButton: XCUIElement {
+        return app.buttons.element(boundBy: 0)
+    }
+    
     override func setUp() {
        
         let app = XCUIApplication()
@@ -53,12 +57,19 @@ class AstronomyUITests: XCTestCase {
         
     }
     
-    func testViewingAnotherSol() {
+    func testViewNextSol() {
         XCTAssert(rightBarButtonItem.isHittable)
         rightBarButtonItem.tap()
         XCTAssertTrue(imagePhotoCell.exists)
     }
     
+    func testViewPrevSol() {
+        XCTAssertNotEqual(app.navigationBars.staticTexts.firstMatch.label, "Sol 0")
+        XCTAssert(leftBarButtonItem.isHittable)
+        leftBarButtonItem.tap()
+        XCTAssertTrue(imagePhotoCell.exists)
+      
+    }
     
      func testSavingPhoto() {
         firstCell.tap()
@@ -68,7 +79,7 @@ class AstronomyUITests: XCTestCase {
     }
     
     func testFirstLaunch() {
-        XCTAssertTrue(app.navigationBars.staticTexts.count != 0)
+        XCTAssertTrue(app.navigationBars.staticTexts.firstMatch.label.count != 0)
         XCTAssertTrue(rightBarButtonItem.isEnabled)
         XCTAssertTrue(leftBarButtonItem.isEnabled)
     
@@ -81,11 +92,14 @@ class AstronomyUITests: XCTestCase {
         XCTAssertTrue(savePhotoButton.isEnabled)
         XCTAssertEqual(savePhotoButton.label,"Save to Photo Library")
         XCTAssertTrue(detailLabel.label.count != 0)
-        
-        
     }
     
-    
+    func testGoFromDetailSceneToMainScene() {
+        firstCell.tap()
+        backButton.tap()
+        XCTAssert(imagePhotoCell.exists)
+        XCTAssertTrue(app.navigationBars.staticTexts.firstMatch.label.count != 0)
+    }
     
 
 
