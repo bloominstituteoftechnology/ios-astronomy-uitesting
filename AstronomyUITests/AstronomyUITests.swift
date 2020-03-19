@@ -32,6 +32,18 @@ class AstronomyUITests: XCTestCase {
         return app.buttons["PhotosCollectionViewController.PreviousSolButton"]
     }
     
+    private var detailLabel: XCUIElement {
+        return app.staticTexts["PhotoDetailController.DetailLabel"]
+    }
+    
+    private var cameraLabel: XCUIElement {
+        return app.staticTexts["PhotoDetailController.CameraLabel"]
+    }
+    
+    private var detailImageview: XCUIElement {
+        return app.images["PhotoDetailViewController.ImageView"]
+    }
+    
     override func setUp() {
        
         let app = XCUIApplication()
@@ -59,12 +71,22 @@ class AstronomyUITests: XCTestCase {
         XCTAssertTrue(app.navigationBars.staticTexts.count != 0)
         XCTAssertTrue(rightBarButtonItem.isEnabled)
         XCTAssertTrue(leftBarButtonItem.isEnabled)
+    
+    }
+    
+    
+    func testDetailScene() {
+        firstCell.tap()
+        XCTAssert(detailImageview.exists)
+        XCTAssertTrue(savePhotoButton.isEnabled)
+        XCTAssertEqual(savePhotoButton.label,"Save to Photo Library")
+        XCTAssertTrue(detailLabel.label.count != 0)
+        
+        
     }
     
     
     
-    
-    
-    
+
 
 }
