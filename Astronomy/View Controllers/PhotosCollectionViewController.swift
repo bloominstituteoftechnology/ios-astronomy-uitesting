@@ -174,6 +174,7 @@ class PhotosCollectionViewController: UIViewController, UICollectionViewDataSour
             
             if let image = filterOp.image {
                 cell.imageView.image = image
+                
             }
         }
         
@@ -203,6 +204,7 @@ class PhotosCollectionViewController: UIViewController, UICollectionViewDataSour
             let image = UIImage(data: imageData)
             
             cell.imageView.image = image
+            cell.accessibilityIdentifier = "Cell\(indexPath.item)"
         } catch {
             NSLog("Unable to initialize data with URL: \(url), error: \(error)")
         }
