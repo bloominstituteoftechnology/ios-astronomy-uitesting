@@ -16,7 +16,7 @@ class AstronomyUITests: XCTestCase {
         return app.cells.element(boundBy: 0)
     }
     
-    private var imageView: XCUIElement {
+    private var imagePhotoCell: XCUIElement {
         return app.images["PhotoCollectionVC.ImageView"]
     }
     
@@ -24,7 +24,13 @@ class AstronomyUITests: XCTestCase {
         return  app.buttons["Button"]
     }
     
-
+    private var rightBarButtonItem: XCUIElement {
+        return app.buttons["PhotosCollectionViewController.NextSolButton"]
+    }
+    
+    private var leftBarButtonItem: XCUIElement {
+        return app.buttons["PhotosCollectionViewController.PreviousSolButton"]
+    }
     
     override func setUp() {
        
@@ -34,6 +40,13 @@ class AstronomyUITests: XCTestCase {
         app.launch()
         
     }
+    
+    func testViewingAnotherSol() {
+        XCTAssert(rightBarButtonItem.isHittable)
+        rightBarButtonItem.tap()
+        XCTAssertTrue(imagePhotoCell.exists)
+    }
+    
     
      func testSavingPhoto() {
         firstCell.tap()

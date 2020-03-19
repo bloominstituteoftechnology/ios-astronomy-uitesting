@@ -114,7 +114,7 @@ class PhotosCollectionViewController: UIViewController, UICollectionViewDataSour
         
         let prevItem = UIBarButtonItem(title: "<", style: .plain, target: self, action: #selector(goToPreviousSol(_:)))
         prevItem.accessibilityIdentifier = "PhotosCollectionViewController.PreviousSolButton"
-        
+   
 //        let nextTitle = NSAttributedString(string: ">", attributes: attrs)
 //        let nextButton = UIButton(type: .system)
 //        nextButton.setAttributedTitle(nextTitle, for: .normal)
@@ -123,7 +123,7 @@ class PhotosCollectionViewController: UIViewController, UICollectionViewDataSour
         
         let nextItem = UIBarButtonItem(title: ">", style: .plain, target: self, action: #selector(goToNextSol(_:)))
         nextItem.accessibilityIdentifier = "PhotosCollectionViewController.NextSolButton"
-        
+       
 //        let stackView = UIStackView(arrangedSubviews: [prevButton, solLabel, nextButton])
 //        stackView.axis = .horizontal
 //        stackView.alignment = .fill
