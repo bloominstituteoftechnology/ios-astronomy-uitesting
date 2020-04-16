@@ -29,12 +29,21 @@ class AstronomyUITests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
-    func testExample() throws {
-        // UI tests must launch the application that they test.
+    func testSavingPhoto() throws {
         app.launch()
 
-        // Use recording to get started writing UI tests.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+        app.collectionViews.children(matching: .cell).element(boundBy: 0).images["CollectionViewCell.Image"].tap()
+        app.buttons["PhotoDetailViewController.SaveButton"].tap()
+        app.alerts["Photo Saved!"].scrollViews.otherElements.buttons["Okay"].tap()
+        
+    }
+    
+    func testChangingSol() throws {
+        app.launch()
+        
+        
+        
+        
     }
 
     func testLaunchPerformance() throws {
