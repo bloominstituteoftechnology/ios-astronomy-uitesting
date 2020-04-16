@@ -18,6 +18,8 @@ class MarsRoverClient {
             localMarsRover(completion: completion)
             return
         }
+        print("Web")
+        
         
         let url = self.url(forInfoForRover: name)
         fetch(from: url, using: session) { (dictionary: [String : MarsRover]?, error: Error?) in
@@ -31,7 +33,7 @@ class MarsRoverClient {
     }
     
     func localMarsRover(completion: @escaping (MarsRover?, Error?) -> Void) {
-        
+        print("LOCAL!!!!!!")
         guard let roverURL = Bundle.main.url(forResource: "MarsRover", withExtension: "json", subdirectory: nil) else { fatalError("URL to local Rover JSON is nil") }
         
         do {
@@ -47,7 +49,6 @@ class MarsRoverClient {
             NSLog("Error loading local Mars Rover: \(error)")
             completion(nil, error)
         }
-        
     }
     
     func fetchPhotos(from rover: MarsRover,
