@@ -39,7 +39,6 @@ class AstronomyUITests: XCTestCase {
     
     func testSavePhoto() {
         
-        let app = XCUIApplication()
         app.collectionViews.children(matching: .cell).element(boundBy: 0).otherElements.containing(.image, identifier:"PhotoCollectionViewController.ImageView").element.tap()
         app/*@START_MENU_TOKEN@*/.staticTexts["Save to Photo Library"]/*[[".buttons[\"Save to Photo Library\"].staticTexts[\"Save to Photo Library\"]",".buttons[\"PhotoDetailViewController.SaveButton\"].staticTexts[\"Save to Photo Library\"]",".staticTexts[\"Save to Photo Library\"]"],[[[-1,2],[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
         XCTAssert(app.alerts["Photo Saved!"].scrollViews.otherElements.buttons["Okay"].isHittable)
@@ -54,9 +53,17 @@ class AstronomyUITests: XCTestCase {
         
     }
     
+    func testViewPreviousCell() {
+        app.navigationBars["Sol 15"]/*@START_MENU_TOKEN@*/.buttons["PhotosCollectionViewController.PreviousSolButton"]/*[[".buttons[\"<\"]",".buttons[\"PhotosCollectionViewController.PreviousSolButton\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        XCTAssert(solDescription != detailLabel)
+    }
     
+    func testCellHasImage() {
+        XCUIApplication().collectionViews.children(matching: .cell).element(boundBy: 0).otherElements.containing(.image, identifier:"PhotoCollectionViewController.ImageView").element.tap()
+        
+        XCTAssert(detailImageView.exists)
     
-    
+    }
     
     
     func testLaunchPerformance() throws {
