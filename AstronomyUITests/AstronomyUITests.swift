@@ -47,12 +47,14 @@ class AstronomyUITests: XCTestCase {
     }
     
     
-    func testSavePhoto2() {
+    
+    func testNextSol() {
+        XCUIApplication().navigationBars["Sol 15"]/*@START_MENU_TOKEN@*/.buttons["PhotosCollectionViewController.NextSolButton"]/*[[".buttons[\">\"]",".buttons[\"PhotosCollectionViewController.NextSolButton\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        XCTAssert(solDescription != detailLabel)
         
     }
     
-
-
+    
     
     
     
