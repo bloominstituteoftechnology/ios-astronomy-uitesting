@@ -10,22 +10,24 @@ import XCTest
 
 class AstronomyUITests: XCTestCase {
 
-    private let app = XCUIApplication()
-
     override func setUp() {
+        let app = XCUIApplication()
         continueAfterFailure = false
         app.launch()
         app.launchArguments = ["UITesting"]
         
     }
-    
+
     var sol1 : XCUIElement {
+        let app = XCUIApplication()
         return app.navigationBars["Sol 1"].buttons["PhotosCollectionViewController.NextSolButton"]
     }
     var sol2 : XCUIElement {
-    return app.navigationBars["Sol 2"].buttons["PhotosCollectionViewController.PreviousSolButton"]
+        let app = XCUIApplication()
+        return app.navigationBars["Sol 2"].buttons["PhotosCollectionViewController.PreviousSolButton"]
     }
     func testSol() {
+        let app = XCUIApplication()
         sol1.tap()
         XCTAssert(app.navigationBars["Sol 2"].exists)
         sol2.tap()
@@ -34,16 +36,18 @@ class AstronomyUITests: XCTestCase {
     
 
     private var saveImageButton: XCUIElement {
+        let app = XCUIApplication()
         return app.buttons["PhotoDetailViewController.SaveButton"]
     }
     
     func testTapDetailVC() {
+        let app = XCUIApplication()
         app.collectionViews.children(matching: .cell).element(boundBy: 0).children(matching: .other).element.tap()
         
         let imageExpectation = expectation(description: "Photo Fetched")
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
-            if self.app.images["PhotoDetailViewController.ImageView"].exists {
+            if app.images["PhotoDetailViewController.ImageView"].exists {
                 imageExpectation.fulfill()
             } else {
                 print("Error fetching image in detailVC")
@@ -54,6 +58,7 @@ class AstronomyUITests: XCTestCase {
     }
     
     func testSave() {
+        let app = XCUIApplication()
         testTapDetailVC()
         let save = app/*@START_MENU_TOKEN@*/.buttons["PhotoDetailViewController.SaveButton"]/*[[".buttons[\"Save to Photo Library\"]",".buttons[\"PhotoDetailViewController.SaveButton\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
         XCTAssertTrue(save.isHittable)
@@ -62,6 +67,7 @@ class AstronomyUITests: XCTestCase {
     }
     
     func testCellImage() {
+        let app = XCUIApplication()
         XCTAssertNotNil(app.images["PhotosCollectionViewController.ImageCell.ImageView"])
     }
 }
