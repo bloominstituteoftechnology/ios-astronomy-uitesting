@@ -19,5 +19,14 @@ class AstronomyUITests: XCTestCase {
         
     }
 
+    func testNextSol() {
+        app.navigationBars["Sol 10"].buttons["PhotosCollectionViewController.NextSolButton"].tap()
+        XCTAssertTrue(app.navigationBars["Sol 11"].exists)
+    }
+    func testPreSol() {
+        app.navigationBars["Sol 11"].buttons["PhotosCollectionViewController.PreviousSolButton"].tap()
+        XCTAssertTrue(app.navigationBars["Sol 10"].exists)
+    }
+    
     
 }
