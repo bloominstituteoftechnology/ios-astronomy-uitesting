@@ -38,24 +38,41 @@ class AstronomyUITests: XCTestCase {
         
     }
     
-    func testChangingSol() throws {
+    func testNextSol() throws {
         app.launch()
         
         let sol15NavigationBar = app.navigationBars["Sol 15"]
         sol15NavigationBar.staticTexts["Sol 15"].tap()
-        sol15NavigationBar/*@START_MENU_TOKEN@*/.buttons["PhotosCollectionViewController.PreviousSolButton"]/*[[".buttons[\"<\"]",".buttons[\"PhotosCollectionViewController.PreviousSolButton\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
-        
-        let sol14NavigationBar = app.navigationBars["Sol 14"]
-        sol14NavigationBar.staticTexts["Sol 14"].tap()
-        sol14NavigationBar.buttons["PhotosCollectionViewController.NextSolButton"].tap()
-
-        let sol15NavigationBar2 = app.navigationBars["Sol 15"]
-        sol15NavigationBar2.staticTexts["Sol 15"].tap()
-        sol15NavigationBar2.buttons["PhotosCollectionViewController.NextSolButton"].tap()
+        sol15NavigationBar.buttons["PhotosCollectionViewController.NextSolButton"].tap()
 
         let sol16NavigationBar = app.navigationBars["Sol 16"]
         sol16NavigationBar.staticTexts["Sol 16"].tap()
-        sol16NavigationBar/*@START_MENU_TOKEN@*/.buttons["PhotosCollectionViewController.NextSolButton"]/*[[".buttons[\">\"]",".buttons[\"PhotosCollectionViewController.NextSolButton\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+    }
+    
+    func testPrevSol() throws {
+        app.launch()
+        
+        let sol15NavigationBar = app.navigationBars["Sol 15"]
+          sol15NavigationBar.staticTexts["Sol 15"].tap()
+          sol15NavigationBar/*@START_MENU_TOKEN@*/.buttons["PhotosCollectionViewController.PreviousSolButton"]/*[[".buttons[\"<\"]",".buttons[\"PhotosCollectionViewController.PreviousSolButton\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        
+        let sol14NavigationBar = app.navigationBars["Sol 14"]
+        sol14NavigationBar.staticTexts["Sol 14"].tap()
+    }
+    
+    func testImagesExist() throws {
+        app.launch()
+        
+        app.collectionViews.children(matching: .cell).element(boundBy: 0).images["CollectionViewCell.Image"].tap()
+        let a = app.images["CollectionViewCell.Image"]
+        XCTAssertTrue(a.exists)
+        app.images["PhotoDetailViewController.ImageView"].tap()
+        let b = app.images["PhotoDetailViewController.ImageView"]
+        XCTAssertTrue(b.exists)
+
+        //XCTAssertEqual(a, b)
+        //XCTAssertEqual(a.exists, b.exists)
+        
     }
 
     func testLaunchPerformance() throws {
