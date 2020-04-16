@@ -48,7 +48,7 @@ class AstronomyUITests: XCTestCase {
         let camera = app.staticTexts["PhotoDetailViewController.CameraLabel"]
         XCTAssertNotNil(camera)
         
-        let detail = app.staticTexts["PhotoDetailViewController.PhotoDetailLabel"]
+        let detail = app.staticTexts["PhotoDetailViewController.DetailLabel"]
         XCTAssertNotNil(detail)
         
         let imageExpectation = expectation(description: "Photo Fetched")
