@@ -26,6 +26,18 @@ class AstronomyUITests: XCTestCase {
     }
     private var solDescription: XCUIElement?
     
+    //MARK: - METHODS
+    
+    override func setUp() {
+        app.launchArguments = ["UITesting"]
+        solDescription = detailLabel
+        app.launch()
+    
+        continueAfterFailure = false
+        
+    }
+
+    
     
     
     
