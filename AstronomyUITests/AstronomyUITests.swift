@@ -79,6 +79,22 @@ class AstronomyUITests: XCTestCase {
         app.navigationBars["Title"].buttons["Sol 15"].tap()
         
     }
+    
+    func testScrollingPastEndOfList() {
+        app.launch()
+        
+        let imagecellCollectionView = app/*@START_MENU_TOKEN@*/.collectionViews.containing(.cell, identifier:"ImageCell").element/*[[".collectionViews.containing(.other, identifier:\"Horizontal scroll bar, 1 page\").element",".collectionViews.containing(.other, identifier:\"Vertical scroll bar, 8 pages\").element",".collectionViews.containing(.cell, identifier:\"ImageCell\").element"],[[[-1,2],[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
+        imagecellCollectionView.swipeUp()
+        imagecellCollectionView.swipeUp()
+        imagecellCollectionView.swipeUp()
+        imagecellCollectionView.swipeUp()
+        imagecellCollectionView.swipeUp()
+        imagecellCollectionView.swipeUp()
+        imagecellCollectionView.swipeUp()
+        imagecellCollectionView.swipeUp()
+        imagecellCollectionView.swipeUp()
+        
+    }
 
     func testLaunchPerformance() {
         if #available(macOS 10.15, iOS 13.0, tvOS 13.0, *) {
