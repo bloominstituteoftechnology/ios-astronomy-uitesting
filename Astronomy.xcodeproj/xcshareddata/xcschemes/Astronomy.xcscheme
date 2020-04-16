@@ -62,7 +62,7 @@
       </BuildableProductRunnable>
       <CommandLineArguments>
          <CommandLineArgument
-            argument = "launchArguments=[&quot;UITesting&quot;]"
+            argument = "UITesting"
             isEnabled = "YES">
          </CommandLineArgument>
       </CommandLineArguments>
