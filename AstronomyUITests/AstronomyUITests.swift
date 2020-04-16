@@ -36,6 +36,15 @@ class AstronomyUITests: XCTestCase {
         continueAfterFailure = false
         
     }
+    
+    func testSavePhoto() {
+        app.collectionViews.children(matching: .cell).element(boundBy: 0).children(matching: .other).element.tap()
+        XCTAssert(app.buttons["PhotoDetailViewController.SaveButton"].isHittable)
+        app/*@START_MENU_TOKEN@*/.buttons["PhotoDetailViewController.SaveButton"]/*[[".buttons[\"Save to Photo Library\"]",".buttons[\"PhotoDetailViewController.SaveButton\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        XCTAssert(app.alerts["Photo Saved!"].scrollViews.otherElements.buttons["Okay"].isHittable)
+    }
+    
+
 
     
     
