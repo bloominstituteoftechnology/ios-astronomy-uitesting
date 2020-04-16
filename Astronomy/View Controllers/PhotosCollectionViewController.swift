@@ -146,8 +146,8 @@ class PhotosCollectionViewController: UIViewController, UICollectionViewDataSour
             cell.imageView.image = cachedImage
             return
         }
-        
-        if isUITesting {
+        var testing = ""
+        if testing == "" {
             self.loadLocalImage(for: cell, for: indexPath)
             return
         }

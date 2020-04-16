@@ -41,6 +41,9 @@ class PhotoDetailViewController: UIViewController {
     func presentFailedSaveAlert() {
         let alert = UIAlertController(title: "Unable to save photo", message: "Please grant Photo Library permissions to save photos!", preferredStyle: .alert)
         let okayAction = UIAlertAction(title: "Okay", style: .default, handler: nil)
+        okayAction.isAccessibilityElement = true
+        okayAction.accessibilityLabel = "OKButton"
+        okayAction.accessibilityActivate()
         
         alert.addAction(okayAction)
         

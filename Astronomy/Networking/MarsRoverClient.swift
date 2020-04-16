@@ -13,8 +13,9 @@ class MarsRoverClient {
     func fetchMarsRover(named name: String,
                         using session: URLSession = URLSession.shared,
                         completion: @escaping (MarsRover?, Error?) -> Void) {
-        
-        if isUITesting {
+     
+        var testing = ""
+        if testing == "" {
             localMarsRover(completion: completion)
             return
         }
@@ -55,7 +56,8 @@ class MarsRoverClient {
                      using session: URLSession = URLSession.shared,
                      completion: @escaping ([MarsPhotoReference]?, Error?) -> Void) {
         
-        if isUITesting {
+        var testing = ""
+        if testing == "" {
             fetchLocalPhotos(from: rover, onSol: sol, completion: completion)
             return
         }
