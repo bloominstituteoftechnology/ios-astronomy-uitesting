@@ -9,11 +9,23 @@
 import XCTest
 
 class AstronomyUITests: XCTestCase {
-    
+        
     private var app: XCUIApplication {
         let application = XCUIApplication()
         application.launchArguments.append("UITesting")
         return application
+    }
+    
+    private var photoInfoLabel: XCUIElement {
+        return app.staticTexts["PhotoDetailViewController.PhotoInfo"]
+    }
+    
+    private var collectionViewCell: XCUIElement {
+        return app.collectionViews.children(matching: .cell).element(boundBy: 0).images["CollectionViewCell.Image"]
+    }
+    
+    private var nextSolButton_Sol15: XCUIElement {
+        return app.navigationBars["Sol 15"].buttons["PhotosCollectionViewController.NextSolButton"]
     }
 
     override func setUpWithError() throws {
@@ -32,7 +44,7 @@ class AstronomyUITests: XCTestCase {
     func testSavingPhoto() throws {
         app.launch()
 
-        app.collectionViews.children(matching: .cell).element(boundBy: 0).images["CollectionViewCell.Image"].tap()
+        collectionViewCell.tap()
         app.buttons["PhotoDetailViewController.SaveButton"].tap()
         app.alerts["Photo Saved!"].scrollViews.otherElements.buttons["Okay"].tap()
         
@@ -63,7 +75,7 @@ class AstronomyUITests: XCTestCase {
     func testImagesExist() throws {
         app.launch()
         
-        app.collectionViews.children(matching: .cell).element(boundBy: 0).images["CollectionViewCell.Image"].tap()
+        collectionViewCell.tap()
         let a = app.images["CollectionViewCell.Image"]
         XCTAssertTrue(a.exists)
         app.images["PhotoDetailViewController.ImageView"].tap()
@@ -73,6 +85,20 @@ class AstronomyUITests: XCTestCase {
         //XCTAssertEqual(a, b)
         //XCTAssertEqual(a.exists, b.exists)
         
+    }
+    
+    func testImageDetails() throws {
+        app.launch()
+        
+        collectionViewCell.tap()
+        
+        XCTAssertTrue(photoInfoLabel.label.hasSuffix("(Sol 15)"))
+                
+        app.navigationBars["Title"].buttons["Sol 15"].tap()
+        nextSolButton_Sol15.tap()
+        collectionViewCell.tap()
+        
+        XCTAssertTrue(photoInfoLabel.label.hasSuffix("(Sol 16)"))
     }
 
     func testLaunchPerformance() throws {
