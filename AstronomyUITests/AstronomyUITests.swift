@@ -42,18 +42,25 @@ class AstronomyUITests: XCTestCase {
     
     func testTapDetailVC() {
         let app = XCUIApplication()
-        app.collectionViews.children(matching: .cell).element(boundBy: 0).children(matching: .other).element.tap()
+        let cell = app.collectionViews.children(matching: .cell).element(boundBy: 0).children(matching: .other).element
+        cell.tap()
+        
+        let camera = app.staticTexts["PhotoDetailViewController.CameraLabel"]
+        XCTAssertNotNil(camera)
+        
+        let detail = app.staticTexts["PhotoDetailViewController.PhotoDetailLabel"]
+        XCTAssertNotNil(detail)
         
         let imageExpectation = expectation(description: "Photo Fetched")
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 10) {
             if app.images["PhotoDetailViewController.ImageView"].exists {
                 imageExpectation.fulfill()
             } else {
                 print("Error fetching image in detailVC")
             }
         }
-        wait(for: [imageExpectation], timeout: 5)
+        wait(for: [imageExpectation], timeout: 10)
         XCTAssertTrue(app.images["PhotoDetailViewController.ImageView"].exists)
     }
     
