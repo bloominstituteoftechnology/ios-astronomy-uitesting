@@ -11,9 +11,7 @@ import XCTest
 class AstronomyUITests: XCTestCase {
 
     private let app = XCUIApplication()
-    private var cell: XCUIElement {
-        return app.collectionViews.element(boundBy: 0)
-    }
+
     override func setUp() {
         continueAfterFailure = false
         app.launch()
@@ -24,29 +22,26 @@ class AstronomyUITests: XCTestCase {
     var sol1 : XCUIElement {
         return app.navigationBars["Sol 1"].buttons["PhotosCollectionViewController.NextSolButton"]
     }
-    func testNextSol() {
-        sol1.tap()
-        XCTAssert(app.navigationBars["Sol 2"].exists)
-    }
-    
     var sol2 : XCUIElement {
     return app.navigationBars["Sol 2"].buttons["PhotosCollectionViewController.PreviousSolButton"]
     }
-    func testPreSol() {
+    func testSol() {
         sol1.tap()
+        XCTAssert(app.navigationBars["Sol 2"].exists)
         sol2.tap()
         XCTAssert(app.navigationBars["Sol 1"].exists)
     }
     
 
+    private var saveImageButton: XCUIElement {
+        return app.buttons["PhotoDetailViewController.SaveButton"]
+    }
+    
     func testTapDetailVC() {
-        XCTAssertTrue(cell.exists)
+        app.collectionViews.children(matching: .cell).element(boundBy: 0).children(matching: .other).element.tap()
         
-        cell.tap()
         let imageExpectation = expectation(description: "Photo Fetched")
-        XCTAssert(app.buttons["PhotoDetailViewController.SaveButton"].exists)
-        XCTAssert(app.buttons["PhotoDetailViewController.CameraLabel"].exists)
-        XCTAssert(app.buttons["PhotoDetailViewController.PhotoDetailLabel"].exists)
+        
         DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
             if self.app.images["PhotoDetailViewController.ImageView"].exists {
                 imageExpectation.fulfill()
