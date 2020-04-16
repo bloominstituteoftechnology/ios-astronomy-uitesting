@@ -12,7 +12,7 @@ class AstronomyUITests: XCTestCase {
 
     private let app = XCUIApplication()
     private var cell: XCUIElement {
-        app.collectionViews.element(boundBy: 0)
+        return app.collectionViews.element(boundBy: 0)
     }
     override func setUp() {
         continueAfterFailure = false
@@ -20,15 +20,22 @@ class AstronomyUITests: XCTestCase {
         app.launchArguments = ["UITesting"]
         
     }
-
     
+    var sol1 : XCUIElement {
+        return app.navigationBars["Sol 1"].buttons["PhotosCollectionViewController.NextSolButton"]
+    }
     func testNextSol() {
-        app.navigationBars["Sol 10"].buttons["PhotosCollectionViewController.NextSolButton"].tap()
-        XCTAssertTrue(app.navigationBars["Sol 11"].exists)
+        sol1.tap()
+        XCTAssert(app.navigationBars["Sol 2"].exists)
+    }
+    
+    var sol2 : XCUIElement {
+    return app.navigationBars["Sol 2"].buttons["PhotosCollectionViewController.PreviousSolButton"]
     }
     func testPreSol() {
-        app.navigationBars["Sol 11"].buttons["PhotosCollectionViewController.PreviousSolButton"].tap()
-        XCTAssertTrue(app.navigationBars["Sol 10"].exists)
+        sol1.tap()
+        sol2.tap()
+        XCTAssert(app.navigationBars["Sol 1"].exists)
     }
     
 
@@ -37,9 +44,9 @@ class AstronomyUITests: XCTestCase {
         
         cell.tap()
         let imageExpectation = expectation(description: "Photo Fetched")
-        XCTAssertTrue(app.buttons["PhotoDetailViewController.SaveButton"].exists)
-        XCTAssertTrue(app.buttons["PhotoDetailViewController.CameraLabel"].exists)
-        XCTAssertTrue(app.buttons["PhotoDetailViewController.PhotoDetailLabel"].exists)
+        XCTAssert(app.buttons["PhotoDetailViewController.SaveButton"].exists)
+        XCTAssert(app.buttons["PhotoDetailViewController.CameraLabel"].exists)
+        XCTAssert(app.buttons["PhotoDetailViewController.PhotoDetailLabel"].exists)
         DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
             if self.app.images["PhotoDetailViewController.ImageView"].exists {
                 imageExpectation.fulfill()
@@ -57,5 +64,9 @@ class AstronomyUITests: XCTestCase {
         XCTAssertTrue(save.isHittable)
         save.tap()
         XCTAssertEqual(app.alerts.element.label, "Photo Saved!")
+    }
+    
+    func testCellImage() {
+        XCTAssertNotNil(app.images["PhotosCollectionViewController.ImageCell.ImageView"])
     }
 }
