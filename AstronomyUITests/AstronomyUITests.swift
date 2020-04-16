@@ -30,18 +30,25 @@ class AstronomyUITests: XCTestCase {
     
     override func setUp() {
         app.launchArguments = ["UITesting"]
-        solDescription = detailLabel
+       
         app.launch()
     
-        continueAfterFailure = false
+      
         
     }
     
     func testSavePhoto() {
-        app.collectionViews.children(matching: .cell).element(boundBy: 0).children(matching: .other).element.tap()
-        XCTAssert(app.buttons["PhotoDetailViewController.SaveButton"].isHittable)
-        app/*@START_MENU_TOKEN@*/.buttons["PhotoDetailViewController.SaveButton"]/*[[".buttons[\"Save to Photo Library\"]",".buttons[\"PhotoDetailViewController.SaveButton\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        
+        let app = XCUIApplication()
+        app.collectionViews.children(matching: .cell).element(boundBy: 0).otherElements.containing(.image, identifier:"PhotoCollectionViewController.ImageView").element.tap()
+        app/*@START_MENU_TOKEN@*/.staticTexts["Save to Photo Library"]/*[[".buttons[\"Save to Photo Library\"].staticTexts[\"Save to Photo Library\"]",".buttons[\"PhotoDetailViewController.SaveButton\"].staticTexts[\"Save to Photo Library\"]",".staticTexts[\"Save to Photo Library\"]"],[[[-1,2],[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
         XCTAssert(app.alerts["Photo Saved!"].scrollViews.otherElements.buttons["Okay"].isHittable)
+        app.alerts["Photo Saved!"].scrollViews.otherElements.buttons["Okay"].tap()
+    }
+    
+    
+    func testSavePhoto2() {
+        
     }
     
 
