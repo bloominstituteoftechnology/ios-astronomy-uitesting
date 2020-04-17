@@ -203,6 +203,7 @@ class PhotosCollectionViewController: UIViewController, UICollectionViewDataSour
             let image = UIImage(data: imageData)
             
             cell.imageView.image = image
+            cell.accessibilityIdentifier = indexPath.description
         } catch {
             NSLog("Unable to initialize data with URL: \(url), error: \(error)")
         }

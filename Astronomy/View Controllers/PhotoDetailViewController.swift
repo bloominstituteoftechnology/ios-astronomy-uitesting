@@ -65,7 +65,10 @@ class PhotoDetailViewController: UIViewController {
             imageView.image = UIImage(data: data)?.filtered()
             let dateString = dateFormatter.string(from: photo.earthDate)
             detailLabel.text = "Taken by \(photo.camera.roverId) on \(dateString) (Sol \(photo.sol))"
+            detailLabel.accessibilityIdentifier = "detailLabel"
             cameraLabel.text = photo.camera.fullName
+            cameraLabel.accessibilityIdentifier = "cameraLabel"
+            title = dateString
         } catch {
             NSLog("Error setting up views on detail view controller: \(error)")
         }
