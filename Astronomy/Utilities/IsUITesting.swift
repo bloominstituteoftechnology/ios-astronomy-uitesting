@@ -9,5 +9,11 @@
 import UIKit
 
 var isUITesting: Bool {
-    return CommandLine.arguments.contains("UITesting")
+    print("CommandLine.arguments: \(CommandLine.arguments)")
+    
+    /// contains works like containsAbsolute
+    /// In Xcode scheme you just have to put UITesting and an added argument. launchArguments is implied.
+    let uitesting = CommandLine.arguments.contains("UITesting")
+    print("contains(\"UITesting\") = \(uitesting)")
+    return uitesting
 }
