@@ -138,6 +138,32 @@ class AstronomyUITests: XCTestCase {
 
     }
     
+    func testOpenCloseOnASeriesOfCells() throws {
+        // 4, 5, 2, 6
+
+        let collectionViewsQuery = app.collectionViews
+        let sol15Button = app.navigationBars["Title"].buttons["Sol 15"]
+        
+        // TODO: ? This...
+//        collectionViewsQuery.cells["3"].children(matching: .other).element.tap()
+        // vs this...
+        collectionViewsQuery.cells["3"].tap()
+        XCTAssertEqual(takenLabel.label, "Taken by 5 on 8/20/12, 5:00 PM (Sol 15)")
+        sol15Button.tap() // back
+        
+        collectionViewsQuery.cells["4"].tap()
+        XCTAssertEqual(takenLabel.label, "Taken by 5 on 8/20/12, 5:00 PM (Sol 15)")
+        sol15Button.tap() // back
+
+        collectionViewsQuery.cells["2"].tap()
+        XCTAssertEqual(takenLabel.label, "Taken by 5 on 8/20/12, 5:00 PM (Sol 15)")
+        sol15Button.tap() // back
+
+        collectionViewsQuery.cells["5"].tap()
+        XCTAssertEqual(takenLabel.label, "Taken by 5 on 8/20/12, 5:00 PM (Sol 15)")
+        sol15Button.tap() // back
+    }
+    
     func testLaunchPerformance() throws {
         if #available(macOS 10.15, iOS 13.0, tvOS 13.0, *) {
             // This measures how long it takes to launch your application.
