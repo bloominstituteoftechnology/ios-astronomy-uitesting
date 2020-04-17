@@ -57,10 +57,14 @@ class AstronomyUITests: XCTestCase {
     
     func testScrolling() {
         app.launch()
-        
         getCell(at: 0).swipeUp()
+    }
+    
+    func testNextSol() {
+        app.launch()
         
-        
+        let app = XCUIApplication()
+        app.navigationBars.buttons["PhotosCollectionViewController.NextSolButton"].tap()
     }
 
     func testLaunchPerformance() {
