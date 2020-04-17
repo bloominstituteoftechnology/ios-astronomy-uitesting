@@ -23,12 +23,19 @@ class AstronomyUITests: XCTestCase {
           return XCUIApplication()
       }
     
+    func imageView(withId id: Identifier) -> XCUIElement {
+        return app.images[id.rawValue]
+    }
     func button(withId id: Identifier) -> XCUIElement {
         return app.buttons[id.rawValue]
     }
     
     var saveButton: XCUIElement {
         return button(withId: .saveToDeviceButton)
+    }
+    
+    var detailViewImage: XCUIElement {
+        return imageView(withId: .detailViewImage)
     }
 
     
@@ -59,7 +66,10 @@ class AstronomyUITests: XCTestCase {
 //        // Use XCTAssert and related functions to verify your tests produce the correct results.
 //    }
     
-    
+    func testDetailViewImageExists() {
+        app.collectionViews.children(matching: .cell).element(boundBy: 6).images["CollectionViewCell.ImageView"].tap()
+        XCTAssert(detailViewImage.exists)
+    }
     
     func testSavingPhoto() {
         
@@ -67,27 +77,14 @@ class AstronomyUITests: XCTestCase {
         XCTAssert(saveButton.isHittable)
         saveButton.tap()
         XCTAssertEqual(app.alerts.element.label, "Photo Saved!")
-//        app/*@START_MENU_TOKEN@*/.staticTexts["Save to Photo Library"]/*[[".buttons[\"Save to Photo Library\"].staticTexts[\"Save to Photo Library\"]",".buttons[\"PhotoDetailViewController.SaveButton\"].staticTexts[\"Save to Photo Library\"]",".staticTexts[\"Save to Photo Library\"]"],[[[-1,2],[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+
+        //        app/*@START_MENU_TOKEN@*/.staticTexts["Save to Photo Library"]/*[[".buttons[\"Save to Photo Library\"].staticTexts[\"Save to Photo Library\"]",".buttons[\"PhotoDetailViewController.SaveButton\"].staticTexts[\"Save to Photo Library\"]",".staticTexts[\"Save to Photo Library\"]"],[[[-1,2],[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
 //        app.alerts["Photo Saved!"].scrollViews.otherElements.buttons["Okay"].tap()
 //        let statusLabel = app.alerts.matching(identifier: "Photo Saved!")
 //        let statusLabelText = statusLabel.allEleme
 //                XCTAssertEqual(statusLabelText, "Photo Saved!")
 //                XCTAssert(statusLabelText == "Photo Saved!")
         
-       
-            
-     
-//        let element = app.children(matching: .window).element(boundBy: 0).children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element
-//        element.tap()
-////        app/*@START_MENU_TOKEN@*/.staticTexts["Save to Photo Library"]/*[[".buttons[\"Save to Photo Library\"].staticTexts[\"Save to Photo Library\"]",".buttons[\"PhotoDetailViewController.SaveButton\"].staticTexts[\"Save to Photo Library\"]",".staticTexts[\"Save to Photo Library\"]"],[[[-1,2],[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
-//        app.buttons["PhotoDetailViewController.SaveButton"].tap()
-//        app.alerts["“Astronomy” Would Like to Access Your Photos"].scrollViews.otherElements.buttons["OK"].tap()
-//        app.alerts["Photo Saved!"].scrollViews.otherElements.buttons["Okay"].tap()
-//
-//        let statusLabel = app.staticTexts["Photo Saved!"]
-//        let statusLabelText = statusLabel.label
-//        XCTAssertEqual(statusLabelText, "Photo Saved!")
-//        XCTAssert(statusLabelText == "Photo Saved!")
         
     }
 
