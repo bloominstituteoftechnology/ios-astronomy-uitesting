@@ -12,8 +12,12 @@ class AstronomyUITests: XCTestCase {
     
     var app: XCUIApplication {
         let app = XCUIApplication()
-        app.launchArguments = ["UITesting"]
+        app.launchArguments.append("UITesting")
         return app
+    }
+    
+    private func getCell(at index: Int) -> XCUIElement {
+        return app.collectionViews.children(matching: .cell).element(boundBy: index).children(matching: .other).element
     }
 
     override func setUp() {
@@ -21,7 +25,7 @@ class AstronomyUITests: XCTestCase {
 
         // In UI tests it is usually best to stop immediately when a failure occurs.
         continueAfterFailure = false
-
+        app
         // In UI tests it’s important to set the initial state - such as interface orientation - required for your tests before they run. The setUp method is a good place to do this.
     }
 
@@ -31,11 +35,19 @@ class AstronomyUITests: XCTestCase {
 
     func testCleanLaunch() {
         // UI tests must launch the application that they test.
-        let app = XCUIApplication()
         app.launch()
 
         // Use recording to get started writing UI tests.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
+    }
+    
+    func testSavingPhoto() {
+        
+        app.launch()
+        getCell(at: 0).tap()
+        app/*@START_MENU_TOKEN@*/.buttons["PhotoDetailViewController.SaveButton"]/*[[".buttons[\"Save to Photo Library\"]",".buttons[\"PhotoDetailViewController.SaveButton\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        app.alerts["Photo Saved!"].scrollViews.otherElements.buttons["Okay"].tap()
+        
     }
 
     func testLaunchPerformance() {
