@@ -14,6 +14,14 @@ class AstronomyUITests: XCTestCase {
     
     private var app: XCUIApplication!
     
+    private var takenLabel: XCUIElement {
+        return app.staticTexts["DetailView.TakenLabel"]
+    }
+    
+    private var cameraLabel: XCUIElement {
+        return app.staticTexts["DetailView.CameraLabel"]
+    }
+
     // MARK: - Test Setup
 
     override func setUpWithError() throws {
@@ -72,6 +80,31 @@ class AstronomyUITests: XCTestCase {
         XCTAssertEqual(sol15NavigationBar.staticTexts["Sol 15"].label, "Sol 15")
     }
 
+    func testSavePic() throws {
+        
+        let sol15NavigationBar = app.navigationBars["Sol 15"]
+
+        // Verify starting at Sol 15
+        XCTAssertEqual(sol15NavigationBar.staticTexts["Sol 15"].label, "Sol 15")
+
+        // Select first image
+        app.collectionViews.children(matching: .cell).element(boundBy: 0).children(matching: .other).element.tap()
+
+        XCTAssertEqual(takenLabel.label, "Taken by 5 on 8/20/12, 5:00 PM (Sol 15)")
+        XCTAssertEqual(cameraLabel.label, "Front Hazard Avoidance Camera")
+
+        // TODO: ? Why does this have both Buttons and StaticTexts?
+        // Touch the Save to Photo Library button
+        app/*@START_MENU_TOKEN@*/.buttons["Save to Photo Library"].staticTexts["Save to Photo Library"]/*[[".buttons[\"Save to Photo Library\"].staticTexts[\"Save to Photo Library\"]",".buttons[\"PhotoDetailViewController.SaveButton\"].staticTexts[\"Save to Photo Library\"]",".staticTexts[\"Save to Photo Library\"]"],[[[-1,2],[-1,1],[-1,0]]],[2]]@END_MENU_TOKEN@*/.tap()
+
+        // Touch the Okay button
+        app.alerts["Photo Saved!"].scrollViews.otherElements.buttons["Okay"].tap()
+        
+        // Go back to gallary view
+        app.navigationBars["Title"].buttons["Sol 15"].tap()
+        XCTAssertEqual(sol15NavigationBar.staticTexts["Sol 15"].label, "Sol 15")
+    }
+    
 //    func testLaunchPerformance() throws {
 //        if #available(macOS 10.15, iOS 13.0, tvOS 13.0, *) {
 //            // This measures how long it takes to launch your application.
