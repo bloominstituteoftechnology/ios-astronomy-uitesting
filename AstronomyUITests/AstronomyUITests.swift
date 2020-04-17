@@ -88,7 +88,7 @@ class AstronomyUITests: XCTestCase {
         XCTAssertEqual(sol15NavigationBar.staticTexts["Sol 15"].label, "Sol 15")
 
         // Select first image
-        app.collectionViews.children(matching: .cell).element(boundBy: 0).children(matching: .other).element.tap()
+        app.collectionViews.cells["0"].tap()
 
         XCTAssertEqual(takenLabel.label, "Taken by 5 on 8/20/12, 5:00 PM (Sol 15)")
         XCTAssertEqual(cameraLabel.label, "Front Hazard Avoidance Camera")

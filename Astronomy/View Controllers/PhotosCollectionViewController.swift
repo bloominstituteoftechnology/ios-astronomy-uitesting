@@ -141,6 +141,9 @@ class PhotosCollectionViewController: UIViewController, UICollectionViewDataSour
     
     private func loadImage(forCell cell: ImageCollectionViewCell, forItemAt indexPath: IndexPath) {
         let photoReference = photoReferences[indexPath.item]
+
+        cell.accessibilityIdentifier = "\(indexPath.item)"
+
         // Check for image in cache
         if let cachedImage = cache.value(for: photoReference.id) {
             cell.imageView.image = cachedImage
