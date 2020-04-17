@@ -66,6 +66,16 @@ class AstronomyUITests: XCTestCase {
 //        // Use XCTAssert and related functions to verify your tests produce the correct results.
 //    }
     
+    func testViewingAnotherSol() {
+        XCUIApplication().navigationBars["Sol 1"]/*@START_MENU_TOKEN@*/.buttons["PhotosCollectionViewController.NextSolButton"]/*[[".buttons[\">\"]",".buttons[\"PhotosCollectionViewController.NextSolButton\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        // check to see if in sol 2
+        let statusLabel = app.staticTexts["Sol 2"]
+        let statusLabelText = statusLabel.label
+//               XCTAssertEqual(statusLabelText, "Sol 2")
+               XCTAssert(statusLabelText == "Sol 2")
+        
+    }
+    
     func testDetailViewImageExists() {
         app.collectionViews.children(matching: .cell).element(boundBy: 6).images["CollectionViewCell.ImageView"].tap()
         XCTAssert(detailViewImage.exists)
@@ -77,15 +87,6 @@ class AstronomyUITests: XCTestCase {
         XCTAssert(saveButton.isHittable)
         saveButton.tap()
         XCTAssertEqual(app.alerts.element.label, "Photo Saved!")
-
-        //        app/*@START_MENU_TOKEN@*/.staticTexts["Save to Photo Library"]/*[[".buttons[\"Save to Photo Library\"].staticTexts[\"Save to Photo Library\"]",".buttons[\"PhotoDetailViewController.SaveButton\"].staticTexts[\"Save to Photo Library\"]",".staticTexts[\"Save to Photo Library\"]"],[[[-1,2],[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
-//        app.alerts["Photo Saved!"].scrollViews.otherElements.buttons["Okay"].tap()
-//        let statusLabel = app.alerts.matching(identifier: "Photo Saved!")
-//        let statusLabelText = statusLabel.allEleme
-//                XCTAssertEqual(statusLabelText, "Photo Saved!")
-//                XCTAssert(statusLabelText == "Photo Saved!")
-        
-        
     }
 
     func testLaunchPerformance() throws {
