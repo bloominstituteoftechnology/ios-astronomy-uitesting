@@ -74,6 +74,13 @@ class AstronomyUITests: XCTestCase {
         scroll(collectionView: collectionView, toFindCellWithId: "[0, 57]")
     }
     
+    func testTapLastPhoto() throws {
+        guard let lastCell = scroll(collectionView: collectionView, toFindCellWithId: "[0, 57]") else { return }
+        lastCell.tap()
+        print("😀 navBar label: \(navBarTitleLabel)")
+        XCTAssertEqual(navBarTitleLabel, "8/20/12, 8:00 PM")
+    }
+    
     
     
     //    func testLaunchPerformance() throws {
@@ -85,7 +92,7 @@ class AstronomyUITests: XCTestCase {
     //        }
     //    }
     
-    
+    @discardableResult
     func scroll(collectionView:XCUIElement, toFindCellWithId identifier:String) -> XCUIElement? {
         guard collectionView.elementType == .collectionView else {
             fatalError("XCUIElement is not a collectionView.")
