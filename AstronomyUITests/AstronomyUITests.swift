@@ -105,6 +105,38 @@ class AstronomyUITests: XCTestCase {
         XCTAssertEqual(sol15NavigationBar.staticTexts["Sol 15"].label, "Sol 15")
     }
     
+    func testScrollToLastCell() throws {
+        
+        let sol14NavigationBar = app.navigationBars["Sol 14"]
+        let sol15NavigationBar = app.navigationBars["Sol 15"]
+
+        // Verify starting at Sol 15
+        XCTAssertEqual(sol15NavigationBar.staticTexts["Sol 15"].label, "Sol 15")
+
+        // Go to prior Sol 14
+        sol15NavigationBar/*@START_MENU_TOKEN@*/.buttons["PhotosCollectionViewController.PreviousSolButton"]/*[[".buttons[\"<\"]",".buttons[\"PhotosCollectionViewController.PreviousSolButton\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        XCTAssertEqual(sol14NavigationBar.staticTexts["Sol 14"].label, "Sol 14")
+
+        // TODO: ? Do this quickly?
+        app.swipeUp()
+        app.swipeUp()
+        app.swipeUp()
+        app.swipeUp()
+        app.swipeUp()
+        app.swipeUp()
+        app.swipeUp()
+        app.swipeUp()
+        app.swipeUp()
+        app.swipeUp()
+
+        // Select last image
+        app.collectionViews.cells["69"].tap()
+        
+        XCTAssertEqual(takenLabel.label, "Taken by 5 on 8/19/12, 5:00 PM (Sol 14)")
+        XCTAssertEqual(cameraLabel.label, "Navigation Camera")
+
+    }
+    
 //    func testLaunchPerformance() throws {
 //        if #available(macOS 10.15, iOS 13.0, tvOS 13.0, *) {
 //            // This measures how long it takes to launch your application.
