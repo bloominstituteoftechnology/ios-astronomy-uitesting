@@ -95,7 +95,8 @@ class AstronomyUITests: XCTestCase {
 
         // TODO: ? Why does this have both Buttons and StaticTexts?
         // Touch the Save to Photo Library button
-        app/*@START_MENU_TOKEN@*/.buttons["Save to Photo Library"].staticTexts["Save to Photo Library"]/*[[".buttons[\"Save to Photo Library\"].staticTexts[\"Save to Photo Library\"]",".buttons[\"PhotoDetailViewController.SaveButton\"].staticTexts[\"Save to Photo Library\"]",".staticTexts[\"Save to Photo Library\"]"],[[[-1,2],[-1,1],[-1,0]]],[2]]@END_MENU_TOKEN@*/.tap()
+        app.buttons["Save to Photo Library"].tap()
+//        app/*@START_MENU_TOKEN@*/.buttons["Save to Photo Library"].staticTexts["Save to Photo Library"]/*[[".buttons[\"Save to Photo Library\"].staticTexts[\"Save to Photo Library\"]",".buttons[\"PhotoDetailViewController.SaveButton\"].staticTexts[\"Save to Photo Library\"]",".staticTexts[\"Save to Photo Library\"]"],[[[-1,2],[-1,1],[-1,0]]],[2]]@END_MENU_TOKEN@*/.tap()
 
         // Touch the Okay button
         app.alerts["Photo Saved!"].scrollViews.otherElements.buttons["Okay"].tap()
