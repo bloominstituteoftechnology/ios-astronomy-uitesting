@@ -53,6 +53,12 @@ class AstronomyUITests: XCTestCase {
         app/*@START_MENU_TOKEN@*/.buttons["PhotoDetailViewController.SaveButton"]/*[[".buttons[\"Save to Photo Library\"]",".buttons[\"PhotoDetailViewController.SaveButton\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
         app.alerts["Photo Saved!"].scrollViews.otherElements.buttons["Okay"].tap()
         app.navigationBars["Title"].buttons.element(boundBy: 0).tap()
+    }
+    
+    func testScrolling() {
+        app.launch()
+        
+        getCell(at: 0).swipeUp()
         
         
     }
