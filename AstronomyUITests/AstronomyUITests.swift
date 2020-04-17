@@ -10,9 +10,12 @@ import XCTest
 
 class AstronomyUITests: XCTestCase {
     // MARK: - Properties
+    
     var app: XCUIApplication!
     
-    lazy var navBarTitleLabel = app.navigationBars.firstMatch.staticTexts.firstMatch.label
+    lazy var navBar = app.navigationBars.firstMatch
+    lazy var navBarTitleLabel = navBar.staticTexts.firstMatch.label
+    lazy var navBarLeftButton = navBar.buttons.firstMatch
     lazy var previousSolButton = app.buttons["PhotosCollectionViewController.PreviousSolButton"]
     lazy var nextSolButton = app.buttons["PhotosCollectionViewController.NextSolButton"]
     
@@ -21,6 +24,7 @@ class AstronomyUITests: XCTestCase {
     
     lazy var detailLabel = app.staticTexts.matching(identifier: "detailLabel").firstMatch.label
     lazy var cameraLabel = app.staticTexts.matching(identifier: "cameraLabel").firstMatch.label
+    lazy var savePhotoButton = app.buttons["Save to Photo Library"]
     
     // MARK: - Setup
     
@@ -36,40 +40,36 @@ class AstronomyUITests: XCTestCase {
         app = nil
     }
     
+    // MARK: - Tests
+    
     func testInitialSolTitle() throws {
-        print("😀 navBar label: \(navBarTitleLabel)")
         XCTAssertEqual(navBarTitleLabel, "Sol 15")
     }
     
     func testPreviousSolButton() throws {
         previousSolButton.tap()
-        print("😀 navBar label: \(navBarTitleLabel)")
         XCTAssertEqual(navBarTitleLabel, "Sol 14")
     }
     
     func testNextSolButton() throws {
         nextSolButton.tap()
-        print("😀 navBar label: \(navBarTitleLabel)")
         XCTAssertEqual(navBarTitleLabel, "Sol 16")
     }
     
     func testNextThenPreviousSolButton() throws {
         nextSolButton.tap()
         previousSolButton.tap()
-        print("😀 navBar label: \(navBarTitleLabel)")
         XCTAssertEqual(navBarTitleLabel, "Sol 15")
     }
     
     func testPreviousThenNextSolButton() throws {
         previousSolButton.tap()
         nextSolButton.tap()
-        print("😀 navBar label: \(navBarTitleLabel)")
         XCTAssertEqual(navBarTitleLabel, "Sol 15")
     }
     
     func testTapFirstPhoto() throws {
         firstCell.tap()
-        print("😀 navBar label: \(navBarTitleLabel)")
         XCTAssertEqual(navBarTitleLabel, "8/20/12, 8:00 PM")
     }
     
@@ -80,7 +80,6 @@ class AstronomyUITests: XCTestCase {
     func testTapLastPhoto() throws {
         guard let lastCell = scroll(collectionView: collectionView, toFindCellWithId: "[0, 57]") else { return }
         lastCell.tap()
-        print("😀 navBar label: \(navBarTitleLabel)")
         XCTAssertEqual(navBarTitleLabel, "8/20/12, 8:00 PM")
     }
     
@@ -90,7 +89,29 @@ class AstronomyUITests: XCTestCase {
         XCTAssertEqual(cameraLabel, "Front Hazard Avoidance Camera")
     }
     
-//    app/*@START_MENU_TOKEN@*/.staticTexts["Save to Photo Library"]/*[[".buttons[\"Save to Photo Library\"].staticTexts[\"Save to Photo Library\"]",".buttons[\"PhotoDetailViewController.SaveButton\"].staticTexts[\"Save to Photo Library\"]",".staticTexts[\"Save to Photo Library\"]"],[[[-1,2],[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+    func testSavePhotoToLibrary() throws {
+        firstCell.tap()
+        savePhotoButton.tap()
+        app.alerts["Photo Saved!"].scrollViews.otherElements.buttons["Okay"].tap()
+    }
+    
+    func testTapFirstPhotoThenTapBack() throws {
+        firstCell.tap()
+        navBarLeftButton.tap()
+        XCTAssertEqual(navBarTitleLabel, "Sol 15")
+    }
+    
+    func testMultiStepNav() throws {
+        previousSolButton.tap()
+        firstCell.tap()
+        navBarLeftButton.tap()
+        nextSolButton.tap()
+        nextSolButton.tap()
+        firstCell.tap()
+        navBarLeftButton.tap()
+        XCTAssertEqual(navBarTitleLabel, "Sol 16")
+    }
+
     
     
     //    func testLaunchPerformance() throws {
@@ -101,6 +122,8 @@ class AstronomyUITests: XCTestCase {
     //            }
     //        }
     //    }
+    
+    // MARK: - Helper Functions
     
     @discardableResult
     func scroll(collectionView:XCUIElement, toFindCellWithId identifier:String) -> XCUIElement? {
