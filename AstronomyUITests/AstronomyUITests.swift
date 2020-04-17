@@ -40,13 +40,24 @@ class AstronomyUITests: XCTestCase {
     
     func testChoosingAnewSol() {
         
+        app.navigationBars["Sol 1"]
+        app.navigationBars.buttons["PhotosCollectionViewController.NextSolButton"].tap()
+//        let nextTitle = app.navigationBars["Sol 2"]
+        XCTAssert(app.navigationBars["Sol 2"].exists)
+        
     }
     
-    func testScrolling() {
+    func testScrollThenTap() {
         
-        app.collectionViews.containing(.other, identifier:"Vertical scroll bar, 4 pages").element.swipeUp()
         
-        XCTAssertTrue(<#T##expression: Bool##Bool#>)
+        let collectionViewsQuery = XCUIApplication().collectionViews
+        collectionViewsQuery.children(matching: .cell).element(boundBy: 5).otherElements.containing(.image, identifier:"imageOnColllectionView").element.swipeUp()
+        collectionViewsQuery.children(matching: .cell).element(boundBy: 7).otherElements.containing(.image, identifier:"imageOnColllectionView").element.swipeUp()
+        collectionViewsQuery.children(matching: .cell).element(boundBy: 6).otherElements.containing(.image, identifier:"imageOnColllectionView").element.swipeUp()
+        collectionViewsQuery.children(matching: .cell).element(boundBy: 13).otherElements.containing(.image, identifier:"imageOnColllectionView").element.tap()
+        
+        let scrollDistance = collectionViewsQuery.children(matching: .cell).element(boundBy: 15).otherElements.containing(.image, identifier:"imageOnColllectionView").element
+        let photo = collectionViewsQuery.children(matching: .cell).element(boundBy: 13).otherElements.containing(.image, identifier:"imageOnColllectionView").element
     }
 }
 
@@ -55,4 +66,5 @@ extension AstronomyUITests {
     var app: XCUIApplication {
         return XCUIApplication()
     }
+    
 }
