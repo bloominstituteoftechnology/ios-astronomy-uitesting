@@ -63,15 +63,21 @@ class AstronomyUITests: XCTestCase {
     func testNextSol() {
         app.launch()
         
-        let app = XCUIApplication()
+        getCell(at: 0).tap()
+        app.navigationBars["Title"].buttons.element(boundBy: 0).tap()
         app.navigationBars.buttons["PhotosCollectionViewController.NextSolButton"].tap()
+        getCell(at: 0).tap()
+        app.navigationBars["Title"].buttons.element(boundBy: 0).tap()
     }
     
     func testPrevSol() {
         app.launch()
         
-        let app = XCUIApplication()
+        getCell(at: 0).tap()
+        app.navigationBars["Title"].buttons.element(boundBy: 0).tap()
         app.navigationBars.buttons["PhotosCollectionViewController.PreviousSolButton"].tap()
+        getCell(at: 0).tap()
+        app.navigationBars["Title"].buttons.element(boundBy: 0).tap()
     }
 
     func testLaunchPerformance() {
