@@ -19,6 +19,9 @@ class AstronomyUITests: XCTestCase {
     lazy var collectionView = app.collectionViews.firstMatch
     lazy var firstCell = collectionView.cells.firstMatch
     
+    lazy var detailLabel = app.staticTexts.matching(identifier: "detailLabel").firstMatch.label
+    lazy var cameraLabel = app.staticTexts.matching(identifier: "cameraLabel").firstMatch.label
+    
     // MARK: - Setup
     
     override func setUpWithError() throws {
@@ -81,6 +84,13 @@ class AstronomyUITests: XCTestCase {
         XCTAssertEqual(navBarTitleLabel, "8/20/12, 8:00 PM")
     }
     
+    func testDetailVCLabels() throws {
+        firstCell.tap()
+        XCTAssertEqual(detailLabel, "Taken by 5 on 8/20/12, 8:00 PM (Sol 15)")
+        XCTAssertEqual(cameraLabel, "Front Hazard Avoidance Camera")
+    }
+    
+//    app/*@START_MENU_TOKEN@*/.staticTexts["Save to Photo Library"]/*[[".buttons[\"Save to Photo Library\"].staticTexts[\"Save to Photo Library\"]",".buttons[\"PhotoDetailViewController.SaveButton\"].staticTexts[\"Save to Photo Library\"]",".staticTexts[\"Save to Photo Library\"]"],[[[-1,2],[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
     
     
     //    func testLaunchPerformance() throws {
