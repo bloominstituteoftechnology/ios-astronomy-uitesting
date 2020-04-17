@@ -30,21 +30,35 @@ class AstronomyUITests: XCTestCase {
         app = nil
     }
 
-    func testSolTitle() throws {
-        print("navBar label: \(navBarTitleLabel)")
+    func testInitialSolTitle() throws {
+        print("😀 navBar label: \(navBarTitleLabel)")
         XCTAssertEqual(navBarTitleLabel, "Sol 15")
     }
     
     func testPreviousSolButton() throws {
         previousSolButton.tap()
-        print("navBar label: \(navBarTitleLabel)")
+        print("😀 navBar label: \(navBarTitleLabel)")
         XCTAssertEqual(navBarTitleLabel, "Sol 14")
     }
     
     func testNextSolButton() throws {
         nextSolButton.tap()
-        print("navBar label: \(navBarTitleLabel)")
+        print("😀 navBar label: \(navBarTitleLabel)")
         XCTAssertEqual(navBarTitleLabel, "Sol 16")
+    }
+    
+    func testNextThenPreviousSolButton() throws {
+        nextSolButton.tap()
+        previousSolButton.tap()
+        print("😀 navBar label: \(navBarTitleLabel)")
+        XCTAssertEqual(navBarTitleLabel, "Sol 15")
+    }
+    
+    func testPreviousThenNextSolButton() throws {
+        previousSolButton.tap()
+        nextSolButton.tap()
+        print("😀 navBar label: \(navBarTitleLabel)")
+        XCTAssertEqual(navBarTitleLabel, "Sol 15")
     }
     
     
