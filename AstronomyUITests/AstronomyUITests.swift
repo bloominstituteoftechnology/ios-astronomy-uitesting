@@ -57,7 +57,7 @@ class AstronomyUITests: XCTestCase {
     
     func testScrolling() {
         app.launch()
-        getCell(at: 0).swipeUp()
+        app.collectionViews.element.swipeUp()
     }
     
     func testNextSol() {
