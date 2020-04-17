@@ -66,6 +66,21 @@ class AstronomyUITests: XCTestCase {
 //        // Use XCTAssert and related functions to verify your tests produce the correct results.
 //    }
     
+    
+    
+    
+        func testViewingPreviousSol() {
+            XCUIApplication().navigationBars["Sol 1"]/*@START_MENU_TOKEN@*/.buttons["PhotosCollectionViewController.NextSolButton"]/*[[".buttons[\">\"]",".buttons[\"PhotosCollectionViewController.NextSolButton\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+            XCUIApplication().navigationBars["Sol 2"]/*@START_MENU_TOKEN@*/.buttons["PhotosCollectionViewController.PreviousSolButton"]/*[[".buttons[\"<\"]",".buttons[\"PhotosCollectionViewController.PreviousSolButton\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+                
+                
+        // check status label
+                let statusLabel = app.staticTexts["Sol 1"]
+                let statusLabelText = statusLabel.label
+                XCTAssert(statusLabelText == "Sol 1")
+        
+    }
+    
     func testViewingAnotherSol() {
         XCUIApplication().navigationBars["Sol 1"]/*@START_MENU_TOKEN@*/.buttons["PhotosCollectionViewController.NextSolButton"]/*[[".buttons[\">\"]",".buttons[\"PhotosCollectionViewController.NextSolButton\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
         // check to see if in sol 2
