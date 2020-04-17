@@ -16,6 +16,9 @@ class AstronomyUITests: XCTestCase {
     lazy var previousSolButton = app.buttons["PhotosCollectionViewController.PreviousSolButton"]
     lazy var nextSolButton = app.buttons["PhotosCollectionViewController.NextSolButton"]
     
+    lazy var collectionView = app.collectionViews.firstMatch
+    lazy var firstCell = collectionView.cells.firstMatch
+    
     // MARK: - Setup
     
     override func setUpWithError() throws {
@@ -60,6 +63,13 @@ class AstronomyUITests: XCTestCase {
         print("😀 navBar label: \(navBarTitleLabel)")
         XCTAssertEqual(navBarTitleLabel, "Sol 15")
     }
+    
+    func testTapFirstPhoto() throws {
+        firstCell.tap()
+        print("😀 navBar label: \(navBarTitleLabel)")
+        XCTAssertEqual(navBarTitleLabel, "8/20/12, 8:00 PM")
+    }
+    
     
     
 
