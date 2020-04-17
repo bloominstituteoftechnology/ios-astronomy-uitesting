@@ -33,30 +33,43 @@ class AstronomyUITests: XCTestCase {
     }
 
     // MARK: - Tests
-    
+
     func testNavigationBar() throws {
 
         // Use recording to get started writing UI tests.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
 
         // TODO: How do I look at navigationBars in variable navigator?
+        let sol14NavigationBar = app.navigationBars["Sol 14"]
         let sol15NavigationBar = app.navigationBars["Sol 15"]
+        let sol16NavigationBar = app.navigationBars["Sol 16"]
+
+        // Verify starting at Sol 15
+        XCTAssertEqual(sol15NavigationBar.staticTexts["Sol 15"].label, "Sol 15")
+
         // Go to prior Sol 14
         sol15NavigationBar/*@START_MENU_TOKEN@*/.buttons["PhotosCollectionViewController.PreviousSolButton"]/*[[".buttons[\"<\"]",".buttons[\"PhotosCollectionViewController.PreviousSolButton\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
-        
-        let sol14NavigationBar = app.navigationBars["Sol 14"]
-        sol14NavigationBar.staticTexts["Sol 14"].tap()
+        XCTAssertEqual(sol14NavigationBar.staticTexts["Sol 14"].label, "Sol 14")
+
+        // Verify at the previous end
+        sol14NavigationBar.buttons["PhotosCollectionViewController.PreviousSolButton"].tap()
+        XCTAssertEqual(sol14NavigationBar.staticTexts["Sol 14"].label, "Sol 14")
+
         // Go to next Sol 15
         sol14NavigationBar/*@START_MENU_TOKEN@*/.buttons["PhotosCollectionViewController.NextSolButton"]/*[[".buttons[\">\"]",".buttons[\"PhotosCollectionViewController.NextSolButton\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
-        sol15NavigationBar.staticTexts["Sol 15"].tap()
+        XCTAssertEqual(sol15NavigationBar.staticTexts["Sol 15"].label, "Sol 15")
+
         // Go to next Sol 16
         sol15NavigationBar/*@START_MENU_TOKEN@*/.buttons["PhotosCollectionViewController.NextSolButton"]/*[[".buttons[\">\"]",".buttons[\"PhotosCollectionViewController.NextSolButton\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
-        
-        let sol16NavigationBar = app.navigationBars["Sol 16"]
-        sol16NavigationBar.staticTexts["Sol 16"].tap()
+        XCTAssertEqual(sol16NavigationBar.staticTexts["Sol 16"].label, "Sol 16")
+
         // Go to next Sol. At the end so we're stuck
         sol16NavigationBar/*@START_MENU_TOKEN@*/.buttons["PhotosCollectionViewController.NextSolButton"]/*[[".buttons[\">\"]",".buttons[\"PhotosCollectionViewController.NextSolButton\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        XCTAssertEqual(sol16NavigationBar.staticTexts["Sol 16"].label, "Sol 16")
         
+        // Back to Sol 15
+        sol16NavigationBar.buttons["PhotosCollectionViewController.PreviousSolButton"].tap()
+        XCTAssertEqual(sol15NavigationBar.staticTexts["Sol 15"].label, "Sol 15")
     }
 
 //    func testLaunchPerformance() throws {
