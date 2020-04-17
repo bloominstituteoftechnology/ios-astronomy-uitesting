@@ -111,9 +111,9 @@ class AstronomyUITests: XCTestCase {
             allVisibleElements = allElements
             
             // Then, we do a scroll up on the scrollview
-            let startCoordinate = collectionView.coordinate(withNormalizedOffset: CGVector(dx: 0.99, dy: 0.9))
-            startCoordinate.press(forDuration: 0.01, thenDragTo: collectionView.coordinate(withNormalizedOffset:CGVector(dx: 0.99, dy: 0.1)))
+            collectionView.swipeUp()
         }
         return nil
     }
+
 }
