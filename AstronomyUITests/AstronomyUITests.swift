@@ -12,20 +12,20 @@ class AstronomyUITests: XCTestCase {
 
     // MARK: - Helper Prorperties
     
-    private var app: XCUIApplication {
-        return XCUIApplication()
-    }
+    private var app: XCUIApplication!
     
     // MARK: - Test Setup
 
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
+        app = XCUIApplication()
         app.launchArguments.append("UITesting")
-        
+
         // In UI tests it is usually best to stop immediately when a failure occurs.
         continueAfterFailure = false
 
         // In UI tests it’s important to set the initial state - such as interface orientation - required for your tests before they run. The setUp method is a good place to do this.
+        app.launch()
     }
 
     override func tearDownWithError() throws {
@@ -34,21 +34,37 @@ class AstronomyUITests: XCTestCase {
 
     // MARK: - Tests
     
-    func testExample() throws {
-        // UI tests must launch the application that they test.
-        let app = XCUIApplication()
-        app.launch()
+    func testNavigationBar() throws {
 
         // Use recording to get started writing UI tests.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
+
+        // TODO: How do I look at navigationBars in variable navigator?
+        let sol15NavigationBar = app.navigationBars["Sol 15"]
+        // Go to prior Sol 14
+        sol15NavigationBar/*@START_MENU_TOKEN@*/.buttons["PhotosCollectionViewController.PreviousSolButton"]/*[[".buttons[\"<\"]",".buttons[\"PhotosCollectionViewController.PreviousSolButton\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        
+        let sol14NavigationBar = app.navigationBars["Sol 14"]
+        sol14NavigationBar.staticTexts["Sol 14"].tap()
+        // Go to next Sol 15
+        sol14NavigationBar/*@START_MENU_TOKEN@*/.buttons["PhotosCollectionViewController.NextSolButton"]/*[[".buttons[\">\"]",".buttons[\"PhotosCollectionViewController.NextSolButton\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        sol15NavigationBar.staticTexts["Sol 15"].tap()
+        // Go to next Sol 16
+        sol15NavigationBar/*@START_MENU_TOKEN@*/.buttons["PhotosCollectionViewController.NextSolButton"]/*[[".buttons[\">\"]",".buttons[\"PhotosCollectionViewController.NextSolButton\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        
+        let sol16NavigationBar = app.navigationBars["Sol 16"]
+        sol16NavigationBar.staticTexts["Sol 16"].tap()
+        // Go to next Sol. At the end so we're stuck
+        sol16NavigationBar/*@START_MENU_TOKEN@*/.buttons["PhotosCollectionViewController.NextSolButton"]/*[[".buttons[\">\"]",".buttons[\"PhotosCollectionViewController.NextSolButton\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        
     }
 
-    func testLaunchPerformance() throws {
-        if #available(macOS 10.15, iOS 13.0, tvOS 13.0, *) {
-            // This measures how long it takes to launch your application.
-            measure(metrics: [XCTOSSignpostMetric.applicationLaunch]) {
-                XCUIApplication().launch()
-            }
-        }
-    }
+//    func testLaunchPerformance() throws {
+//        if #available(macOS 10.15, iOS 13.0, tvOS 13.0, *) {
+//            // This measures how long it takes to launch your application.
+//            measure(metrics: [XCTOSSignpostMetric.applicationLaunch]) {
+//                XCUIApplication().launch()
+//            }
+//        }
+//    }
 }
