@@ -9,27 +9,82 @@
 import XCTest
 
 class AstronomyUITests: XCTestCase {
+    
+    private var app: XCUIApplication {
+        XCUIApplication()
+    }
+    
+    private func getNavBarTitleFor(_ sol: Int) -> XCUIElement {
+        app.staticTexts["Sol \(sol)"]
+    }
+    private func getCellFor(_ index: Int) -> XCUIElement {
+        app.collectionViews.cells["Cell \(index)"]
+    }
+    
+    private var nextSol: XCUIElement {
+        app.buttons["PhotosCollectionViewController.NextSolButton"]
+    }
+    private var previousSol: XCUIElement {
+        app.buttons["PhotosCollectionViewController.PreviousSolButton"]
+    }
+    
+    private var solImage: XCUIElement {
+        app.images["PhotoDetailViewController.ImageView"]
+    }
+    private var saveButton: XCUIElement {
+        app.buttons["PhotoDetailViewController.SaveButton"]
+    }
 
     override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-
-        // In UI tests it is usually best to stop immediately when a failure occurs.
+        app.launchArguments = ["UITesting"]
+        
         continueAfterFailure = false
-
-        // In UI tests it’s important to set the initial state - such as interface orientation - required for your tests before they run. The setUp method is a good place to do this.
     }
 
     override func tearDownWithError() throws {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
-
-    func testExample() throws {
-        // UI tests must launch the application that they test.
-        let app = XCUIApplication()
+    
+    func testViewingSols() {
         app.launch()
+        
+        guard getNavBarTitleFor(1).waitForExistence(timeout: 3) else {
+            XCTFail()
+            return
+        }
+        XCTAssertEqual(getNavBarTitleFor(1).label, "Sol 1")
+        
+        nextSol.tap()
+        guard getNavBarTitleFor(2).waitForExistence(timeout: 3) else {
+            XCTFail()
+            return
+        }
+        XCTAssertEqual(getNavBarTitleFor(2).label, "Sol 2")
 
-        // Use recording to get started writing UI tests.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+        previousSol.tap()
+        guard getNavBarTitleFor(1).waitForExistence(timeout: 3) else {
+            XCTFail()
+            return
+        }
+        XCTAssertEqual(getNavBarTitleFor(1).label, "Sol 1")
+    }
+    
+    func testViewingCell() {
+        app.launch()
+        
+        for _ in 0...5 {
+            nextSol.tap()
+        }
+        
+        guard getNavBarTitleFor(14).waitForExistence(timeout: 3) else {
+            XCTFail()
+            return
+        }
+        XCTAssertEqual(getNavBarTitleFor(14).label, "Sol 14")
+        
+        getCellFor(0).tap()
+        
+        XCTAssert(app.staticTexts["Title"].exists)
     }
 
     func testLaunchPerformance() throws {
