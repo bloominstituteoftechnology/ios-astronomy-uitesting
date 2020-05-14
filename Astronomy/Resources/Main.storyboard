@@ -39,7 +39,7 @@
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="MarsPlaceholder" translatesAutoresizingMaskIntoConstraints="NO" id="xlN-QE-XWB">
                                                     <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
-                                                    <accessibility key="accessibilityConfiguration">
+                                                    <accessibility key="accessibilityConfiguration" identifier="PhotosCollectionViewController.PhotoCell">
                                                         <bool key="isElement" value="YES"/>
                                                     </accessibility>
                                                 </imageView>
@@ -101,6 +101,7 @@
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Taken by &lt;Rover&gt; on &lt;date&gt; (Sol &lt;sol&gt;)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PDa-7E-DHh">
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="20.5"/>
+                                        <accessibility key="accessibilityConfiguration" identifier="PhotoDetailViewController.DetailLabel"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -110,12 +111,14 @@
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Camera:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jhh-vC-QKo">
                                                 <rect key="frame" x="0.0" y="0.0" width="64.5" height="20.5"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="PhotoDetailViewController.Camera"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9gd-7b-dyz">
                                                 <rect key="frame" x="72.5" y="0.0" width="301.5" height="20.5"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="PhotoDetailViewController.CameraLabel"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
