@@ -7,6 +7,7 @@
 //
 
 import XCTest
+import SwiftMonkey
 
 class AstronomyUITests: XCTestCase {
     
@@ -134,6 +135,17 @@ class AstronomyUITests: XCTestCase {
         
         XCTAssert(cellImage.exists)
         XCTAssert(app.staticTexts["8/19/12, 8:00 PM"].exists)
+    }
+    
+    func testMonkey() {
+        app.launch()
+        
+        let monkey = Monkey(frame: app.frame)
+        monkey.addDefaultXCTestPublicActions(app: app)
+        
+        monkey.addXCTestTapAlertAction(interval: 100, application: app)
+        
+        monkey.monkeyAround()
     }
 
     func testLaunchPerformance() throws {
