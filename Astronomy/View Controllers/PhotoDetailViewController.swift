@@ -20,7 +20,9 @@ class PhotoDetailViewController: UIViewController {
         guard let image = imageView.image else { return }
         PHPhotoLibrary.requestAuthorization { (status) in
             guard status == .authorized else {
-                self.presentFailedSaveAlert()
+                DispatchQueue.main.async {
+                    self.presentFailedSaveAlert()
+                }
                 return
             }
             

@@ -86,6 +86,22 @@ class AstronomyUITests: XCTestCase {
         
         XCTAssert(app.staticTexts["Title"].exists)
     }
+    
+    func testSavingImage() {
+        app.launch()
+        
+        for _ in 0...5 {
+            nextSol.tap()
+        }
+        
+        guard getNavBarTitleFor(14).waitForExistence(timeout: 3) else {
+            XCTFail()
+            return
+        }
+        XCTAssertEqual(getNavBarTitleFor(14).label, "Sol 14")
+        
+        getCellFor(0).tap()
+    }
 
     func testLaunchPerformance() throws {
         if #available(macOS 10.15, iOS 13.0, tvOS 13.0, *) {
