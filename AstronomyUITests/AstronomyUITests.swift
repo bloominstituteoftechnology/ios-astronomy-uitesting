@@ -43,14 +43,21 @@ class AstronomyUITests: XCTestCase {
         // Use XCTAssert and related functions to verify your tests produce the correct results.
         
         //Changing Sol
-        let photoscollectionviewcontrollerNextsolbuttonButton = XCUIApplication().navigationBars["Sol 0"]/*@START_MENU_TOKEN@*/.buttons["PhotosCollectionViewController.NextSolButton"]/*[[".buttons[\">\"]",".buttons[\"PhotosCollectionViewController.NextSolButton\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
-        photoscollectionviewcontrollerNextsolbuttonButton.tap()
-        photoscollectionviewcontrollerNextsolbuttonButton.tap()
+        app.navigationBars["Sol 1"]/*@START_MENU_TOKEN@*/.buttons["PhotosCollectionViewController.NextSolButton"]/*[[".buttons[\">\"]",".buttons[\"PhotosCollectionViewController.NextSolButton\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        app.navigationBars["Sol 2"]/*@START_MENU_TOKEN@*/.buttons["PhotosCollectionViewController.PreviousSolButton"]/*[[".buttons[\"<\"]",".buttons[\"PhotosCollectionViewController.PreviousSolButton\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
         
-        //Saving Photo
+        //Swiping
+        let verticalScrollBar3PagesCollectionView = app/*@START_MENU_TOKEN@*/.collectionViews.containing(.other, identifier:"Vertical scroll bar, 3 pages").element/*[[".collectionViews.containing(.other, identifier:\"Horizontal scroll bar, 1 page\").element",".collectionViews.containing(.other, identifier:\"Vertical scroll bar, 3 pages\").element"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
+        verticalScrollBar3PagesCollectionView.swipeUp()
+        verticalScrollBar3PagesCollectionView.swipeDown()
+        
+        //Saving Picture
         app.collectionViews.children(matching: .cell).element(boundBy: 1).children(matching: .other).element.tap()
         app/*@START_MENU_TOKEN@*/.staticTexts["Save to Photo Library"]/*[[".buttons[\"Save to Photo Library\"].staticTexts[\"Save to Photo Library\"]",".buttons[\"PhotoDetailViewController.SaveButton\"].staticTexts[\"Save to Photo Library\"]",".staticTexts[\"Save to Photo Library\"]"],[[[-1,2],[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
         app.alerts["Photo Saved!"].scrollViews.otherElements.buttons["Okay"].tap()
+        
+        //Tapping Back Button
+        XCUIApplication().navigationBars["Title"].buttons["Sol 1"].tap()
         
     }
     
