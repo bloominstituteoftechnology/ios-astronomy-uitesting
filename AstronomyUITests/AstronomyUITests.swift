@@ -101,6 +101,11 @@ class AstronomyUITests: XCTestCase {
         XCTAssertEqual(getNavBarTitleFor(14).label, "Sol 14")
         
         getCellFor(0).tap()
+        
+        saveButton.tap()
+        XCTAssert(app.staticTexts["Photo Saved!"].exists)
+        app.buttons["Okay"].tap()
+        XCTAssert(!app.staticTexts["Photo Saved!"].exists)
     }
 
     func testLaunchPerformance() throws {
