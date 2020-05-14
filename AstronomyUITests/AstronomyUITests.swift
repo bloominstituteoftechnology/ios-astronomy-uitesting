@@ -44,6 +44,10 @@ class AstronomyUITests: XCTestCase {
         return imageView(id: .photoCellImageView)
     }
 
+    private var detailImageView: XCUIElement {
+        return imageView(id: .detailVCImageView)
+    }
+
     private var nextSolButton: XCUIElement {
         return button(id: .nextSolButton)
     }
@@ -73,6 +77,11 @@ class AstronomyUITests: XCTestCase {
           XCTAssert(previousSolButton.isHittable)
           nextSolButton.tap()
       }
+
+    func testDetailImageIsPresent() {
+        app.cells.element(boundBy: 0).tap()
+        XCTAssert(detailImageView.exists)
+    }
 
     func testSavePhotoButton() {
         app.cells.element(boundBy: 0).tap()
