@@ -55,7 +55,8 @@ class PhotosCollectionViewController: UIViewController, UICollectionViewDataSour
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ImageCell", for: indexPath) as? ImageCollectionViewCell ?? ImageCollectionViewCell()
-        
+        let cellIndex = "Cell \(indexPath.row)"
+        cell.accessibilityIdentifier = cellIndex
         loadImage(forCell: cell, forItemAt: indexPath)
         
         return cell

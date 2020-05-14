@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2B4C3F20246DD67300FAE1EA /* AstronomyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B4C3F1F246DD67300FAE1EA /* AstronomyUITests.swift */; };
+		2B4C3F5E246DFFF400FAE1EA /* SwiftMonkey.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B4C3F57246DFFA000FAE1EA /* SwiftMonkey.framework */; };
 		4647E7C92148C3F700E7FF73 /* Sol15Photos in Resources */ = {isa = PBXBuildFile; fileRef = 4647E7C62148C3F400E7FF73 /* Sol15Photos */; };
 		4647E7CA2148C3F700E7FF73 /* Sol16Photos in Resources */ = {isa = PBXBuildFile; fileRef = 4647E7C72148C3F600E7FF73 /* Sol16Photos */; };
 		4647E7CB2148C3F700E7FF73 /* Sol14Photos in Resources */ = {isa = PBXBuildFile; fileRef = 4647E7C82148C3F700E7FF73 /* Sol14Photos */; };
@@ -33,7 +35,35 @@
 		9DFE494C2145D37A0009922B /* PhotoDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DFE494B2145D37A0009922B /* PhotoDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		2B4C3F22246DD67300FAE1EA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9DBD1FFD2140D1300047905E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9DBD20042140D1300047905E;
+			remoteInfo = Astronomy;
+		};
+		2B4C3F56246DFFA000FAE1EA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2B4C3F52246DFFA000FAE1EA /* SwiftMonkey.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = OBJ_16;
+			remoteInfo = SwiftMonkey;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
+		2B4C3F1D246DD67300FAE1EA /* AstronomyUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AstronomyUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		2B4C3F1F246DD67300FAE1EA /* AstronomyUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AstronomyUITests.swift; sourceTree = "<group>"; };
+		2B4C3F21246DD67300FAE1EA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2B4C3F51246DFFA000FAE1EA /* MonkeyXCTestPrivate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MonkeyXCTestPrivate.swift; path = ../../../../Other/SwiftMonkey/SwiftMonkey/MonkeyXCTestPrivate.swift; sourceTree = "<group>"; };
+		2B4C3F52246DFFA000FAE1EA /* SwiftMonkey.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SwiftMonkey.xcodeproj; path = ../../../../Other/SwiftMonkey/SwiftMonkey/SwiftMonkey.xcodeproj; sourceTree = "<group>"; };
+		2B4C3F58246DFFA000FAE1EA /* Documentation */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Documentation; path = ../../../../Other/SwiftMonkey/SwiftMonkey/Documentation; sourceTree = "<group>"; };
+		2B4C3F59246DFFA000FAE1EA /* Random.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Random.swift; path = ../../../../Other/SwiftMonkey/SwiftMonkey/Random.swift; sourceTree = "<group>"; };
+		2B4C3F5A246DFFA000FAE1EA /* Monkey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Monkey.swift; path = ../../../../Other/SwiftMonkey/SwiftMonkey/Monkey.swift; sourceTree = "<group>"; };
+		2B4C3F5B246DFFA000FAE1EA /* MonkeyUIAutomation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MonkeyUIAutomation.swift; path = ../../../../Other/SwiftMonkey/SwiftMonkey/MonkeyUIAutomation.swift; sourceTree = "<group>"; };
+		2B4C3F5C246DFFA000FAE1EA /* Package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Package.swift; path = ../../../../Other/SwiftMonkey/SwiftMonkey/Package.swift; sourceTree = "<group>"; };
+		2B4C3F5D246DFFA100FAE1EA /* MonkeyXCTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MonkeyXCTest.swift; path = ../../../../Other/SwiftMonkey/SwiftMonkey/MonkeyXCTest.swift; sourceTree = "<group>"; };
 		4647E7C62148C3F400E7FF73 /* Sol15Photos */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Sol15Photos; sourceTree = "<group>"; };
 		4647E7C72148C3F600E7FF73 /* Sol16Photos */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Sol16Photos; sourceTree = "<group>"; };
 		4647E7C82148C3F700E7FF73 /* Sol14Photos */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Sol14Photos; sourceTree = "<group>"; };
@@ -63,6 +93,14 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		2B4C3F1A246DD67300FAE1EA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2B4C3F5E246DFFF400FAE1EA /* SwiftMonkey.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		9DBD20022140D1300047905E /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -73,6 +111,38 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2B4C3F1E246DD67300FAE1EA /* AstronomyUITests */ = {
+			isa = PBXGroup;
+			children = (
+				2B4C3F1F246DD67300FAE1EA /* AstronomyUITests.swift */,
+				2B4C3F21246DD67300FAE1EA /* Info.plist */,
+			);
+			path = AstronomyUITests;
+			sourceTree = "<group>";
+		};
+		2B4C3F50246DFFA000FAE1EA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2B4C3F58246DFFA000FAE1EA /* Documentation */,
+				2B4C3F5A246DFFA000FAE1EA /* Monkey.swift */,
+				2B4C3F5B246DFFA000FAE1EA /* MonkeyUIAutomation.swift */,
+				2B4C3F5D246DFFA100FAE1EA /* MonkeyXCTest.swift */,
+				2B4C3F51246DFFA000FAE1EA /* MonkeyXCTestPrivate.swift */,
+				2B4C3F5C246DFFA000FAE1EA /* Package.swift */,
+				2B4C3F59246DFFA000FAE1EA /* Random.swift */,
+				2B4C3F52246DFFA000FAE1EA /* SwiftMonkey.xcodeproj */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		2B4C3F53246DFFA000FAE1EA /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				2B4C3F57246DFFA000FAE1EA /* SwiftMonkey.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		4647E7CF2148CEDF00E7FF73 /* UI Testing */ = {
 			isa = PBXGroup;
 			children = (
@@ -89,7 +159,9 @@
 			isa = PBXGroup;
 			children = (
 				9DBD20072140D1300047905E /* Astronomy */,
+				2B4C3F1E246DD67300FAE1EA /* AstronomyUITests */,
 				9DBD20062140D1300047905E /* Products */,
+				2B4C3F50246DFFA000FAE1EA /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -97,6 +169,7 @@
 			isa = PBXGroup;
 			children = (
 				9DBD20052140D1300047905E /* Astronomy.app */,
+				2B4C3F1D246DD67300FAE1EA /* AstronomyUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -188,6 +261,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		2B4C3F1C246DD67300FAE1EA /* AstronomyUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2B4C3F26246DD67300FAE1EA /* Build configuration list for PBXNativeTarget "AstronomyUITests" */;
+			buildPhases = (
+				2B4C3F19246DD67300FAE1EA /* Sources */,
+				2B4C3F1A246DD67300FAE1EA /* Frameworks */,
+				2B4C3F1B246DD67300FAE1EA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				2B4C3F23246DD67300FAE1EA /* PBXTargetDependency */,
+			);
+			name = AstronomyUITests;
+			productName = AstronomyUITests;
+			productReference = 2B4C3F1D246DD67300FAE1EA /* AstronomyUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 		9DBD20042140D1300047905E /* Astronomy */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9DBD20172140D1300047905E /* Build configuration list for PBXNativeTarget "Astronomy" */;
@@ -211,10 +302,14 @@
 		9DBD1FFD2140D1300047905E /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0940;
+				LastSwiftUpdateCheck = 1140;
 				LastUpgradeCheck = 0940;
 				ORGANIZATIONNAME = "Lambda School";
 				TargetAttributes = {
+					2B4C3F1C246DD67300FAE1EA = {
+						CreatedOnToolsVersion = 11.4.1;
+						TestTargetID = 9DBD20042140D1300047905E;
+					};
 					9DBD20042140D1300047905E = {
 						CreatedOnToolsVersion = 9.4.1;
 					};
@@ -231,14 +326,38 @@
 			mainGroup = 9DBD1FFC2140D1300047905E;
 			productRefGroup = 9DBD20062140D1300047905E /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 2B4C3F53246DFFA000FAE1EA /* Products */;
+					ProjectRef = 2B4C3F52246DFFA000FAE1EA /* SwiftMonkey.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				9DBD20042140D1300047905E /* Astronomy */,
+				2B4C3F1C246DD67300FAE1EA /* AstronomyUITests */,
 			);
 		};
 /* End PBXProject section */
 
+/* Begin PBXReferenceProxy section */
+		2B4C3F57246DFFA000FAE1EA /* SwiftMonkey.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = SwiftMonkey.framework;
+			remoteRef = 2B4C3F56246DFFA000FAE1EA /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
 /* Begin PBXResourcesBuildPhase section */
+		2B4C3F1B246DD67300FAE1EA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		9DBD20032140D1300047905E /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -257,6 +376,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		2B4C3F19246DD67300FAE1EA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2B4C3F20246DD67300FAE1EA /* AstronomyUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		9DBD20012140D1300047905E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -282,6 +409,14 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		2B4C3F23246DD67300FAE1EA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 9DBD20042140D1300047905E /* Astronomy */;
+			targetProxy = 2B4C3F22246DD67300FAE1EA /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
 		9DBD20112140D1300047905E /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
@@ -294,6 +429,49 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		2B4C3F24246DD67300FAE1EA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 2MD9HPX6UP;
+				INFOPLIST_FILE = AstronomyUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.hunteroppel.AstronomyUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Astronomy;
+			};
+			name = Debug;
+		};
+		2B4C3F25246DD67300FAE1EA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 2MD9HPX6UP;
+				INFOPLIST_FILE = AstronomyUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.hunteroppel.AstronomyUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Astronomy;
+			};
+			name = Release;
+		};
 		9DBD20152140D1300047905E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -447,6 +625,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		2B4C3F26246DD67300FAE1EA /* Build configuration list for PBXNativeTarget "AstronomyUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2B4C3F24246DD67300FAE1EA /* Debug */,
+				2B4C3F25246DD67300FAE1EA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		9DBD20002140D1300047905E /* Build configuration list for PBXProject "Astronomy" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

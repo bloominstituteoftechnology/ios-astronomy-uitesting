@@ -20,7 +20,9 @@ class PhotoDetailViewController: UIViewController {
         guard let image = imageView.image else { return }
         PHPhotoLibrary.requestAuthorization { (status) in
             guard status == .authorized else {
-                self.presentFailedSaveAlert()
+                DispatchQueue.main.async {
+                    self.presentFailedSaveAlert()
+                }
                 return
             }
             
@@ -61,9 +63,11 @@ class PhotoDetailViewController: UIViewController {
     private func updateViews() {
         guard let photo = photo, isViewLoaded else { return }
         do {
+            self.navigationItem.backBarButtonItem?.accessibilityIdentifier = "Back"
             let data = try Data(contentsOf: photo.imageURL.usingHTTPS!)
             imageView.image = UIImage(data: data)?.filtered()
             let dateString = dateFormatter.string(from: photo.earthDate)
+            title = dateString
             detailLabel.text = "Taken by \(photo.camera.roverId) on \(dateString) (Sol \(photo.sol))"
             cameraLabel.text = photo.camera.fullName
         } catch {
