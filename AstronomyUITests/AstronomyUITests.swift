@@ -27,6 +27,18 @@ class AstronomyUITests: XCTestCase {
         case previousSolButton = "PhotosCollectionViewController.PreviousSolButton"
     }
 
+    private var app: XCUIApplication {
+        return XCUIApplication()
+    }
+
+    private func button(id: Identifier) -> XCUIElement {
+        return app.buttons[id.rawValue]
+    }
+
+    // MARK: - Tests
+
+    
+
     func testLaunchPerformance() throws {
         if #available(macOS 10.15, iOS 13.0, tvOS 13.0, *) {
             // This measures how long it takes to launch your application.
