@@ -10,14 +10,21 @@ import XCTest
 
 class AstronomyUITests: XCTestCase {
 
-
-    func testExample() throws {
-        // UI tests must launch the application that they test.
+    override func setUp() {
+        continueAfterFailure = false
         let app = XCUIApplication()
+        app.launchArguments = ["UITesting"]
         app.launch()
+    }
 
-        // Use recording to get started writing UI tests.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    // MARK: - Properties
+
+    enum Identifier: String {
+        case savePhotoButton = "PhotoDetailViewController.SaveButton"
+        case photoCellImageView = "PhotosCollectionViewController.ImageCell.ImageView"
+        case detailVCImageView = "PhotoDetailViewController.ImageView"
+        case nextSolButton = "PhotosCollectionViewController.NextSolButton"
+        case previousSolButton = "PhotosCollectionViewController.PreviousSolButton"
     }
 
     func testLaunchPerformance() throws {
