@@ -11,15 +11,30 @@ import XCTest
 class AstronomyUITests: XCTestCase {
     
     // MARK: - Helper Properties
-    private let app = XCUIApplication()
-
+    private var app: XCUIApplication {
+        XCUIApplication()
+    }
+    
+    
     override func setUp()  {
-        app.launch()
         continueAfterFailure = false
         app.launchArguments = ["UITesting"]
+        app.launch()
 
     }
-
+    
+    func testNextSol() {
+        
+        let sol1NavigationBar = app.navigationBars["Sol 1"]
+        sol1NavigationBar/*@START_MENU_TOKEN@*/.buttons["PhotosCollectionViewController.NextSolButton"]/*[[".buttons[\">\"]",".buttons[\"PhotosCollectionViewController.NextSolButton\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+    }
+    
+    func testPreviousSol() {
+        
+        let sol1NavigationBar = app.navigationBars["Sol 1"]
+        sol1NavigationBar.buttons["PhotosCollectionViewController.PreviousSolButton"].tap()
+        
+    }
     
 
     func testLaunchPerformance() throws {
