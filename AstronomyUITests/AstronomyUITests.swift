@@ -36,6 +36,10 @@ class AstronomyUITests: XCTestCase {
         
     }
     
+    func testTapCell() {
+        app.collectionViews.children(matching: .cell).element(boundBy: 0).otherElements.children(matching: .image).element.tap()
+    }
+    
 
     func testLaunchPerformance() throws {
         if #available(macOS 10.15, iOS 13.0, tvOS 13.0, *) {
