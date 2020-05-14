@@ -28,7 +28,7 @@ class AstronomyUITests: XCTestCase {
         app.buttons["PhotosCollectionViewController.PreviousSolButton"]
     }
     
-    private var solImage: XCUIElement {
+    private var cellImage: XCUIElement {
         app.images["PhotoDetailViewController.ImageView"]
     }
     private var saveButton: XCUIElement {
@@ -84,7 +84,8 @@ class AstronomyUITests: XCTestCase {
         
         getCellFor(0).tap()
         
-        XCTAssert(app.staticTexts["Title"].exists)
+        XCTAssert(cellImage.exists)
+        XCTAssert(app.staticTexts["8/19/12, 8:00 PM"].exists)
     }
     
     func testSavingImage() {
@@ -106,6 +107,33 @@ class AstronomyUITests: XCTestCase {
         XCTAssert(app.staticTexts["Photo Saved!"].exists)
         app.buttons["Okay"].tap()
         XCTAssert(!app.staticTexts["Photo Saved!"].exists)
+    }
+    
+    func testExitingImages() {
+        app.launch()
+        
+        for _ in 0...5 {
+            nextSol.tap()
+        }
+        
+        guard getNavBarTitleFor(14).waitForExistence(timeout: 3) else {
+            XCTFail()
+            return
+        }
+        XCTAssertEqual(getNavBarTitleFor(14).label, "Sol 14")
+        
+        getCellFor(0).tap()
+        
+        XCTAssert(cellImage.exists)
+        XCTAssert(app.staticTexts["8/19/12, 8:00 PM"].exists)
+        
+        app.buttons["Sol 14"].tap()
+        
+        XCTAssertEqual(getNavBarTitleFor(14).label, "Sol 14")
+        getCellFor(1).tap()
+        
+        XCTAssert(cellImage.exists)
+        XCTAssert(app.staticTexts["8/19/12, 8:00 PM"].exists)
     }
 
     func testLaunchPerformance() throws {
