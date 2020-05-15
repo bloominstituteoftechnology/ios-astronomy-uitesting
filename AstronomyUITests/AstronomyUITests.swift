@@ -16,6 +16,10 @@ class AstronomyUITests: XCTestCase {
         XCUIApplication()
     }
     
+    
+    lazy var navBar = app.navigationBars.firstMatch
+    lazy var navBarTitleLabel = navBar.staticTexts.firstMatch.label
+    
     var sol1NavigationBar: XCUIElement {
      app.navigationBars["Sol 1"]
     }
@@ -31,6 +35,10 @@ class AstronomyUITests: XCTestCase {
     private var collectionViewCell: XCUIElement {
         return app.collectionViews.firstMatch
     }
+    
+    private var collectionViewScrolling: XCUIElement {
+           return app.collectionViews.children(matching: .cell).element(boundBy: 0).images["CollectionViewCell.Image"]
+       }
     
     private var collectionViewImage: XCUIElement {
         collectionViewCell.cells.firstMatch
@@ -81,6 +89,18 @@ class AstronomyUITests: XCTestCase {
              sol2NavigationBar.staticTexts["Sol 2"].tap()
     }
     
+    func testPreviousSol() {
+        app.launch()
+        
+       nextButton.tap()
+        previousButton.tap()
+        XCTAssertEqual(navBarTitleLabel, "Sol 0")
+    }
+    
+    func testScroolling() {
+        collectionViewScrolling.swipeUp()
+        collectionViewScrolling.swipeDown()
+    }
     
     func testLaunchPerformance() throws {
         if #available(macOS 10.15, iOS 13.0, tvOS 13.0, *) {
