@@ -56,11 +56,10 @@ class AstronomyUITests: XCTestCase {
     func testSwitchSolsAndSaveMultiplePhotos() {
         let app = XCUIApplication()
         app.launch()
-        app.navigationBars["Sol 0"]/*@START_MENU_TOKEN@*/.buttons["PhotosCollectionViewController.NextSolButton"]/*[[".buttons[\">\"]",".buttons[\"PhotosCollectionViewController.NextSolButton\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
-        let photoscollectionviewcontrollerNextsolbuttonButton = app.navigationBars["Sol 1"]/*@START_MENU_TOKEN@*/.buttons["PhotosCollectionViewController.NextSolButton"]/*[[".buttons[\">\"]",".buttons[\"PhotosCollectionViewController.NextSolButton\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
-        photoscollectionviewcontrollerNextsolbuttonButton.tap()
+        app.navigationBars["Sol 0"]/*@START_MENU_TOKEN@*/.buttons[">"]/*[[".buttons[\">\"]",".buttons[\"PhotosCollectionViewController.NextSolButton\"]"],[[[-1,1],[-1,0]]],[1]]@END_MENU_TOKEN@*/.tap()
+        let photoscollectionviewcontrollerNextsolbuttonButton = app.navigationBars["Sol 1"]/*@START_MENU_TOKEN@*/.buttons[">"]/*[[".buttons[\">\"]",".buttons[\"PhotosCollectionViewController.NextSolButton\"]"],[[[-1,1],[-1,0]]],[1]]@END_MENU_TOKEN@*/
         let sol2NavigationBar = app.navigationBars["Sol 2"]
-        let photoscollectionviewcontrollerPrevioussolbuttonButton = sol2NavigationBar/*@START_MENU_TOKEN@*/.buttons["PhotosCollectionViewController.PreviousSolButton"]/*[[".buttons[\"<\"]",".buttons[\"PhotosCollectionViewController.PreviousSolButton\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
+        let photoscollectionviewcontrollerPrevioussolbuttonButton = sol2NavigationBar/*@START_MENU_TOKEN@*/.buttons["<"]/*[[".buttons[\"<\"]",".buttons[\"PhotosCollectionViewController.PreviousSolButton\"]"],[[[-1,1],[-1,0]]],[1]]@END_MENU_TOKEN@*/
         photoscollectionviewcontrollerPrevioussolbuttonButton.tap()
         let collectionViewsQuery = app.collectionViews
         let element = collectionViewsQuery.children(matching: .cell).element(boundBy: 0).children(matching: .other).element
@@ -114,14 +113,20 @@ class AstronomyUITests: XCTestCase {
         titleNavigationBar.buttons["Sol 3"].tap()
         let photoscollectionviewcontrollerPrevioussolbuttonButton = app.navigationBars["Sol 3"]/*@START_MENU_TOKEN@*/.buttons["PhotosCollectionViewController.PreviousSolButton"]/*[[".buttons[\"<\"]",".buttons[\"PhotosCollectionViewController.PreviousSolButton\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
         photoscollectionviewcontrollerPrevioussolbuttonButton.tap()
-        photoscollectionviewcontrollerPrevioussolbuttonButton.tap()
-        photoscollectionviewcontrollerNextsolbuttonButton.tap()
-        photoscollectionviewcontrollerNextsolbuttonButton.tap()
-        photoscollectionviewcontrollerPrevioussolbuttonButton.tap()
+    }
+    
+    func testANewLifeCycle() {
+        let app = XCUIApplication()
+        app.launch()
+        app.navigationBars["Sol 1"]/*@START_MENU_TOKEN@*/.buttons["PhotosCollectionViewController.NextSolButton"]/*[[".buttons[\">\"]",".buttons[\"PhotosCollectionViewController.NextSolButton\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        let collectionViewsQuery = app.collectionViews
+        collectionViewsQuery.children(matching: .cell).element(boundBy: 3).children(matching: .other).element.swipeUp()
+        let cell = collectionViewsQuery.children(matching: .cell).element(boundBy: 5)
+        cell.otherElements.containing(.image, identifier:"MarsPlaceholder").element.swipeUp()
+        let element = cell.children(matching: .other).element
         element.tap()
-        saveToPhotoLibraryStaticText.tap()
-        okayButton.tap()
-        
+        app/*@START_MENU_TOKEN@*/.staticTexts["Save to Photo Library"]/*[[".buttons[\"Save to Photo Library\"].staticTexts[\"Save to Photo Library\"]",".buttons[\"PhotoDetailViewController.SaveButton\"].staticTexts[\"Save to Photo Library\"]",".staticTexts[\"Save to Photo Library\"]"],[[[-1,2],[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        app.alerts["Photo Saved!"].scrollViews.otherElements.buttons["Okay"].tap()
     }
     
         func testLaunchPerformance() throws {
