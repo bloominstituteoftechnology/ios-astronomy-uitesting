@@ -10,9 +10,51 @@ import XCTest
 
 class AstronomyUITests: XCTestCase {
 
+//MARK: - Properties
+    
+    private var app : XCUIApplication {
+        XCUIApplication()
+    }
+    
+    var sol1NavigationBar: XCUIElement {
+     app.navigationBars["Sol 1"]
+    }
+    
+    lazy var previousButton = app.navigationBars.buttons["PhotosCollectionViewController.PreviousSolButton"]
+    
+    lazy var nextButton = app.navigationBars.buttons["PhotosCollectionViewController.PreviousSolButton"]
+    
+   private var savePhoto: XCUIElement {
+        app.buttons["Save to Photo Library"]
+    }
+    
+    private var collectionViewCell: XCUIElement {
+        return app.collectionViews.firstMatch
+    }
+    
+    private var collectionViewImage: XCUIElement {
+        collectionViewCell.cells.firstMatch
+    }
+    
+    private var sol1: XCUIElement {
+        return sol1NavigationBar.buttons["PhotosCollectionViewController.NextSolButton"]
+    }
+    
+    private var savingPhoto: XCUIElement {
+        return app.buttons["PhotoDetailViewController.SaveButton"]
+    }
+    
+    private var alertSavingPhoto: XCUIElement {
+        return app.alerts["Photo Saved!"].scrollViews.otherElements.buttons["Okay"]
+    }
+    
+//MARK: - Methods
+    
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
-
+   
+        app.launchArguments = ["UITesting"]
+        app.launch()
         // In UI tests it is usually best to stop immediately when a failure occurs.
         continueAfterFailure = false
 
@@ -20,18 +62,17 @@ class AstronomyUITests: XCTestCase {
     }
 
     override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+        
     }
 
-    func testExample() throws {
-        // UI tests must launch the application that they test.
-        let app = XCUIApplication()
+    func testSavePhoto() {
         app.launch()
-
-        // Use recording to get started writing UI tests.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+        
+        collectionViewImage.tap()
+        savingPhoto.tap()
+        alertSavingPhoto.tap()
     }
-
+    
     func testLaunchPerformance() throws {
         if #available(macOS 10.15, iOS 13.0, tvOS 13.0, *) {
             // This measures how long it takes to launch your application.
