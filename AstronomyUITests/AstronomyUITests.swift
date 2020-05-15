@@ -36,7 +36,7 @@ class AstronomyUITests: XCTestCase {
         collectionViewCell.cells.firstMatch
     }
     
-    private var sol1: XCUIElement {
+    private var sol1Button: XCUIElement {
         return sol1NavigationBar.buttons["PhotosCollectionViewController.NextSolButton"]
     }
     
@@ -72,6 +72,15 @@ class AstronomyUITests: XCTestCase {
         savingPhoto.tap()
         alertSavingPhoto.tap()
     }
+    
+    func testNextSol() {
+        app.launch()
+        
+        sol1Button.tap()
+        let sol2NavigationBar = app.navigationBars["Sol 2"]
+             sol2NavigationBar.staticTexts["Sol 2"].tap()
+    }
+    
     
     func testLaunchPerformance() throws {
         if #available(macOS 10.15, iOS 13.0, tvOS 13.0, *) {
