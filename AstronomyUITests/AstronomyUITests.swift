@@ -54,4 +54,19 @@ class AstronomyUITests: XCTestCase {
         // Tap ok on the alerts
         app.alerts["Photo Saved!"].scrollViews.otherElements.buttons["Okay"].tap()
     }
+    
+    // Perform test on viewing a new Sol
+    func testViewNewSol() throws {
+        let app = XCUIApplication()
+        app.launch()
+        
+        let nextSolArrow = app.navigationBars["Sol 1"]/*@START_MENU_TOKEN@*/.buttons["PhotosCollectionViewController.NextSolButton"]/*[[".buttons[\">\"]",".buttons[\"PhotosCollectionViewController.NextSolButton\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
+            
+            // User tapped the next button
+            nextSolArrow.tap()
+        
+        // Is the user on the 2nd sol
+        XCTAssert(app.navigationBars["Sol 2"].exists)
+        
+    }
 }
