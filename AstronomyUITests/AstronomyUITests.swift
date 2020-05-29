@@ -69,4 +69,19 @@ class AstronomyUITests: XCTestCase {
         XCTAssert(app.navigationBars["Sol 2"].exists)
         
     }
+    
+    //Perform test on going back from detail view
+    func testGoingBack() throws {
+        let app = XCUIApplication()
+        app.launch()
+        
+        // User opens an image
+        app.collectionViews.children(matching: .cell).element(boundBy: 0).otherElements.containing(.image, identifier:"com.astronomy.imagecell.image").element.tap()
+        XCTAssert(app.navigationBars["Title"].exists)
+        
+        // User taps back on the nav
+        app.navigationBars["Title"].buttons["Sol 1"].tap()
+        XCTAssert(app.navigationBars["Sol 1"].exists)
+                
+    }
 }
