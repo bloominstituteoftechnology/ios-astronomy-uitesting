@@ -46,7 +46,19 @@ class AstronomyUITests: XCTestCase {
         
         // Test if nav title correctly shows next sol
         XCTAssertTrue(sol2title.label == "Sol 2")
+    }
+    
+    func testSwipe() {
+        app.launch()
+        // Swipe to the bottom of the collectionView
+        XCUIApplication()/*@START_MENU_TOKEN@*/.collectionViews.containing(.other, identifier:"Vertical scroll bar, 3 pages").element/*[[".collectionViews.containing(.other, identifier:\"Horizontal scroll bar, 1 page\").element",".collectionViews.containing(.other, identifier:\"Vertical scroll bar, 3 pages\").element"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.swipeUp()
+        XCUIApplication()/*@START_MENU_TOKEN@*/.collectionViews.containing(.other, identifier:"Vertical scroll bar, 3 pages").element/*[[".collectionViews.containing(.other, identifier:\"Horizontal scroll bar, 1 page\").element",".collectionViews.containing(.other, identifier:\"Vertical scroll bar, 3 pages\").element"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.swipeUp()
         
+        app.collectionViews.children(matching: .cell).element(boundBy: 11).children(matching: .other).element.tap()
+        let detailLabel = app/*@START_MENU_TOKEN@*/.staticTexts["imageDetailLabel"]/*[[".staticTexts[\"Taken by 5 on 8\/6\/12, 6:00 PM (Sol 1)\"]",".staticTexts[\"imageDetailLabel\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
+        
+        // Test if detail label shows correct String
+        XCTAssertTrue(detailLabel.label == "Taken by 5 on 8/6/12, 6:00 PM (Sol 1)")
     }
     
 }
