@@ -37,4 +37,16 @@ class AstronomyUITests: XCTestCase {
         app.alerts["Photo Saved!"].scrollViews.otherElements.buttons["Okay"].tap()
     }
     
+    func testViewDifferentSol() {
+        app.launch()
+        
+        let app = XCUIApplication()
+        app.navigationBars["Sol 1"]/*@START_MENU_TOKEN@*/.buttons["PhotosCollectionViewController.NextSolButton"]/*[[".buttons[\">\"]",".buttons[\"PhotosCollectionViewController.NextSolButton\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        let sol2title = app.navigationBars["Sol 2"].staticTexts["Sol 2"]
+        
+        // Test if nav title correctly shows next sol
+        XCTAssertTrue(sol2title.label == "Sol 2")
+        
+    }
+    
 }
