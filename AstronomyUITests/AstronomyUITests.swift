@@ -17,8 +17,23 @@ class AstronomyUITests: XCTestCase {
         app.launchArguments.append("UITesting")
     }
 
+    // Test the user clicking a photo and opening up the detailView
+    func testViewImageDetail() throws {
+        
+        let app = XCUIApplication()
+        app.launch()
+        
+        let imageTapped = app.collectionViews.children(matching: .cell).element(boundBy: 6).otherElements.containing(.image, identifier:"com.astronomy.imagecell.image").element
+        imageTapped.tap()
+        
+        let photoDetail = app.images["PhotoDetailViewController.ImageView"].waitForExistence(timeout: 2)
+        
+        XCTAssert(photoDetail)
+        
+    }
+    
     // Perform test for saving a photo
-    func testExample() throws {
+    func testSavePhoto() throws {
         // Click the image
         let app = XCUIApplication()
         app.launch()
