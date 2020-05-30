@@ -40,6 +40,15 @@ class AstronomyUITests: XCTestCase {
     }
     
     func testCellsLoaded() {
+        let navBar = app.navigationBars["NavBar"]
+        let prev = navBar.buttons["PreviousSolButton"]
+        let next = navBar.buttons["NextSolButton"]
+        
+        prev.tap()
+        XCTAssert(app.collectionViews.cells.count > 1)
+        next.tap()
+        XCTAssert(app.collectionViews.cells.count > 1)
+        next.tap()
         XCTAssert(app.collectionViews.cells.count > 1)
     }
     
