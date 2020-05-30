@@ -55,6 +55,9 @@ class AstronomyUITests: XCTestCase {
     func testDetailView() {
         app.collectionViews.children(matching: .cell).element(boundBy: 0).tap()
         XCTAssert(app.staticTexts["Title"].exists)
+        XCTAssert(app.staticTexts.containing(NSPredicate(format: "label CONTAINS 'Taken by '")).element.exists)
+        XCTAssert(app.staticTexts.containing(NSPredicate(format: "label CONTAINS 'Camera:'")).element.exists)
+        XCTAssert(app.staticTexts["Save to Photo Library"].exists)
     }
     
     func testSavingToCameraRoll() {
