@@ -17,7 +17,7 @@ class AstronomyUITests: XCTestCase {
     }
     
     override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+        
     }
     
     func test_picture_saved(){
@@ -35,7 +35,6 @@ class AstronomyUITests: XCTestCase {
     }
     
     func test_image_same_when_selected() {
-        
         let app = XCUIApplication()
         app.launch()
         
@@ -46,5 +45,20 @@ class AstronomyUITests: XCTestCase {
         
         XCTAssertEqual(expectedImage, imageSelected.identifier)
         
+    }
+    
+    func test_back_button() {
+        let app = XCUIApplication()
+        app.launch()
+        
+        app.collectionViews.children(matching: .cell).element(boundBy: 0).otherElements.containing(.image, identifier:"PhotosCollectionViewController.ImageCell").element.tap()
+        
+        let backButtonTapped = app.navigationBars["Title"].buttons["Sol 1"]
+        backButtonTapped.tap()
+        
+        backButtonTapped.accessibilityLabel = "Sol 1"
+        
+        
+        XCTAssertTrue(app.staticTexts["Sol 1"].isEnabled)
     }
 }
