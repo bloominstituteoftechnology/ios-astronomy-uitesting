@@ -49,7 +49,9 @@ class AstronomyUITests: XCTestCase {
     }
     
     func testSavingToCameraRoll() {
-        
+        app.collectionViews.children(matching: .cell).element(boundBy: 0).tap()
+        app.buttons["PhotoDetailViewController.SaveButton"].tap()
+        XCTAssert(app.alerts["Photo Saved!"].exists)
     }
     
     //    func testLaunchPerformance() throws {
