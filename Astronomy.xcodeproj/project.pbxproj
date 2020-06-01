@@ -31,7 +31,22 @@
 		9DBD20382140E46E0047905E /* ConcurrentOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DBD20362140E46E0047905E /* ConcurrentOperation.swift */; };
 		9DBD20392140E46E0047905E /* FetchPhotoOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DBD20372140E46E0047905E /* FetchPhotoOperation.swift */; };
 		9DFE494C2145D37A0009922B /* PhotoDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DFE494B2145D37A0009922B /* PhotoDetailViewController.swift */; };
+		FF89A8A0214AFEBB006F14EE /* AstronomyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF89A89F214AFEBB006F14EE /* AstronomyUITests.swift */; };
+		FF89A8A8214B0031006F14EE /* TestPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF89A8A7214B0031006F14EE /* TestPage.swift */; };
+		FF89A8AA214B0120006F14EE /* XCTestCase+Expect.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF89A8A9214B0120006F14EE /* XCTestCase+Expect.swift */; };
+		FF89A8AC214B020B006F14EE /* PhotoCollectionPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF89A8AB214B020B006F14EE /* PhotoCollectionPage.swift */; };
+		FF89A8AE214B13B5006F14EE /* PhotoDetailPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF89A8AD214B13B5006F14EE /* PhotoDetailPage.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		FF89A8A2214AFEBB006F14EE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9DBD1FFD2140D1300047905E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9DBD20042140D1300047905E;
+			remoteInfo = Astronomy;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		4647E7C62148C3F400E7FF73 /* Sol15Photos */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Sol15Photos; sourceTree = "<group>"; };
@@ -60,10 +75,24 @@
 		9DBD20362140E46E0047905E /* ConcurrentOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConcurrentOperation.swift; sourceTree = "<group>"; };
 		9DBD20372140E46E0047905E /* FetchPhotoOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchPhotoOperation.swift; sourceTree = "<group>"; };
 		9DFE494B2145D37A0009922B /* PhotoDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoDetailViewController.swift; sourceTree = "<group>"; };
+		FF89A89D214AFEBB006F14EE /* AstronomyUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AstronomyUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		FF89A89F214AFEBB006F14EE /* AstronomyUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AstronomyUITests.swift; sourceTree = "<group>"; };
+		FF89A8A1214AFEBB006F14EE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FF89A8A7214B0031006F14EE /* TestPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestPage.swift; sourceTree = "<group>"; };
+		FF89A8A9214B0120006F14EE /* XCTestCase+Expect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+Expect.swift"; sourceTree = "<group>"; };
+		FF89A8AB214B020B006F14EE /* PhotoCollectionPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCollectionPage.swift; sourceTree = "<group>"; };
+		FF89A8AD214B13B5006F14EE /* PhotoDetailPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoDetailPage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		9DBD20022140D1300047905E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FF89A89A214AFEBB006F14EE /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -89,6 +118,7 @@
 			isa = PBXGroup;
 			children = (
 				9DBD20072140D1300047905E /* Astronomy */,
+				FF89A89E214AFEBB006F14EE /* AstronomyUITests */,
 				9DBD20062140D1300047905E /* Products */,
 			);
 			sourceTree = "<group>";
@@ -97,6 +127,7 @@
 			isa = PBXGroup;
 			children = (
 				9DBD20052140D1300047905E /* Astronomy.app */,
+				FF89A89D214AFEBB006F14EE /* AstronomyUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -185,6 +216,19 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
+		FF89A89E214AFEBB006F14EE /* AstronomyUITests */ = {
+			isa = PBXGroup;
+			children = (
+				FF89A89F214AFEBB006F14EE /* AstronomyUITests.swift */,
+				FF89A8A1214AFEBB006F14EE /* Info.plist */,
+				FF89A8A7214B0031006F14EE /* TestPage.swift */,
+				FF89A8A9214B0120006F14EE /* XCTestCase+Expect.swift */,
+				FF89A8AB214B020B006F14EE /* PhotoCollectionPage.swift */,
+				FF89A8AD214B13B5006F14EE /* PhotoDetailPage.swift */,
+			);
+			path = AstronomyUITests;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -205,6 +249,24 @@
 			productReference = 9DBD20052140D1300047905E /* Astronomy.app */;
 			productType = "com.apple.product-type.application";
 		};
+		FF89A89C214AFEBB006F14EE /* AstronomyUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FF89A8A6214AFEBB006F14EE /* Build configuration list for PBXNativeTarget "AstronomyUITests" */;
+			buildPhases = (
+				FF89A899214AFEBB006F14EE /* Sources */,
+				FF89A89A214AFEBB006F14EE /* Frameworks */,
+				FF89A89B214AFEBB006F14EE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				FF89A8A3214AFEBB006F14EE /* PBXTargetDependency */,
+			);
+			name = AstronomyUITests;
+			productName = AstronomyUITests;
+			productReference = FF89A89D214AFEBB006F14EE /* AstronomyUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -217,6 +279,10 @@
 				TargetAttributes = {
 					9DBD20042140D1300047905E = {
 						CreatedOnToolsVersion = 9.4.1;
+					};
+					FF89A89C214AFEBB006F14EE = {
+						CreatedOnToolsVersion = 9.4.1;
+						TestTargetID = 9DBD20042140D1300047905E;
 					};
 				};
 			};
@@ -234,6 +300,7 @@
 			projectRoot = "";
 			targets = (
 				9DBD20042140D1300047905E /* Astronomy */,
+				FF89A89C214AFEBB006F14EE /* AstronomyUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -251,6 +318,13 @@
 				468A4C2E2148802200E7FF73 /* MarsRover.json in Resources */,
 				4647E7CA2148C3F700E7FF73 /* Sol16Photos in Resources */,
 				4647E7CB2148C3F700E7FF73 /* Sol14Photos in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FF89A89B214AFEBB006F14EE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -280,7 +354,27 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		FF89A899214AFEBB006F14EE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FF89A8A8214B0031006F14EE /* TestPage.swift in Sources */,
+				FF89A8A0214AFEBB006F14EE /* AstronomyUITests.swift in Sources */,
+				FF89A8AA214B0120006F14EE /* XCTestCase+Expect.swift in Sources */,
+				FF89A8AE214B13B5006F14EE /* PhotoDetailPage.swift in Sources */,
+				FF89A8AC214B020B006F14EE /* PhotoCollectionPage.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		FF89A8A3214AFEBB006F14EE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 9DBD20042140D1300047905E /* Astronomy */;
+			targetProxy = FF89A8A2214AFEBB006F14EE /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		9DBD20112140D1300047905E /* LaunchScreen.storyboard */ = {
@@ -444,6 +538,42 @@
 			};
 			name = Release;
 		};
+		FF89A8A4214AFEBB006F14EE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = AstronomyUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.lisasampson.AstronomyUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Astronomy;
+			};
+			name = Debug;
+		};
+		FF89A8A5214AFEBB006F14EE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = AstronomyUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.lisasampson.AstronomyUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Astronomy;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -461,6 +591,15 @@
 			buildConfigurations = (
 				9DBD20182140D1300047905E /* Debug */,
 				9DBD20192140D1300047905E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FF89A8A6214AFEBB006F14EE /* Build configuration list for PBXNativeTarget "AstronomyUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FF89A8A4214AFEBB006F14EE /* Debug */,
+				FF89A8A5214AFEBB006F14EE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
