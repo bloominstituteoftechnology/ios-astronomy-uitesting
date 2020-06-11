@@ -17,6 +17,10 @@ class AstronomyUITests: XCTestCase {
     private var savingPhoto: XCUIElement {
         return app.buttons["PhotoDetailViewController.SaveButton"]
     }
+    
+    private func savePhotoButton(_ index: String) -> XCUIElement {
+         return app.buttons["PhotoDetailViewController.SaveButton"]
+     }
 
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
@@ -30,14 +34,20 @@ class AstronomyUITests: XCTestCase {
     }
 
     func testExample() throws {
-        // UI tests must launch the application that they test.
-      
-        // Use recording to get started writing UI tests.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+        app.launch()
+        
+        app.collectionViews.children(matching: .cell).element(boundBy: 0).otherElements.containing(.image, identifier:"PhotoDetailViewController.PlanetImage").element.tap()
+        app.buttons["PhotoDetailViewController.SaveButton"].staticTexts["Save to Photo Library"].tap()
+        app.alerts["Photo Saved!"].scrollViews.otherElements.buttons["Okay"].tap()
+        app.navigationBars["Title"].buttons["Sol 1"].tap()
+        
     }
     
     func testSavePhoto() {
         app.launch()
+    
+        let saveButton = savePhotoButton
+    
       
     }
 
