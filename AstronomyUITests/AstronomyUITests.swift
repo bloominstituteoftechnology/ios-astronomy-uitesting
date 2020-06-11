@@ -10,16 +10,20 @@ import XCTest
 
 class AstronomyUITests: XCTestCase {
     
+    var app: XCUIApplication {
+        return XCUIApplication()
+    }
+    
+    var collectionView: XCUIElementQuery {
+        return app.collectionViews
+    }
     
     override func setUp() {
-        
         super.setUp()
-        
-        var app: XCUIApplication {
-            return XCUIApplication()
-        }
-        
+        let app = XCUIApplication()
         app.launchArguments = ["UITesting"]
+        continueAfterFailure = false
+        app.launch()
     }
     
 
@@ -69,7 +73,6 @@ class AstronomyUITests: XCTestCase {
         element2.swipeUp()
         element2.swipeUp()
         collectionViewsQuery.children(matching: .cell).element(boundBy: 9).children(matching: .other).element.tap()
-        
     }
 
     func testLaunchPerformance() throws {
