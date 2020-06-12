@@ -9,46 +9,78 @@
 import XCTest
 
 class AstronomyUITests: XCTestCase {
-    //MARK: - Types -
-    enum AccessibilityID: String {
-        
-    }
+//    //MARK: - Types -
+//    enum StringID: String {
+//        case solForward = "PhotosCollectionViewController.NextSolButton"
+//        case solBack = "PhotosCollectionViewController.PreviousSolButton"
+//        case detailImage = "PhotoDetailViewController.ImageView"
+//        case saveButton = "PhotoDetailViewController.SaveButton"
+//    }
+//
+//
+//    //MARK: - Properties -
+//    private var app: XCUIApplication {
+//        return XCUIApplication()
+//    }
+//
+//
+//    //MARK: - UI Element Assignment Methods -
+//    private func button(_ id: StringID) -> XCUIElement {
+//        return app.buttons[id.rawValue]
+//    }
+//
+//    private func imageView(_ id: StringID) -> XCUIElement {
+//        return app.images[id.rawValue]
+//    }
+//
+//
+//    //MARK: - Testing Enviroment: Set Paramenters -
+//    override func setUp() {
+//        app.launchArguments = ["UITesting"]
+//        app.launch()
+//    }
+//
+//
+//    //MARK: - Tests -
+//    func testChangeSol() throws {
+//        let forward = button(.solForward)
+//        forward.tap()
+//        XCTAssertTrue(app.navigationBars["Sol 16"].exists)
+//
+//
+//        //app.navigationBars["Sol 14"] //use correct one for test but this is the syntax
+//    }
+//
+//    func testCellHasImage() throws {
+//
+//    }
+//
+//    func testDetailView() throws {
+//
+//
+//        app.navigationBars.buttons["Back"] // access the back button
+//    }
+//
+//    func testSavePicture() throws {
+//
+//    }
     
     
-    //MARK: - Properties -
-    private var app: XCUIApplication {
-        return XCUIApplication()
-    }
-    
-    
-    //MARK: - Testing Enviroment: Set Paramenters -
     override func setUp() {
-        app.launchArguments = ["UITesting"]
-        app.launch()
-        super.setUp()
+      let app = XCUIApplication()
+      app.launchArguments = ["UITesting"]
+      continueAfterFailure = false
+      app.launch()
     }
     
     
-    //MARK: - Tests -
-    func testChangeSol() throws {
-        let app = XCUIApplication()
-        app.launch()
+    func testViewNextSolImages() {
+      let app = XCUIApplication()
+      let nextButton = app.navigationBars["Sol 15"].buttons["PhotosCollectionViewController.NextSolButton"]
+      XCTAssert(nextButton.exists)
+      nextButton.tap()
+      XCTAssertTrue(app.navigationBars["Sol 16"].exists)
+      XCTAssertFalse(app.navigationBars["Sol 15"].exists)
     }
-    
-    func testCellHasImage() throws {
-        let app = XCUIApplication()
-        app.launch()
-    }
-    
-    func testDetailView() throws {
-        let app = XCUIApplication()
-        app.launch()
-    }
-    
-    func testSavePicture() throws {
-        let app = XCUIApplication()
-        app.launch()
-    }
-    
     
 }
