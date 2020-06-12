@@ -9,63 +9,22 @@
 import XCTest
 
 class AstronomyUITests: XCTestCase {
-//    //MARK: - Types -
-//    enum StringID: String {
-//        case solForward = "PhotosCollectionViewController.NextSolButton"
-//        case solBack = "PhotosCollectionViewController.PreviousSolButton"
-//        case detailImage = "PhotoDetailViewController.ImageView"
-//        case saveButton = "PhotoDetailViewController.SaveButton"
-//    }
-//
-//
-//    //MARK: - Properties -
-//    private var app: XCUIApplication {
-//        return XCUIApplication()
-//    }
-//
-//
-//    //MARK: - UI Element Assignment Methods -
-//    private func button(_ id: StringID) -> XCUIElement {
-//        return app.buttons[id.rawValue]
-//    }
-//
-//    private func imageView(_ id: StringID) -> XCUIElement {
-//        return app.images[id.rawValue]
-//    }
-//
-//
-//    //MARK: - Testing Enviroment: Set Paramenters -
-//    override func setUp() {
-//        app.launchArguments = ["UITesting"]
-//        app.launch()
-//    }
-//
-//
-//    //MARK: - Tests -
-//    func testChangeSol() throws {
-//        let forward = button(.solForward)
-//        forward.tap()
-//        XCTAssertTrue(app.navigationBars["Sol 16"].exists)
-//
-//
-//        //app.navigationBars["Sol 14"] //use correct one for test but this is the syntax
-//    }
-//
-//    func testCellHasImage() throws {
-//
-//    }
-//
-//    func testDetailView() throws {
-//
-//
-//        app.navigationBars.buttons["Back"] // access the back button
-//    }
-//
-//    func testSavePicture() throws {
-//
-//    }
+    //MARK: - Types -
+    enum StringID: String {
+        case solForward = "PhotosCollectionViewController.NextSolButton"
+        case solBack = "PhotosCollectionViewController.PreviousSolButton"
+        case detailImage = "PhotoDetailViewController.ImageView"
+        case saveButton = "PhotoDetailViewController.SaveButton"
+    }
+    
+    enum SolID: String {
+        case sol14 = "Sol 14"
+        case sol15 = "Sol 15"
+        case sol16 = "Sol 16"
+    }
     
     
+    //MARK: - Test Environment Setup Paramenters -
     override func setUp() {
       let app = XCUIApplication()
       app.launchArguments = ["UITesting"]
@@ -74,13 +33,42 @@ class AstronomyUITests: XCTestCase {
     }
     
     
+    //MARK: - Tests - 
     func testViewNextSolImages() {
       let app = XCUIApplication()
-      let nextButton = app.navigationBars["Sol 15"].buttons["PhotosCollectionViewController.NextSolButton"]
+        let nextButton = app.navigationBars[SolID.sol15.rawValue].buttons[StringID.solForward.rawValue]
       XCTAssert(nextButton.exists)
       nextButton.tap()
-      XCTAssertTrue(app.navigationBars["Sol 16"].exists)
-      XCTAssertFalse(app.navigationBars["Sol 15"].exists)
+        XCTAssertTrue(app.navigationBars[SolID.sol16.rawValue].exists)
+      XCTAssertFalse(app.navigationBars[SolID.sol15.rawValue].exists)
+    }
+    
+    func testViewPreviousSolImages() {
+        let app = XCUIApplication()
+        let previousButton = app.navigationBars[SolID.sol15.rawValue].buttons[StringID.solBack.rawValue]
+        XCTAssert(previousButton.exists)
+        previousButton.tap()
+        XCTAssertTrue(app.navigationBars[SolID.sol14.rawValue].exists)
+        XCTAssertFalse(app.navigationBars[SolID.sol15.rawValue].exists)
+    }
+    
+    func testDetailNavigation() {
+        let app = XCUIApplication()
+        let cell = app.cells.element(boundBy: 0)
+        let detailPhoto = app.images[StringID.detailImage.rawValue]
+        cell.tap()
+        XCTAssertTrue(detailPhoto.exists)
+    }
+    
+    func testSavePhoto() {
+        let app = XCUIApplication()
+        let cell = app.cells.element(boundBy: 0)
+        let saveButton = app.buttons[StringID.saveButton.rawValue]
+        
+        cell.tap()
+        XCTAssertTrue(saveButton.exists)
+        saveButton.tap()
+        XCTAssertEqual(app.alerts.element.label, "Photo Saved!")
     }
     
 }
