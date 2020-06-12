@@ -44,35 +44,61 @@ class AstronomyUITests: XCTestCase {
         // UI tests must launch the application that they test.
         let app = XCUIApplication()
         app.launch()
-
-        // Use recording to get started writing UI tests.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-
-        let collectionViewsQuery = app.collectionViews
-        let element = collectionViewsQuery.children(matching: .cell).element(boundBy: 5).children(matching: .other).element
-        element.tap()
         
-        let saveToPhotoLibraryStaticText = app/*@START_MENU_TOKEN@*/.staticTexts["Save to Photo Library"]/*[[".buttons[\"Save to Photo Library\"].staticTexts[\"Save to Photo Library\"]",".buttons[\"PhotoDetailViewController.SaveButton\"].staticTexts[\"Save to Photo Library\"]",".staticTexts[\"Save to Photo Library\"]"],[[[-1,2],[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
-        saveToPhotoLibraryStaticText.tap()
-        
-        let okayButton = app.alerts["Photo Saved!"].scrollViews.otherElements.buttons["Okay"]
-        okayButton.tap()
-        
-        let titleNavigationBar = app.navigationBars["Title"]
-        titleNavigationBar.buttons["Sol 1"].tap()
         app.navigationBars["Sol 1"]/*@START_MENU_TOKEN@*/.buttons["PhotosCollectionViewController.NextSolButton"]/*[[".buttons[\">\"]",".buttons[\"PhotosCollectionViewController.NextSolButton\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        
+        let collectionViewsQuery = app.collectionViews
         collectionViewsQuery.children(matching: .cell).element(boundBy: 4).children(matching: .other).element.tap()
-        saveToPhotoLibraryStaticText.tap()
-        okayButton.tap()
-        titleNavigationBar.buttons["Sol 2"].tap()
+        app.navigationBars["Title"].buttons["Sol 2"].tap()
+        
+        let element = collectionViewsQuery.children(matching: .cell).element(boundBy: 5).children(matching: .other).element
         element.swipeUp()
         
         let element2 = collectionViewsQuery.children(matching: .cell).element(boundBy: 7).children(matching: .other).element
         element2.swipeUp()
-        element2.swipeUp()
-        element2.swipeUp()
-        element2.swipeUp()
-        collectionViewsQuery.children(matching: .cell).element(boundBy: 9).children(matching: .other).element.tap()
+        element.swipeUp()
+        
+        let cell = collectionViewsQuery.children(matching: .cell).element(boundBy: 9)
+        cell.children(matching: .other).element.swipeDown()
+        cell.otherElements.containing(.image, identifier:"MarsPlaceholder").element.swipeDown()
+        element2.tap()
+        app.children(matching: .window).element(boundBy: 0).children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element(boundBy: 1).tap()
+        app/*@START_MENU_TOKEN@*/.staticTexts["Save to Photo Library"]/*[[".buttons[\"Save to Photo Library\"].staticTexts[\"Save to Photo Library\"]",".buttons[\"PhotoDetailViewController.SaveButton\"].staticTexts[\"Save to Photo Library\"]",".staticTexts[\"Save to Photo Library\"]"],[[[-1,2],[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        app.alerts["Photo Saved!"].scrollViews.otherElements.buttons["Okay"].tap()
+        
+    }
+    
+    func testSavePhotoTapped() throws {
+        let cell = collectionView.cells.element(boundBy: 0)
+        cell.tap()
+        
+        let save = app.buttons["PhotoDetailViewController.SaveButton"]
+        save.tap()
+        XCTAssert(app.alerts["Photo Saved!"].exists)
+        
+        app.alerts.buttons["Okay"].tap()
+    }
+
+    func testScrollPhotos() {
+        collectionView.element.swipeUp()
+        collectionView.element.swipeDown()
+    }
+    
+    func testNextSolButton() {
+        let nextSolButton = app.buttons["PhotosCollectionViewController.NextSolButton"]
+        nextSolButton.tap()
+        
+        XCTAssert(app.navigationBars["Sol 16"].exists)
+    }
+    
+    func testCellTap() {
+        let nextSolButton = app.buttons["PhotosCollectionViewController.NextSolButton"]
+        nextSolButton.tap()
+        
+        XCTAssert(app.navigationBars["Sol 16"].exists)
+        
+        let cell = collectionView.cells.element(boundBy: 2)
+        cell.tap()
     }
 
     func testLaunchPerformance() throws {
