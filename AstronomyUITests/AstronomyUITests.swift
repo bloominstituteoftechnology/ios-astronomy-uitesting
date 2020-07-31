@@ -93,6 +93,22 @@ class AstronomyUITests: XCTestCase {
         
     }
     
+    func testBack() {
+      
+        let app = XCUIApplication()
+        app.launch()
+        let imageviewtosaveElement = app.collectionViews.children(matching: .cell).element(boundBy: 2).otherElements.containing(.image, identifier:"imageViewToSave").element
+        imageviewtosaveElement.tap()
+
+        let sol1Button = app.navigationBars["Title"].buttons["Sol 1"]
+        sol1Button.tap()
+        imageviewtosaveElement.tap()
+        sol1Button.tap()
+        imageviewtosaveElement.tap()
+        sol1Button.tap()
+        
+    }
+    
     func testSixthImageSelected() {
         
         let app = XCUIApplication()
