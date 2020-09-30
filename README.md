@@ -13,7 +13,7 @@ Please fork and clone this repository. It contains a modified version of the Ast
 1. Add a new UI testing target to the project.
 2. In the `setUp()` method of the `AstronomyUITests` class that comes with your UI test target, create a constant for the application (`let app = XCUIApplication`)
 3. Set the `app`'s `launchArguments` to `["UITesting"]`. This string is the launch argument that the application will look for to know that it use local data instead of making network calls.
-
+ 
 # Part 2 - Writing the tests
   
 Create a test for every interaction you can think of. To get you started:
