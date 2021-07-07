@@ -12,6 +12,7 @@ class PhotosCollectionViewController: UIViewController, UICollectionViewDataSour
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        collectionView.accessibilityIdentifier = "PhotosCollectionView"
         
         client.fetchMarsRover(named: "curiosity") { (rover, error) in
             if let error = error {
@@ -25,6 +26,7 @@ class PhotosCollectionViewController: UIViewController, UICollectionViewDataSour
         configureTitleView()
         updateViews()
     }
+    
     
     @IBAction func goToPreviousSol(_ sender: Any?) {
         guard let solDescription = solDescription else { return }
@@ -89,6 +91,7 @@ class PhotosCollectionViewController: UIViewController, UICollectionViewDataSour
         return UIEdgeInsets(top: 0, left: 10.0, bottom: 0, right: 10.0)
     }
     
+    
     // MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -102,6 +105,7 @@ class PhotosCollectionViewController: UIViewController, UICollectionViewDataSour
     // MARK: - Private
     
     private func configureTitleView() {
+        
         
 //        let font = UIFont.systemFont(ofSize: 30)
 //        let attrs = [NSAttributedStringKey.font: font]
@@ -137,6 +141,7 @@ class PhotosCollectionViewController: UIViewController, UICollectionViewDataSour
     private func updateViews() {
         guard isViewLoaded else { return }
         title = "Sol \(solDescription?.sol ?? 0)"
+        
     }
     
     private func loadImage(forCell cell: ImageCollectionViewCell, forItemAt indexPath: IndexPath) {
