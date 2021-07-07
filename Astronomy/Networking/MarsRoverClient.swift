@@ -24,6 +24,7 @@ class MarsRoverClient {
 
             guard let rover = dictionary?["photo_manifest"] else {
                 completion(nil, error)
+                print("bad code")
                 return
             }
             completion(rover, nil)
