@@ -57,7 +57,7 @@ class PhotosCollectionViewController: UIViewController, UICollectionViewDataSour
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ImageCell", for: indexPath) as? ImageCollectionViewCell ?? ImageCollectionViewCell()
         
         loadImage(forCell: cell, forItemAt: indexPath)
-        
+        cell.accessibilityIdentifier = "cell\(indexPath.item)"
         return cell
     }
     
@@ -96,6 +96,7 @@ class PhotosCollectionViewController: UIViewController, UICollectionViewDataSour
             guard let indexPath = collectionView.indexPathsForSelectedItems?.first else { return }
             let detailVC = segue.destination as! PhotoDetailViewController
             detailVC.photo = photoReferences[indexPath.item]
+            
         }
     }
     
@@ -137,6 +138,7 @@ class PhotosCollectionViewController: UIViewController, UICollectionViewDataSour
     private func updateViews() {
         guard isViewLoaded else { return }
         title = "Sol \(solDescription?.sol ?? 0)"
+        
     }
     
     private func loadImage(forCell cell: ImageCollectionViewCell, forItemAt indexPath: IndexPath) {
