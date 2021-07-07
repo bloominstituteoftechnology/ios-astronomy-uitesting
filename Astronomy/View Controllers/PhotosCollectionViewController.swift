@@ -12,7 +12,7 @@ class PhotosCollectionViewController: UIViewController, UICollectionViewDataSour
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        collectionView.accessibilityIdentifier = "PhotosCollectionView"
         client.fetchMarsRover(named: "curiosity") { (rover, error) in
             if let error = error {
                 NSLog("Error fetching info for curiosity: \(error)")
@@ -56,6 +56,11 @@ class PhotosCollectionViewController: UIViewController, UICollectionViewDataSour
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ImageCell", for: indexPath) as? ImageCollectionViewCell ?? ImageCollectionViewCell()
         
+        cell.accessibilityIdentifier = "PhotoCollectionViewCell.cell\(indexPath.item)"
+        // "PhotoCollectionViewCell.cell0
+        // "PhotoCollectionViewCell.cell1
+        // "PhotoCollectionViewCell.cell2
+        // "PhotoCollectionViewCell.cell3
         loadImage(forCell: cell, forItemAt: indexPath)
         
         return cell
