@@ -13,6 +13,9 @@ class PhotosCollectionViewController: UIViewController, UICollectionViewDataSour
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        collectionView.accessibilityIdentifier = "PhotosCollectionView"
+        //self.navigationItem.accessibilityLabel = "PhotosCollectionViewController.title"
+        
         client.fetchMarsRover(named: "curiosity") { (rover, error) in
             if let error = error {
                 NSLog("Error fetching info for curiosity: \(error)")
