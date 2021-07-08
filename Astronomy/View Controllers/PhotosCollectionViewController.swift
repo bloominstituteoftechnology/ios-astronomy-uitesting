@@ -29,7 +29,7 @@ class PhotosCollectionViewController: UIViewController, UICollectionViewDataSour
     @IBAction func goToPreviousSol(_ sender: Any?) {
         guard let solDescription = solDescription else { return }
         guard let solDescriptions = roverInfo?.solDescriptions else { return }
-        guard let index = solDescriptions.index(of: solDescription) else { return }
+        guard let index = solDescriptions.firstIndex(of: solDescription) else { return }
         guard index > 0 else { return }
         self.solDescription = solDescriptions[index-1]
     }
@@ -37,7 +37,7 @@ class PhotosCollectionViewController: UIViewController, UICollectionViewDataSour
     @IBAction func goToNextSol(_ sender: Any?) {
         guard let solDescription = solDescription else { return }
         guard let solDescriptions = roverInfo?.solDescriptions else { return }
-        guard let index = solDescriptions.index(of: solDescription) else { return }
+        guard let index = solDescriptions.firstIndex(of: solDescription) else { return }
         guard index < solDescriptions.count - 1 else { return }
         self.solDescription = solDescriptions[index+1]
     }
@@ -218,7 +218,9 @@ class PhotosCollectionViewController: UIViewController, UICollectionViewDataSour
     
     private var roverInfo: MarsRover? {
         didSet {
-            solDescription = roverInfo?.solDescriptions[1]
+            if solDescription == nil {
+                solDescription = roverInfo?.solDescriptions[0]
+            }
         }
     }
     
@@ -245,4 +247,32 @@ class PhotosCollectionViewController: UIViewController, UICollectionViewDataSour
     
     @IBOutlet var collectionView: UICollectionView!
     let solLabel = UILabel()
+    
+    // MARK: - State Restoration
+    
+    override func encodeRestorableState(with coder: NSCoder) {
+        defer { super.encodeRestorableState(with: coder)}
+        
+        var solData: Data?
+        
+        do {
+            solData = try PropertyListEncoder().encode(solDescription)
+        } catch {
+            NSLog("Error encoding solData: \(error)")
+        }
+        
+        guard let sol = solData else { return }
+        
+        coder.encode(sol, forKey: "solData")
+    }
+    
+    override func decodeRestorableState(with coder: NSCoder) {
+        defer { super.decodeRestorableState(with: coder)}
+        
+        guard let solData = coder.decodeObject(forKey: "solData") as? Data else { return }
+        
+        self.solDescription = try? PropertyListDecoder().decode(SolDescription.self, from: solData)
+    }
+    
 }
+

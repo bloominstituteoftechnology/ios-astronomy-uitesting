@@ -90,4 +90,30 @@ class PhotoDetailViewController: UIViewController {
     @IBOutlet weak var detailLabel: UILabel!
     @IBOutlet weak var cameraLabel: UILabel!
     
+    // MARK: - State Restoration
+    
+    override func encodeRestorableState(with coder: NSCoder) {
+        defer { super.encodeRestorableState(with: coder)}
+        
+        var photoData: Data?
+        
+        do {
+            photoData = try PropertyListEncoder().encode(photo)
+        } catch {
+            NSLog("Error encoding photo: \(error)")
+        }
+        
+        guard let photo = photoData else { return }
+        
+        coder.encode(photo, forKey: "photoData")
+    }
+    
+    override func decodeRestorableState(with coder: NSCoder) {
+        defer { super.decodeRestorableState(with: coder)}
+        
+        guard let photoData = coder.decodeObject(forKey: "photoData") as? Data else { return }
+        
+        self.photo = try? PropertyListDecoder().decode(MarsPhotoReference.self, from: photoData)
+    }
+    
 }
