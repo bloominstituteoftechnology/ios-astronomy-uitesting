@@ -25,7 +25,7 @@ You should be able to write **at least** 4 tests. If you're stumped on tests to 
 
 ## Go Further
 
-- Create UI tests for a previous project that you've made at Lambda School that does not include networking or concurrency.
+- Create UI tests for a previous project that you've made at BloomTech that does not include networking or concurrency.
 
 **AND/OR**
 

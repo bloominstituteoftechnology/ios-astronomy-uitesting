@@ -3,7 +3,7 @@
 //  Astronomy
 //
 //  Created by Spencer Curtis on 9/11/18.
-//  Copyright © 2018 Lambda School. All rights reserved.
+//  Copyright © 2018 BloomTech. All rights reserved.
 //
 
 import UIKit
